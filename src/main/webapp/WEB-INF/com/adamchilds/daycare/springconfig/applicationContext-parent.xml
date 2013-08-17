@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+
+    Imports all applicationContext files so that in return, the program only needs to interface
+    with this single file for configuration.
+
+    -->
+    <import resource="applicationContext.xml" />
+    <import resource="applicationContext-jpa.xml" />
+
+</beans>
