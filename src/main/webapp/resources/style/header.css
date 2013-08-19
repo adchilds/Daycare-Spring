@@ -1,0 +1,10 @@
+/**
+ * This CSS file is specific to the header found on each page
+ */
+div.header-center
+{
+    width: 950px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

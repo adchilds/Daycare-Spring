@@ -23,10 +23,23 @@
     <context:component-scan base-package="com.adamchilds.daycare.user.model"/>
     <context:component-scan base-package="com.adamchilds.daycare.user.service"/>
     <context:component-scan base-package="com.adamchilds.daycare.jpa"/>
+
+    <!-- Default configurations -->
     <context:annotation-config />
+    <mvc:default-servlet-handler />
     <mvc:annotation-driven />
     <mvc:resources location="resources/" mapping="/resources/**"/>
     <tx:annotation-driven />
+
+    <!-- Map URIs to their controllers -->
+    <bean id="unAuthenticatedUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/">mainController</prop>
+                <prop key="/index">mainController</prop>
+            </props>
+        </property>
+    </bean>
 
     <!-- Map logical view names to physical views -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

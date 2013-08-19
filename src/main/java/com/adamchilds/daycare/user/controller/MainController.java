@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/hello.html") // Map this class to the "hello.html" page
+@RequestMapping(value={"", "/", "/index"}) // Map these URIs to this controller
 public class MainController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView showHelloPage(ModelMap model) {
+    public ModelAndView showHomePage(ModelMap model) {
         // Adds the given key/value combinations to a map which can
         // then be used in the *.jsp file from JSTL tags (i.e. ${name} )
         model.put("name", "Adam");

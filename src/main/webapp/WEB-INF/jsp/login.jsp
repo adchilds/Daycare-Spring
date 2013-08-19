@@ -14,12 +14,15 @@
         <script type="text/javascript" src="/resources/js/bootstrap.js"></script>
         <script type="text/JavaScript" src="/resources/js/login.js"></script>
 
-        <title>Login page</title>
+        <title>Daycare.ms - Login</title>
     </head>
 
     <body>
+        <div>
+            <jsp:include page="header.jsp" />
+        </div>
         <div id="centerOnScreen" class="panel panel-primary">
-            <div class="panel-heading"><img src="/resources/image/program_icon_medium.png" alt="Daycare Management System logo" />  Daycare Management System</div>
+            <div class="panel-heading"><img src="/resources/image/program_icon_medium.png" alt="Daycare Management System logo" />&nbsp;&nbsp;Daycare Management System</div>
             <form:form cssClass="form-horizontal" commandName="user" action="/login">
                 <div class="form-group">
                     <label class="col-lg-3 control-label"><spring:message code="login.label.username" /></label>
@@ -35,11 +38,8 @@
                 </div>
                 <div class="form-group">
                     <div class="row pull-right">
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 margin-right">
                             <input type="submit" value="Login" class="btn btn-default">
-                        </div>
-                        <div class="col-lg-2">
-                            <button type="signup" class="btn btn-default btn-success">Sign Up</button>
                         </div>
                     </div>
                 </div>

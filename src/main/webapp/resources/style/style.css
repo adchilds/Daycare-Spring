@@ -1,0 +1,30 @@
+/**
+ * This CSS file contains styling specific to the entire website.
+ */
+
+/**
+ * Adds a padding of 15px around every side of the container
+ */
+.padded-border {
+    margin: 15px;
+}
+
+/**
+ * Dynamically center containers on the user's screen
+ */
+#centerWrapper {
+    height: 100%;
+    text-align: center;
+}
+#centerWrapper:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.center {
+    display: inline-block;
+    padding: 10px 15px;
+    vertical-align: middle;
+    width: 950px;
+}
