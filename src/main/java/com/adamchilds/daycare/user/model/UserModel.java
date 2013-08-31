@@ -52,6 +52,6 @@ public class UserModel {
     }
 
     public String toString() {
-        return "Username: [" + this.username + "] Password: [" + this.password + "]";
+        return "Username: [" + this.username + "] Password (hashed): [" + this.password + "]";
     }
 }

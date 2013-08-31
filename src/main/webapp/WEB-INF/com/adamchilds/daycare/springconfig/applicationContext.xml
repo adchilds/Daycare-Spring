@@ -17,12 +17,14 @@
     <!-- Discover POJO @Components -->
     <!-- These automatically register an AutowiredAnnotationBeanPostProcessor -->
     <context:component-scan base-package="com.adamchilds.daycare"/>
+    <context:component-scan base-package="com.adamchilds.daycare.jpa"/>
+    <context:component-scan base-package="com.adamchilds.daycare.signup"/>
+    <context:component-scan base-package="com.adamchilds.daycare.signup.controller"/>
     <context:component-scan base-package="com.adamchilds.daycare.user"/>
     <context:component-scan base-package="com.adamchilds.daycare.user.controller"/>
     <context:component-scan base-package="com.adamchilds.daycare.user.dao"/>
     <context:component-scan base-package="com.adamchilds.daycare.user.model"/>
     <context:component-scan base-package="com.adamchilds.daycare.user.service"/>
-    <context:component-scan base-package="com.adamchilds.daycare.jpa"/>
 
     <!-- Default configurations -->
     <context:annotation-config />
@@ -37,6 +39,8 @@
             <props>
                 <prop key="/">mainController</prop>
                 <prop key="/index">mainController</prop>
+                <prop key="/login">loginController</prop>
+                <prop key="/signup">signupController</prop>
             </props>
         </property>
     </bean>

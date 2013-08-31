@@ -22,7 +22,7 @@
             <jsp:include page="header.jsp" />
         </div>
         <div id="centerOnScreen" class="panel panel-primary">
-            <div class="panel-heading"><img src="/resources/image/program_icon_medium.png" alt="Daycare Management System logo" />&nbsp;&nbsp;Daycare Management System</div>
+            <div class="panel-heading"><img src="/resources/image/daycare_logo/program_icon_medium.png" alt="Daycare Management System logo" />&nbsp;&nbsp;Daycare Management System</div>
             <form:form cssClass="form-horizontal" commandName="user" action="/login">
                 <div class="form-group">
                     <label class="col-lg-3 control-label"><spring:message code="login.label.username" /></label>

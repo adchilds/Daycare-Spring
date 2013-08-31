@@ -6,7 +6,7 @@
  * Login screen styling
  */
 body {
-    background-image: url('/resources/image/gray_background_dark.png');
+    background-image: url('/resources/image/gray_background_light.png');
     background-repeat: repeat;
 }
 #centerOnScreen {

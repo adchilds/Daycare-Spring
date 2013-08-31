@@ -1,5 +1,6 @@
-package com.adamchilds.daycare.user.controller;
+package com.adamchilds.daycare.common;
 
+import com.adamchilds.daycare.exception.DaycareException;
 import com.adamchilds.daycare.user.model.UserModel;
 import com.adamchilds.daycare.user.model.UserModelValidator;
 import com.adamchilds.daycare.user.service.UserModelService;
@@ -79,7 +80,7 @@ class LoginController {
      * @return A new ModelAndView instance, pointing to the login.jsp file
      */
     @RequestMapping(value = "/delete/{userModelId}", method = RequestMethod.GET)
-    public ModelAndView removeUserModel(@PathVariable("userModelId") int userModelId, ModelMap modelMap) {
+    public ModelAndView removeUserModel(@PathVariable("userModelId") int userModelId, ModelMap modelMap) throws DaycareException {
         List<UserModel> userModelList = userModelService.readAllUserModels();
 
         UserModel userModelToDelete;
@@ -90,12 +91,9 @@ class LoginController {
 
             // Remove the UserModel from the List<UserModel>
             userModelList.remove(userModelToDelete);
-        } catch (NullPointerException npe) {
+        } catch (NullPointerException|IllegalArgumentException e) {
             // Nothing needs to be done except for a page reload. Reload will handle fixing the table.
-            System.out.println( "UserModel cannot be found in database, fixing view..." );
-        } catch (IllegalArgumentException iae) {
-            // Nothing needs to be done except for a page reload. Reload will handle fixing the table.
-            System.out.println( "UserModel cannot be found in database, fixing view..." );
+            throw new DaycareException( "UserModel cannot be found in database, fixing view...", e );
         }
 
         modelMap.put("user", new UserModel());

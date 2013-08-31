@@ -20,17 +20,23 @@
         <div>
             <jsp:include page="header.jsp" />
         </div>
-        <div id="centerWrapper">
-            <div class="center">
-                <spring:message code="welcome.language" />: <a href="?lang=en_US">en</a> | <a href="?lang=es_ES">es</a> (Current: ${pageContext.response.locale})
-                <h2><spring:message code="welcome.hello" /> ${name}!</h2>
-                <br>
-                <br>
-                <c:url value="/login" var="link" />
-                <h3><spring:message code="welcome.clickThis" /> <a href="${link}"><spring:message code="welcome.link" /></a> <spring:message code="welcome.toGOTO" /></h3>
-                <br>
-                <br>
-            </div>
+        <div class="h3 text-center text-primary">
+            <p>Welcome to Daycare.ms - Your solution to childcare organization</p>
+        </div>
+        <div class="text-center">
+            <spring:message code="welcome.language" />:
+            <a href="?lang=en_US"><img src="/resources/image/languages/english/flag-en.png" alt="en" /></a>
+            <a href="?lang=es_ES"><img src="/resources/image/languages/spanish/flag-es.png" alt="es" /></a>
+<%--
+                <a href="?lang=pt_BR"><img src="/resources/image/languages/portuguese/flag-br.png" alt="pt" /></a>
+                <a href="?lang=ko_KO"><img src="/resources/image/languages/korean/flag-kr.png" alt="kr" /></a>
+--%>
+            (Current: ${pageContext.response.locale})
+            <h2><spring:message code="welcome.hello" /> ${name}!</h2>
+        </div>
+
+        <div class="modal-footer">
+            <jsp:include page="footer.jsp" />
         </div>
     </body>
 </html>
