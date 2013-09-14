@@ -9,11 +9,11 @@ body {
     background-image: url('/resources/image/gray_background_light.png');
     background-repeat: repeat;
 }
-#centerOnScreen {
+.centerOnScreen {
     width: 450px;
-    height: 220px;
+    height: auto;
     color: black;
-    background-color: white;
+    /*background-color: white;*/
     text-align: center;
     position: fixed;
     top: 50%;
@@ -24,9 +24,12 @@ body {
 .margin-right {
     margin-right: 15px;
 }
+.margin-left {
+    margin-left: 15px;
+}
 .copyright {
     text-align: center;
-    color: #f5f5f5;
+    color: #000000;
     padding-top: 5px;
 }
 div.loginHeader {
@@ -41,16 +44,6 @@ div.loginInput {
 }
 .pull-right {
     right: 10px;
-}
-.error {
-    color: #FF0000;
-}
-.errorblock {
-    color: #000000;
-    background-color: #FFEEEE;
-    border: 3px solid #FF0000;
-    padding: 8px;
-    margin: 16px;
 }
 table.data {
     border: 1px solid black;
@@ -73,4 +66,7 @@ table.data td.centered {
 }
 td.button_centered {
     text-align: center;
+}
+label {
+    font-weight: normal;
 }

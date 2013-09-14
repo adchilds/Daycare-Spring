@@ -7,8 +7,9 @@
     <head>
         <!-- CSS -->
         <link href="/resources/style/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
-        <link href="/resources/style/style.css" rel="stylesheet" type="text/css" media="screen" />
         <link href="/resources/style/header.css" rel="stylesheet" type="text/css" media="screen" />
+        <link href="/resources/style/main.css" rel="stylesheet" type="text/css" media="screen" />
+        <link href="/resources/style/style.css" rel="stylesheet" type="text/css" media="screen" />
 
         <!-- JavaScript -->
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
@@ -22,15 +23,8 @@
 
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <div class="navbar-brand">
+                    <div class="navbar-brand pressed-in-text">
                         Daycare.ms
-<%--
-                        <br/>
-                        <a href="?lang=en_US"><img src="/resources/image/languages/english/flag-en.png" alt="en" /></a>
-                        <a href="?lang=es_ES"><img src="/resources/image/languages/spanish/flag-es.png" alt="es" /></a>
-                        <a href="?lang=pt_BR"><img src="/resources/image/languages/portuguese/flag-br.png" alt="pt" /></a>
-                        <a href="?lang=ko_KO"><img src="/resources/image/languages/korean/flag-kr.png" alt="kr" /></a>
---%>
                     </div>
                 </div>
 

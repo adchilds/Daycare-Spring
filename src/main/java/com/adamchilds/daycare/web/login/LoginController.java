@@ -59,7 +59,7 @@ class LoginController {
         modelMap.put("userModelList", userModelService.readAllUserModels());
 
         // "redirect:/dashboard.html" goes to a dashboard.html page but doesn't carry over the data from modelMap
-        return new ModelAndView("/login", modelMap);
+        return new ModelAndView("/index", modelMap);
     }
 
     /**

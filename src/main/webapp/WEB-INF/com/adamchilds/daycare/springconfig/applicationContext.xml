@@ -18,13 +18,13 @@
     <!-- These automatically register an AutowiredAnnotationBeanPostProcessor -->
     <context:component-scan base-package="com.adamchilds.daycare"/>
     <context:component-scan base-package="com.adamchilds.daycare.jpa"/>
-    <context:component-scan base-package="com.adamchilds.daycare.signup"/>
-    <context:component-scan base-package="com.adamchilds.daycare.signup.controller"/>
-    <context:component-scan base-package="com.adamchilds.daycare.user"/>
-    <context:component-scan base-package="com.adamchilds.daycare.user.controller"/>
-    <context:component-scan base-package="com.adamchilds.daycare.user.dao"/>
-    <context:component-scan base-package="com.adamchilds.daycare.user.model"/>
-    <context:component-scan base-package="com.adamchilds.daycare.user.service"/>
+    <context:component-scan base-package="com.adamchilds.daycare.web.signup"/>
+    <context:component-scan base-package="com.adamchilds.daycare.web.signup.controller"/>
+    <context:component-scan base-package="com.adamchilds.daycare.entity.user"/>
+    <context:component-scan base-package="com.adamchilds.daycare.entity.user.controller"/>
+    <context:component-scan base-package="com.adamchilds.daycare.entity.user.dao"/>
+    <context:component-scan base-package="com.adamchilds.daycare.entity.user.model"/>
+    <context:component-scan base-package="com.adamchilds.daycare.entity.user.service"/>
 
     <!-- Default configurations -->
     <context:annotation-config />
