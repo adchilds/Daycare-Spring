@@ -16,7 +16,10 @@ public class UserModelDAOImpl extends AbstractJPADAO implements UserModelDAO {
      */
     @Override
     public void create(User user) {
-        super.create(user);
+        User existingUser = readUserByUsername(user.getUsername());
+        if (existingUser == null) {
+            super.create(user);
+        }
     }
 
     /**

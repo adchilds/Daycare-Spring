@@ -32,7 +32,10 @@
                 <a href="?lang=ko_KO"><img src="/resources/image/languages/korean/flag-kr.png" alt="kr" /></a>
 --%>
             (Current: ${pageContext.response.locale})
-            <h2><spring:message code="welcome.hello" /> <c:out value="${user.username}"/>!</h2>
+
+            <h2>Username --> <c:out value="${user.username}"/></h2>
+            <h2>Base64 --> <c:out value="${base64}"/></h2>
+            <h2>Base64 --> MD5 --> <c:out value="${encrypted}"/></h2>
         </div>
 
         <div class="modal-footer">
