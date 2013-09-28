@@ -43,7 +43,7 @@ public class User {
     private String username;
 
     @Basic
-    @Column(name = "PASSWORD", length = 64, nullable = false)
+    @Column(name = "PASSWORD", length = 100, nullable = false)
     private String password;
 
     @Basic
