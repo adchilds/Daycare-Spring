@@ -1,4 +1,4 @@
-package com.adamchilds.daycare.encryption.model;
+package com.adamchilds.daycare.util.encryption.model;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;

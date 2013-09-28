@@ -1,6 +1,6 @@
 package com.adamchilds.daycare.entity.user.model;
 
-import com.adamchilds.daycare.encryption.model.Encryption;
+import com.adamchilds.daycare.util.encryption.model.Encryption;
 import com.adamchilds.daycare.entity.user.enumeration.UserRole;
 
 import javax.persistence.*;
