@@ -41,6 +41,9 @@ public class Account {
     @Column(name = "USER_SLOTS")
     private Integer userSlots; // The number of users allowed to be associated with this account
 
+    @Column(name = "INVITE_CODE")
+    private String inviteCode; // An invitation code that account owners can send to users to register with
+
     public Long getId() {
         return id;
     }
@@ -67,5 +70,13 @@ public class Account {
 
     public void setUserSlots(Integer userSlots) {
         this.userSlots = userSlots;
+    }
+
+    public String getInviteCode() {
+        return inviteCode;
+    }
+
+    public void setInviteCode(String inviteCode) {
+        this.inviteCode = inviteCode;
     }
 }
