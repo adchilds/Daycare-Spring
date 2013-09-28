@@ -52,7 +52,7 @@ public class AccountDAOImpl extends AbstractJPADAO implements AccountDAO  {
      * {@inheritDoc}
      */
     public Account readAccountById(Long id) {
-        Query query = super.createNamedQuery( "readyAccountById" )
+        Query query = super.createNamedQuery( "readAccountById" )
                 .setParameter("accountId", id);
 
         return (Account) query.getSingleResult();
