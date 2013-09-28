@@ -18,7 +18,7 @@
     </head>
     <body>
         <div>
-            <jsp:include page="header.jsp" />
+            <jsp:include page="template/pieces/header.jsp" />
         </div>
         <div class="h3 text-center text-primary">
             <p>Welcome to Daycare.ms - Your solution to childcare organization</p>
@@ -34,12 +34,13 @@
             (Current: ${pageContext.response.locale})
 
             <h2>Username --> <c:out value="${user.username}"/></h2>
+            <h2>Account --> expiration [<c:out value="${account.subscriptionExpirationDate}"/>]</h2>
             <h2>Base64 --> <c:out value="${base64}"/></h2>
             <h2>Base64 --> MD5 --> <c:out value="${encrypted}"/></h2>
         </div>
 
         <div class="modal-footer">
-            <jsp:include page="footer.jsp" />
+            <jsp:include page="template/pieces/footer.jsp" />
         </div>
     </body>
 </html>

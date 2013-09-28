@@ -18,7 +18,7 @@
 
     <body>
         <div>
-            <jsp:include page="header.jsp" />
+            <jsp:include page="template/pieces/header.jsp" />
         </div>
     </body>
 </html>

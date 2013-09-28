@@ -2,7 +2,7 @@ package com.adamchilds.daycare.web.login.controller;
 
 import com.adamchilds.daycare.entity.user.model.User;
 import com.adamchilds.daycare.web.login.validator.LoginValidator;
-import com.adamchilds.daycare.entity.user.service.UserModelService;
+import com.adamchilds.daycare.entity.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,7 +27,7 @@ class LoginController {
     // Our service which allows us to execute operations
     // on the database given a User
     @Autowired
-    private UserModelService userModelService;
+    private UserService userService;
 
     /**
      * Executed when the user clicks the "Login" button
@@ -43,7 +43,6 @@ class LoginController {
         validator.validate(user, result);
         if (result.hasErrors()) {
             modelMap.put("user", user);
-            modelMap.put("userModelList", userModelService.readAllUsers());
             return new ModelAndView("/login", modelMap);
         } else {
             // Remove the user from the modelMap since we don't want the username and password
@@ -52,10 +51,8 @@ class LoginController {
         }
 
         // Persist new user data
-        userModelService.create(user);
-        userModelService.update(user);
-
-        modelMap.put("userModelList", userModelService.readAllUsers());
+        userService.create(user);
+        userService.update(user);
 
         // "redirect:/dashboard.html" goes to a dashboard.html page but doesn't carry over the data from modelMap
         return new ModelAndView("/index", modelMap);
@@ -69,26 +66,26 @@ class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView getLogin(ModelMap modelMap) {
         modelMap.put("user", new User());
-        modelMap.put("userList", userModelService.readAllUsers());
+        modelMap.put("userList", userService.readAllUsers());
         return new ModelAndView("/login", modelMap);
     }
 
     /**
      * Executed when the user attempts to delete an entry in the "User List" table.
      *
-     * @param userModelId The id of the User being deleted
+     * @param userId The id of the User being deleted
      * @param modelMap The map that needs to be updated after the User has been deleted
      * @return A new ModelAndView instance, pointing to the login.jsp file
      */
-    @RequestMapping(value = "/delete/{userModelId}", method = RequestMethod.GET)
-    public ModelAndView removeUser(@PathVariable("userModelId") int userModelId, ModelMap modelMap) {
-        List<User> userList = (ArrayList<User>) userModelService.readAllUsers();
+    @RequestMapping(value = "/delete/{userId}", method = RequestMethod.GET)
+    public ModelAndView removeUser(@PathVariable("userId") int userId, ModelMap modelMap) {
+        List<User> userList = (ArrayList<User>) userService.readAllUsers();
 
         User userToDelete;
         try {
             // Remove the User from the database
-            userToDelete = userModelService.read(new Integer(userModelId).longValue());
-            userModelService.remove(userToDelete);
+            userToDelete = userService.read(new Integer(userId).longValue());
+            userService.remove(userToDelete);
 
             // Remove the User from the List<User>
             userList.remove(userToDelete);
@@ -106,28 +103,28 @@ class LoginController {
     /**
      * Executed when the user attempts to update an entry in the "User List" table.
      *
-     * @param userModelId The id of the User being updated
+     * @param userId The id of the User being updated
      * @param modelMap The map that needs to be updated after the User has been updated
      * @return A new ModelAndView instance, pointing to the login.jsp file
      */
-    @RequestMapping(value = "/update/{userModelId}", method = RequestMethod.GET)
-    public ModelAndView updateUserModel(@PathVariable("userModelId") int userModelId, @ModelAttribute("user") User user, ModelMap modelMap) {
-        System.out.println("IN UPDATEUSERMODEL method");
-        List<User> userList = userModelService.readAllUsers();
-        User userToUpdate = userModelService.read(new Integer(userModelId).longValue());
+    @RequestMapping(value = "/update/{userId}", method = RequestMethod.GET)
+    public ModelAndView updateUser(@PathVariable("userId") int userId, @ModelAttribute("user") User user, ModelMap modelMap) {
+        System.out.println("IN UPDATEUSER method");
+        List<User> userList = userService.readAllUsers();
+        User userToUpdate = userService.read(new Integer(userId).longValue());
 
-        System.out.println("NEW USER_MODEL: " + user);
-        System.out.println("userToUpdate in updateUserModel() method (BEFORE): " + userToUpdate);
+        System.out.println("NEW USER: " + user);
+        System.out.println("userToUpdate in updateUser() method (BEFORE): " + userToUpdate);
 
         try {
             userToUpdate.setUsername(user.getUsername());
             userToUpdate.setPassword(user.getPassword());
 
-            System.out.println("userToUpdate in updateUserModel() method (AFTER): " + userToUpdate);
+            System.out.println("userToUpdate in updateUser() method (AFTER): " + userToUpdate);
 
-            userModelService.update(userToUpdate);
+            userService.update(userToUpdate);
 
-            System.out.println("NEW USER_MODEL IN DATABASE: " + userModelService.read(new Integer(userModelId).longValue()));
+            System.out.println("NEW USER IN DATABASE: " + userService.read(new Integer(userId).longValue()));
         } catch (NullPointerException e) {
             System.out.println( "User cannot be found in database, fixing view..." );
         }

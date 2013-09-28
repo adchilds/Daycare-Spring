@@ -5,7 +5,7 @@ import com.adamchilds.daycare.entity.user.model.User;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public interface UserModelDAO {
+public interface UserDAO {
 
     /**
      * Persists a User to the database.
@@ -28,9 +28,9 @@ public interface UserModelDAO {
     public EntityManager getEntityManager();
 
     /**
-     * Gathers a list of all UserModels from the database.
+     * Gathers a list of all Users from the database.
      *
-     * @return A list of all UserModels
+     * @return A list of all Users
      */
     public List<User> readAllUsers();
 

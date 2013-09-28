@@ -19,7 +19,7 @@
 
     <body>
         <div>
-            <jsp:include page="header.jsp" />
+            <jsp:include page="template/pieces/header.jsp" />
         </div>
         <div class="centerOnScreen">
             <div class="panel panel-primary">
@@ -31,13 +31,13 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label"><spring:message code="login.label.username" /></label>
                         <div class="col-lg-9">
-                            <form:input cssClass="form-control has-error" path="username" placeHolder="Username" />
+                            <form:input cssClass="form-control" cssErrorClass="form-control has-error" path="username" placeHolder="Username" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-3 control-label"><spring:message code="login.label.password" /></label>
                         <div class="col-lg-9">
-                            <form:password cssClass="form-control has-error" path="password" placeHolder="Password" />
+                            <form:password cssClass="form-control" cssErrorClass="form-control has-error" path="password" placeHolder="Password" />
                         </div>
                     </div>
                     <div class="form-group margin-left pull-left">

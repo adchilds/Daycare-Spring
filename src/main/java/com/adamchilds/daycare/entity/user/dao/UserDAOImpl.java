@@ -9,7 +9,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-public class UserModelDAOImpl extends AbstractJPADAO implements UserModelDAO {
+public class UserDAOImpl extends AbstractJPADAO implements UserDAO {
 
     /**
      * {@inheritDoc}

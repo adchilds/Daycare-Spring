@@ -31,8 +31,8 @@ public class LoginValidator implements Validator {
             // Username validation
             String username = user.getUsername();
             if (!username.equals("")) {
-                if (username.length() > 20) {
-                    errors.rejectValue("username", "", "Username must be 1-20 characters.");
+                if (username.length() > 24) {
+                    errors.rejectValue("username", "", "Username must be 1-24 characters.");
                 }
             } else {
                 errors.rejectValue("username", "", "You must provide a username.");
@@ -41,8 +41,8 @@ public class LoginValidator implements Validator {
             // Password validation
             String password = user.getPassword();
             if (!password.equals("")) {
-                if (password.length() > 20 || password.length() < 7) {
-                    errors.rejectValue("password", "", "Password must be 7-20 alphanumeric characters.");
+                if (password.length() > 30 || password.length() < 7) {
+                    errors.rejectValue("password", "", "Password must be 7-30 alphanumeric characters.");
                 }
                 if (!password.matches(".*\\d.*")) {
                     errors.rejectValue("password", "", "Password must contain at least one number.");

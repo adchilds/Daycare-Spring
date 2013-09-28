@@ -5,7 +5,7 @@ import com.adamchilds.daycare.entity.user.model.User;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public interface UserModelService {
+public interface UserService {
 
     /**
      * This method is responsible for creating the {@link com.adamchilds.daycare.entity.user.model.User}

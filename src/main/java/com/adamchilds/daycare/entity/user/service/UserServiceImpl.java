@@ -1,6 +1,6 @@
 package com.adamchilds.daycare.entity.user.service;
 
-import com.adamchilds.daycare.entity.user.dao.UserModelDAO;
+import com.adamchilds.daycare.entity.user.dao.UserDAO;
 import com.adamchilds.daycare.entity.user.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,17 +11,17 @@ import java.util.List;
 
 @Service
 @Transactional
-public class UserModelServiceImpl implements UserModelService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserModelDAO userModelDAO;
+    private UserDAO userDAO;
 
     /**
      * {@inheritDoc}
      */
     @Override
     public void create(User user) {
-        userModelDAO.create(user);
+        userDAO.create(user);
     }
 
     /**
@@ -29,7 +29,7 @@ public class UserModelServiceImpl implements UserModelService {
      */
     @Override
     public User find(User user) {
-        return userModelDAO.find(user);
+        return userDAO.find(user);
     }
 
     /**
@@ -37,7 +37,7 @@ public class UserModelServiceImpl implements UserModelService {
      */
     @Override
     public EntityManager getEntityManager() {
-        return userModelDAO.getEntityManager();
+        return userDAO.getEntityManager();
     }
 
     /**
@@ -45,7 +45,7 @@ public class UserModelServiceImpl implements UserModelService {
      */
     @Override
     public User read(Object objectId) {
-        return userModelDAO.read(objectId);
+        return userDAO.read(objectId);
     }
 
     /**
@@ -53,7 +53,7 @@ public class UserModelServiceImpl implements UserModelService {
      */
     @Override
     public List<User> readAllUsers() {
-        return userModelDAO.readAllUsers();
+        return userDAO.readAllUsers();
     }
 
     /**
@@ -61,28 +61,28 @@ public class UserModelServiceImpl implements UserModelService {
      */
     @Override
     public List<User> readAllUsersByAccountId(Long accountId) {
-        return userModelDAO.readAllUsersByAccountId(accountId);
+        return userDAO.readAllUsersByAccountId(accountId);
     }
 
     /**
      * {@inheritDoc}
      */
     public User readUserById(Long id) {
-        return userModelDAO.readUserById(id);
+        return userDAO.readUserById(id);
     }
 
     /**
      * {@inheritDoc}
      */
     public User readUserByUsername(String username) {
-        return userModelDAO.readUserByUsername(username);
+        return userDAO.readUserByUsername(username);
     }
 
     /**
      * {@inheritDoc}
      */
     public User readUserByEmail(String emailAddress) {
-        return userModelDAO.readUserByEmail(emailAddress);
+        return userDAO.readUserByEmail(emailAddress);
     }
 
     /**
@@ -90,7 +90,7 @@ public class UserModelServiceImpl implements UserModelService {
      */
     @Override
     public void remove(User user) {
-        userModelDAO.remove(user);
+        userDAO.remove(user);
     }
 
     /**
@@ -98,6 +98,6 @@ public class UserModelServiceImpl implements UserModelService {
      */
     @Override
     public Object update(User user) {
-        return userModelDAO.update(user);
+        return userDAO.update(user);
     }
 }
