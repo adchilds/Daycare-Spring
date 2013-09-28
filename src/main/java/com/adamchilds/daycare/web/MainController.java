@@ -1,5 +1,6 @@
 package com.adamchilds.daycare.web;
 
+import com.adamchilds.daycare.entity.user.model.User;
 import com.adamchilds.daycare.entity.user.service.UserModelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,8 @@ public class MainController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView showIndex(ModelMap modelMap) {
-        modelMap.put("user", userModelService.readUserByEmail("adam.childs@vodori.com"));
+        User user = userModelService.readUserByEmail("adam.childs@vodori.com");
+        modelMap.put("user", user);
 
         return new ModelAndView("/index", modelMap);
     }

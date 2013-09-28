@@ -14,7 +14,7 @@ import java.util.Date;
         @NamedQuery(name = "readAllUsersByUserRole",
                     query = "SELECT um FROM User um WHERE um.role LIKE :userRole"),
         @NamedQuery(name = "readAllUsersByAccountId",
-                    query = "SELECT um FROM User um WHERE um.associatedAccountId LIKE :userAccount"),
+                    query = "SELECT um FROM User um WHERE um.accountId LIKE :userAccountId"),
         @NamedQuery(name = "readUserById",
                     query = "SELECT um FROM User um WHERE um.id LIKE :userId"),
         @NamedQuery(name = "readUserByUsername",
@@ -33,15 +33,15 @@ public class User {
     private Long id;
 
     @Basic
-    @Column(name = "USERNAME", length = 24, unique = true)
+    @Column(name = "USERNAME", length = 24, unique = true, nullable = false)
     private String username;
 
     @Basic
-    @Column(name = "PASSWORD", length = 500)
+    @Column(name = "PASSWORD", length = 500, nullable = false)
     private String password;
 
     @Basic
-    @Column(name = "EMAIL_ADDRESS", length = 100)
+    @Column(name = "EMAIL_ADDRESS", length = 100, nullable = false)
     private String emailAddress;
 
     @Column(name = "CREATED")
@@ -50,13 +50,13 @@ public class User {
     @Column(name = "LAST_LOGIN")
     private Date lastLogin;
 
-    @Column(name = "USER_ROLE")
+    @Column(name = "USER_ROLE", nullable = false)
     private UserRole role;
 
-    @Column(name = "ENABLED")
+    @Column(name = "ENABLED", nullable = false)
     private boolean enabled;
 
-    @Column(name = "ACCOUNT_ID")
+    @Column(name = "ACCOUNT_ID", nullable = false)
     private long accountId;
 
     public Long getId() {
