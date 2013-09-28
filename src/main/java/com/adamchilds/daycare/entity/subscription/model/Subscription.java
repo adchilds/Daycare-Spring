@@ -4,9 +4,9 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Represents an Account subscription. When a user registers and pays for x amount of months, a new
+ * <p>Represents an Account subscription. When a user registers and pays for x amount of months, a new
  * Subscription will be created. Subscription extensions will create a new Subscription, with a pointer
- * to the previous subscription so that history can be saved.
+ * to the previous subscription so that history can be saved.</p>
  *
  * @author Adam Childs
  */
