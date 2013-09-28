@@ -38,6 +38,9 @@ public class Account {
     @Column(name = "CREATED_DATE")
     private Date createdDate;
 
+    @Column(name = "SUBSCRIPTION_EXPIRATION_DATE")
+    private Date subscriptionExpirationDate;
+
     @Column(name = "USER_SLOTS")
     private Integer userSlots; // The number of users allowed to be associated with this account
 
@@ -59,6 +62,14 @@ public class Account {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public Date getSubscriptionExpirationDate() {
+        return subscriptionExpirationDate;
+    }
+
+    public void setSubscriptionExpirationDate(Date subscriptionExpirationDate) {
+        this.subscriptionExpirationDate = subscriptionExpirationDate;
     }
 
     public Integer getUserSlots() {
