@@ -1,7 +1,7 @@
 package com.adamchilds.daycare.entity.user.service;
 
 import com.adamchilds.daycare.entity.user.dao.UserModelDAO;
-import com.adamchilds.daycare.entity.user.model.UserModel;
+import com.adamchilds.daycare.entity.user.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,16 +20,16 @@ public class UserModelServiceImpl implements UserModelService {
      * {@inheritDoc}
      */
     @Override
-    public void create(UserModel userModel) {
-        userModelDAO.create(userModel);
+    public void create(User user) {
+        userModelDAO.create(user);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public UserModel find(UserModel userModel) {
-        return userModelDAO.find(userModel);
+    public User find(User user) {
+        return userModelDAO.find(user);
     }
 
     /**
@@ -44,7 +44,7 @@ public class UserModelServiceImpl implements UserModelService {
      * {@inheritDoc}
      */
     @Override
-    public UserModel read(Object objectId) {
+    public User read(Object objectId) {
         return userModelDAO.read(objectId);
     }
 
@@ -52,23 +52,52 @@ public class UserModelServiceImpl implements UserModelService {
      * {@inheritDoc}
      */
     @Override
-    public List readAllUserModels() {
-        return userModelDAO.readAllUserModels();
+    public List<User> readAllUsers() {
+        return userModelDAO.readAllUsers();
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void remove(UserModel userModel) {
-        userModelDAO.remove(userModel);
+    public List<User> readAllUsersByAccountId(Long accountId) {
+        return userModelDAO.readAllUsersByAccountId(accountId);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public User readUserById(Long id) {
+        return userModelDAO.readUserById(id);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public User readUserByUsername(String username) {
+        return userModelDAO.readUserByUsername(username);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public User readUserByEmail(String emailAddress) {
+        return userModelDAO.readUserByEmail(emailAddress);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public Object update(UserModel userModel) {
-        return userModelDAO.update(userModel);
+    public void remove(User user) {
+        userModelDAO.remove(user);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Object update(User user) {
+        return userModelDAO.update(user);
     }
 }

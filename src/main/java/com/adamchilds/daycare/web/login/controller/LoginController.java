@@ -1,8 +1,7 @@
-package com.adamchilds.daycare.web.login;
+package com.adamchilds.daycare.web.login.controller;
 
-import com.adamchilds.daycare.exception.DaycareException;
-import com.adamchilds.daycare.entity.user.model.UserModel;
-import com.adamchilds.daycare.entity.user.model.UserModelValidator;
+import com.adamchilds.daycare.entity.user.model.User;
+import com.adamchilds.daycare.web.login.validator.LoginValidator;
 import com.adamchilds.daycare.entity.user.service.UserModelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,39 +11,39 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.InternalResourceView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * This class handles the login page's functionality
  */
 @Controller
-@SessionAttributes
 class LoginController {
 
     // Used if we want to write a custom Validator
     @Autowired
-    private UserModelValidator validator;
+    private LoginValidator validator;
 
     // Our service which allows us to execute operations
-    // on the database given a UserModel
+    // on the database given a User
     @Autowired
     private UserModelService userModelService;
 
     /**
      * Executed when the user clicks the "Login" button
      *
-     * @param user The new UserModel being created and persisted to the database
+     * @param user The new User being created and persisted to the database
      * @param result The result of any errors returned by the validator
      * @param modelMap A map that will persist data for consecutive page loads
      * @return A new ModelAndView instance, pointing to the login.jsp file
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView postLogin(@ModelAttribute("user") UserModel user, BindingResult result, ModelMap modelMap) {
+    public ModelAndView postLogin(@ModelAttribute("user") User user, BindingResult result, ModelMap modelMap) {
         // Check for validation errors
         validator.validate(user, result);
         if (result.hasErrors()) {
             modelMap.put("user", user);
-            modelMap.put("userModelList", userModelService.readAllUserModels());
+            modelMap.put("userModelList", userModelService.readAllUsers());
             return new ModelAndView("/login", modelMap);
         } else {
             // Remove the user from the modelMap since we don't want the username and password
@@ -56,7 +55,7 @@ class LoginController {
         userModelService.create(user);
         userModelService.update(user);
 
-        modelMap.put("userModelList", userModelService.readAllUserModels());
+        modelMap.put("userModelList", userModelService.readAllUsers());
 
         // "redirect:/dashboard.html" goes to a dashboard.html page but doesn't carry over the data from modelMap
         return new ModelAndView("/index", modelMap);
@@ -68,36 +67,38 @@ class LoginController {
      * @return A new ModelAndView instance, pointing to the login.jsp file
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView getLogin() {
-        return new ModelAndView("/login", "user", new UserModel());
+    public ModelAndView getLogin(ModelMap modelMap) {
+        modelMap.put("user", new User());
+        modelMap.put("userList", userModelService.readAllUsers());
+        return new ModelAndView("/login", modelMap);
     }
 
     /**
      * Executed when the user attempts to delete an entry in the "User List" table.
      *
-     * @param userModelId The id of the UserModel being deleted
-     * @param modelMap The map that needs to be updated after the UserModel has been deleted
+     * @param userModelId The id of the User being deleted
+     * @param modelMap The map that needs to be updated after the User has been deleted
      * @return A new ModelAndView instance, pointing to the login.jsp file
      */
     @RequestMapping(value = "/delete/{userModelId}", method = RequestMethod.GET)
-    public ModelAndView removeUserModel(@PathVariable("userModelId") int userModelId, ModelMap modelMap) throws DaycareException {
-        List<UserModel> userModelList = userModelService.readAllUserModels();
+    public ModelAndView removeUser(@PathVariable("userModelId") int userModelId, ModelMap modelMap) {
+        List<User> userList = (ArrayList<User>) userModelService.readAllUsers();
 
-        UserModel userModelToDelete;
+        User userToDelete;
         try {
-            // Remove the UserModel from the database
-            userModelToDelete = userModelService.read(new Integer(userModelId).longValue());
-            userModelService.remove(userModelToDelete);
+            // Remove the User from the database
+            userToDelete = userModelService.read(new Integer(userModelId).longValue());
+            userModelService.remove(userToDelete);
 
-            // Remove the UserModel from the List<UserModel>
-            userModelList.remove(userModelToDelete);
+            // Remove the User from the List<User>
+            userList.remove(userToDelete);
         } catch (NullPointerException|IllegalArgumentException e) {
             // Nothing needs to be done except for a page reload. Reload will handle fixing the table.
-            throw new DaycareException( "UserModel cannot be found in database, fixing view...", e );
+            System.out.println( "User cannot be found in database, fixing view..." );
         }
 
-        modelMap.put("user", new UserModel());
-        modelMap.put("userModelList", userModelList);
+        modelMap.put("user", new User());
+        modelMap.put("userList", userList);
 
         return new ModelAndView(new InternalResourceView("/login"), modelMap);
     }
@@ -105,34 +106,34 @@ class LoginController {
     /**
      * Executed when the user attempts to update an entry in the "User List" table.
      *
-     * @param userModelId The id of the UserModel being updated
-     * @param modelMap The map that needs to be updated after the UserModel has been updated
+     * @param userModelId The id of the User being updated
+     * @param modelMap The map that needs to be updated after the User has been updated
      * @return A new ModelAndView instance, pointing to the login.jsp file
      */
     @RequestMapping(value = "/update/{userModelId}", method = RequestMethod.GET)
-    public ModelAndView updateUserModel(@PathVariable("userModelId") int userModelId, @ModelAttribute("user") UserModel userModel, ModelMap modelMap) {
+    public ModelAndView updateUserModel(@PathVariable("userModelId") int userModelId, @ModelAttribute("user") User user, ModelMap modelMap) {
         System.out.println("IN UPDATEUSERMODEL method");
-        List<UserModel> userModelList = userModelService.readAllUserModels();
-        UserModel userModelToUpdate = userModelService.read(new Integer(userModelId).longValue());
+        List<User> userList = userModelService.readAllUsers();
+        User userToUpdate = userModelService.read(new Integer(userModelId).longValue());
 
-        System.out.println("NEW USER_MODEL: " + userModel);
-        System.out.println("userModelToUpdate in updateUserModel() method (BEFORE): " + userModelToUpdate);
+        System.out.println("NEW USER_MODEL: " + user);
+        System.out.println("userToUpdate in updateUserModel() method (BEFORE): " + userToUpdate);
 
         try {
-            userModelToUpdate.setUsername(userModel.getUsername());
-            userModelToUpdate.setPassword(userModel.getPassword());
+            userToUpdate.setUsername(user.getUsername());
+            userToUpdate.setPassword(user.getPassword());
 
-            System.out.println("userModelToUpdate in updateUserModel() method (AFTER): " + userModelToUpdate);
+            System.out.println("userToUpdate in updateUserModel() method (AFTER): " + userToUpdate);
 
-            userModelService.update(userModelToUpdate);
+            userModelService.update(userToUpdate);
 
             System.out.println("NEW USER_MODEL IN DATABASE: " + userModelService.read(new Integer(userModelId).longValue()));
         } catch (NullPointerException e) {
-            System.out.println( "UserModel cannot be found in database, fixing view..." );
+            System.out.println( "User cannot be found in database, fixing view..." );
         }
 
-        modelMap.put("user", new UserModel());
-        modelMap.put("userModelList", userModelList);
+        modelMap.put("user", new User());
+        modelMap.put("userList", userList);
 
         return new ModelAndView(new InternalResourceView("/login"), modelMap);
     }

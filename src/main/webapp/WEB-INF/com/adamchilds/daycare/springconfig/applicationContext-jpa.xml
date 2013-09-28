@@ -5,14 +5,17 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!--suppress DuplicatedBeanNamesInspection -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:database.properties" />
+    </bean>
+
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName" value="org.h2.Driver"/>
-        <property name="url" value="jdbc:h2:mem://localhost:8080"/>
-        <property name="username" value=""/>
-        <property name="password" value=""/>
-        <property name="initialSize" value="8" />
-        <property name="validationQuery" value="select 1" />
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="initialSize" value="${jdbc.poolSize}"/>
+        <property name="validationQuery" value="${jdbc.validationQuery}"/>
     </bean>
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -26,8 +29,7 @@
                 <prop key="hibernate.hbm2ddl.auto">update</prop> <!-- Update the DDL when Hibernate starts (good for development, bad for production?) -->
                 <prop key="hibernate.show_sql">false</prop>
                 <prop key="hibernate.format_sql">true</prop>
-                <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
             </props>
         </property>
         <property name="persistenceUnitName" value="daycare"/>

@@ -16,7 +16,7 @@ body {
     /*background-color: white;*/
     text-align: center;
     position: fixed;
-    top: 50%;
+    top: 35%;
     left: 50%;
     margin-top: -110px;
     margin-left: -225px;
@@ -69,4 +69,7 @@ td.button_centered {
 }
 label {
     font-weight: normal;
+}
+p {
+    margin-top: -15px;
 }

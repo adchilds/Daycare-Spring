@@ -1,34 +1,35 @@
-package com.adamchilds.daycare.entity.user.model;
+package com.adamchilds.daycare.web.login.validator;
 
+import com.adamchilds.daycare.entity.user.model.User;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 /**
- * Validator class for UserModel's. Ensures that the given values for
- * the UserModel's fields are valid as per the specification.
+ * Validator class for User's. Ensures that the given values for
+ * the User's fields are valid as per the specification.
  */
 @Component
-public class UserModelValidator implements Validator {
+public class LoginValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return UserModel.class == aClass;
+        return User.class == aClass;
     }
 
     /**
-     * Validates the given UserModel and the supplied data fields.
+     * Validates the given User and the supplied data fields.
      *
-     * @param obj The UserModel object to validate
+     * @param obj The User object to validate
      * @param errors Error helper functions
      */
     @Override
     public void validate(Object obj, Errors errors) {
-        if (obj.getClass().isAssignableFrom(UserModel.class)) {
-            UserModel userModel = (UserModel) obj;
+        if (obj.getClass().isAssignableFrom(User.class)) {
+            User user = (User) obj;
 
             // Username validation
-            String username = userModel.getUsername();
+            String username = user.getUsername();
             if (!username.equals("")) {
                 if (username.length() > 20) {
                     errors.rejectValue("username", "", "Username must be 1-20 characters.");
@@ -38,7 +39,7 @@ public class UserModelValidator implements Validator {
             }
 
             // Password validation
-            String password = userModel.getPassword();
+            String password = user.getPassword();
             if (!password.equals("")) {
                 if (password.length() > 20 || password.length() < 7) {
                     errors.rejectValue("password", "", "Password must be 7-20 alphanumeric characters.");

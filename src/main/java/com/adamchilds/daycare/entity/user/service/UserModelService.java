@@ -1,6 +1,6 @@
 package com.adamchilds.daycare.entity.user.service;
 
-import com.adamchilds.daycare.entity.user.model.UserModel;
+import com.adamchilds.daycare.entity.user.model.User;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -8,53 +8,92 @@ import java.util.List;
 public interface UserModelService {
 
     /**
-     * This method is responsible for creating the UserModel
+     * This method is responsible for creating the {@link com.adamchilds.daycare.entity.user.model.User}
      *
-     * @param userModel The userModel to deliver
+     * @param user The {@link com.adamchilds.daycare.entity.user.model.User} to deliver
      */
-    public void create(UserModel userModel);
+    public void create(User user);
 
     /**
-     * Finds the given UserModel in the database.
+     * Finds the given {@link com.adamchilds.daycare.entity.user.model.User} in the database.
      *
-     * @param userModel The UserModel to find
-     * @return The UserModel from the database
+     * @param user The {@link com.adamchilds.daycare.entity.user.model.User} to find
+     * @return The User from the database
      */
-    public UserModel find(UserModel userModel);
+    public User find(User user);
 
     /**
-     * Returns this UserModel's instance of EntityManager
-     * @return an EntityManager tied to this UserModel instance
+     * Returns this {@link com.adamchilds.daycare.entity.user.model.User}'s instance of EntityManager
+     * @return an EntityManager tied to this User instance
      */
     public EntityManager getEntityManager();
 
     /**
-     * Return a specific UserModel from the database.
+     * Return a specific {@link com.adamchilds.daycare.entity.user.model.User} from the database.
      *
-     * @param objectId The id of the UserModel that we want to retrieve
-     * @return The UserModel from the database
+     * @param objectId The id of the {@link com.adamchilds.daycare.entity.user.model.User}
+     *                 that we want to retrieve
+     * @return The User from the database
      */
-    public UserModel read(Object objectId);
+    public User read(Object objectId);
 
     /**
-     * This method will return a list of all the UserModels in the database
+     * This method will return a list of all the {@link com.adamchilds.daycare.entity.user.model.User}'s
+     * in the database
      *
-     * @return a list of all UserModels
+     * @return a list of all Users
      */
-    public List readAllUserModels();
+    public List<User> readAllUsers();
 
     /**
-     * Removes the specified UserModel from the database.
+     * Reads all {@link com.adamchilds.daycare.entity.user.model.User}'s from the database that are
+     * associated with the specified accountId
      *
-     * @param userModel The UserModel to remove
+     * @param accountId the accountId set on the User accounts we want to find
+     * @return a List of {@link com.adamchilds.daycare.entity.user.model.User}'s with accountId's matching the
+     *      specified accountId
      */
-    public void remove(UserModel userModel);
+    public List<User> readAllUsersByAccountId(Long accountId);
 
     /**
-     * Updates the specified UserModel in the database.
+     * Gets a single {@link com.adamchilds.daycare.entity.user.model.User}
+     * from the DAYCARE_USER table by their unique ID
      *
-     * @param userModel The UserModel to update
-     * @return The UserModel object that has been updated
+     * @param id the unique id of a valid {@link com.adamchilds.daycare.entity.user.model.User}
+     * @return a single User based on the given unique ID
      */
-    public Object update(UserModel userModel);
+    public User readUserById(Long id);
+
+    /**
+     * Gets a single {@link com.adamchilds.daycare.entity.user.model.User}
+     * from the DAYCARE_USER table by their username
+     *
+     * @param username the username of a valid {@link com.adamchilds.daycare.entity.user.model.User}
+     * @return a {@link com.adamchilds.daycare.entity.user.model.User}
+     */
+    public User readUserByUsername(String username);
+
+    /**
+     * Gets a single {@link com.adamchilds.daycare.entity.user.model.User}
+     * from the DAYCARE_USER table by their email address
+     *
+     * @param emailAddress the email address of a valid {@link com.adamchilds.daycare.entity.user.model.User}
+     * @return a {@link com.adamchilds.daycare.entity.user.model.User}
+     */
+    public User readUserByEmail(String emailAddress);
+
+    /**
+     * Removes the specified {@link com.adamchilds.daycare.entity.user.model.User} from the database.
+     *
+     * @param user The {@link com.adamchilds.daycare.entity.user.model.User} to remove
+     */
+    public void remove(User user);
+
+    /**
+     * Updates the specified {@link com.adamchilds.daycare.entity.user.model.User} in the database.
+     *
+     * @param user The {@link com.adamchilds.daycare.entity.user.model.User} to update
+     * @return The {@link com.adamchilds.daycare.entity.user.model.User} object that has been updated
+     */
+    public Object update(User user);
 }

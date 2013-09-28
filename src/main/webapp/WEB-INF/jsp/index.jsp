@@ -32,7 +32,7 @@
                 <a href="?lang=ko_KO"><img src="/resources/image/languages/korean/flag-kr.png" alt="kr" /></a>
 --%>
             (Current: ${pageContext.response.locale})
-            <h2><spring:message code="welcome.hello" /> ${name}!</h2>
+            <h2><spring:message code="welcome.hello" /> <c:out value="${user.username}"/>!</h2>
         </div>
 
         <div class="modal-footer">

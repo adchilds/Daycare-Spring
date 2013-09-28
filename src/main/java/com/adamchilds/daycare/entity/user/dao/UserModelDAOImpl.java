@@ -1,7 +1,7 @@
 package com.adamchilds.daycare.entity.user.dao;
 
+import com.adamchilds.daycare.entity.user.model.User;
 import com.adamchilds.daycare.jpa.AbstractJPADAO;
-import com.adamchilds.daycare.entity.user.model.UserModel;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -15,16 +15,16 @@ public class UserModelDAOImpl extends AbstractJPADAO implements UserModelDAO {
      * {@inheritDoc}
      */
     @Override
-    public void create(UserModel userModel) {
-        super.create(userModel);
+    public void create(User user) {
+        super.create(user);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public UserModel find(UserModel userModel) {
-        return super.find(userModel.getClass(), userModel.getId());
+    public User find(User user) {
+        return super.find(user.getClass(), user.getId());
     }
 
     /**
@@ -39,33 +39,77 @@ public class UserModelDAOImpl extends AbstractJPADAO implements UserModelDAO {
      * {@inheritDoc}
      */
     @Override
-    public UserModel read(Object objectId) {
-        return super.read(UserModel.class, objectId);
+    public User read(Object objectId) {
+        return super.read(User.class, objectId);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public List<UserModel> readAllUserModels() {
-        Query query = super.createNamedQuery( "readAllUserModels" );
+    public List<User> readAllUsers() {
+        Query query = super.createNamedQuery( "readAllUsers" );
 
-        return (List<UserModel>) query.getResultList();
+        return (List<User>) query.getResultList();
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void remove(UserModel userModel) {
-        super.remove(userModel);
+    public List<User> readAllUsersByAccountId(Long accountId) {
+        Query query = super.createNamedQuery( "readAllUsersByAccountId")
+                .setParameter("userAccountId", accountId);
+
+        return (List<User>) query.getResultList();
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public Object update(UserModel userModel) {
-        return super.update(userModel);
+    public User readUserById(Long id) {
+        Query query = super.createNamedQuery( "readUserById" )
+                .setParameter("userId", id);
+
+        return (User) query.getSingleResult();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public User readUserByUsername(String username) {
+        Query query = super.createNamedQuery( "readUserByUsername" )
+                .setParameter("userName", username);
+
+        return (User) query.getSingleResult();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public User readUserByEmail(String emailAddress) {
+        Query query = super.createNamedQuery( "readUserByEmail" )
+                .setParameter("userEmail", emailAddress);
+
+        return (User) query.getSingleResult();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void remove(User user) {
+        super.remove(user);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Object update(User user) {
+        return super.update(user);
     }
 }

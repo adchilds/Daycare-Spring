@@ -50,8 +50,8 @@ public abstract class AbstractJPADAO {
     }
 
     /**
-     * Returns this UserModel's instance of EntityManager
-     * @return an EntityManager tied to this UserModel instance
+     * Returns this User's instance of EntityManager
+     * @return an EntityManager tied to this User instance
      */
     protected EntityManager getEntityManager() {
         return this.entityManager;
