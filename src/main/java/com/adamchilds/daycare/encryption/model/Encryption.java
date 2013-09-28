@@ -5,6 +5,8 @@ import sun.misc.BASE64Encoder;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * This is a utility class to apply encryption on sensitive information that will be stored
@@ -46,14 +48,31 @@ public class Encryption {
      */
     public static String MD5(String md5) {
         try {
-            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+            MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] array = md.digest(md5.getBytes(DEFAULT_ENCODING));
             StringBuffer sb = new StringBuffer();
             for (int i = 0; i < array.length; ++i) {
                 sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
             }
             return sb.toString();
-        } catch (java.security.NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException e) {
+            return null;
+        } catch (UnsupportedEncodingException e) {
+            return null;
+        }
+    }
+
+    public static String SHA256(String text) {
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+            messageDigest.update(text.getBytes(DEFAULT_ENCODING));
+            byte[] array = messageDigest.digest();
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < array.length; ++i) {
+                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
             return null;
         } catch (UnsupportedEncodingException e) {
             return null;
