@@ -83,8 +83,8 @@ public class Encryption {
      * Encodes the specified String by first converting it to base 64 and then
      * converting that to an MD5 hashed String.
      *
-     * Note: This String cannot easily be decrypted. If authenticating a user, it will
-     * be much faster to convert the entered String using this method and then comparing
+     * Note: This String cannot easily be decrypted (brute force). If authenticating a user, it will
+     * be years faster to convert the entered String using this method and then comparing
      * that String with what is stored in the database.
      *
      * @param text the string to encrypt
