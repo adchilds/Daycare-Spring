@@ -2,6 +2,7 @@ package com.adamchilds.daycare.web.login.validator;
 
 import com.adamchilds.daycare.entity.user.model.User;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -30,7 +31,7 @@ public class LoginValidator implements Validator {
 
             // Username validation
             String username = user.getUsername();
-            if (!username.equals("")) {
+            if (StringUtils.hasText(username)) {
                 if (username.length() > 24) {
                     errors.rejectValue("username", "", "Username must be 1-24 characters.");
                 }
@@ -40,7 +41,7 @@ public class LoginValidator implements Validator {
 
             // Password validation
             String password = user.getPassword();
-            if (!password.equals("")) {
+            if (StringUtils.hasText(password)) {
                 if (password.length() > 30 || password.length() < 7) {
                     errors.rejectValue("password", "", "Password must be 7-30 alphanumeric characters.");
                 }
