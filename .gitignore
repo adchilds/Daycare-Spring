@@ -1,10 +1,12 @@
 # Files #
 # --------------- #
 *.class
+*.iml
 
 # Folders #
 # --------------- #
 target/*
+.idea/*
 
 # Package Files #
 # --------------- #
