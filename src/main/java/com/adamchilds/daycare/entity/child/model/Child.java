@@ -10,7 +10,7 @@ import java.util.Date;
         @NamedQuery(name = "readAllChildren",
                     query = "SELECT c FROM Child c ORDER BY c.lastName DESC"),
         @NamedQuery(name = "readAllChildrenByAccountId",
-                    query = ""),
+                    query = "SELECT c FROM Child c WHERE c.accountId = :accountId"),
         @NamedQuery(name = "readChildById",
                     query = "SELECT c FROM Child c WHERE c.id = :childId")
 })

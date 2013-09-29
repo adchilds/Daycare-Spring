@@ -1,11 +1,11 @@
-package com.adamchilds.daycare.entity.child.service;
+package com.adamchilds.daycare.entity.child.dao;
 
 import com.adamchilds.daycare.entity.child.model.Child;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public interface ChildService {
+public interface ChildDAO {
 
     /**
      * This method is responsible for creating the {@link com.adamchilds.daycare.entity.child.model.Child}
@@ -55,7 +55,7 @@ public interface ChildService {
 
     /**
      * Gets a single {@link com.adamchilds.daycare.entity.child.model.Child}
-     * from the DAYCARE_ACCOUNT table by their unique ID
+     * from the DAYCARE_CHILD table by their unique ID
      *
      * @param id the unique id of a valid {@link com.adamchilds.daycare.entity.child.model.Child}
      * @return a single Child based on the given unique ID

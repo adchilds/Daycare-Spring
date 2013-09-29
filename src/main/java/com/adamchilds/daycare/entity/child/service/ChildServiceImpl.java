@@ -1,5 +1,6 @@
 package com.adamchilds.daycare.entity.child.service;
 
+import com.adamchilds.daycare.entity.child.dao.ChildDAO;
 import com.adamchilds.daycare.entity.child.model.Child;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,13 @@ public class ChildServiceImpl implements ChildService {
      */
     public List<Child> readAllChildren() {
         return childDAO.readAllChildren();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public List<Child> readAllChildrenByAccountId(Long accountId) {
+        return childDAO.readAllChildrenByAccountId(accountId);
     }
 
     /**
