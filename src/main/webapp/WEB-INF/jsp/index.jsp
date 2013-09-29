@@ -34,7 +34,8 @@
             (Current: ${pageContext.response.locale})
 
             <h2>Username --> <c:out value="${user.username}"/></h2>
-            <h2>Account --> expiration [<c:out value="${account.subscriptionExpirationDate}"/>]</h2>
+            <h2>Subscription --> <c:out value="${subscription.subscriptionLengthInMonths}"/></h2>
+            <h2>SHA-256 --> <c:out value="${sha256}"/></h2>
             <h2>Base64 --> <c:out value="${base64}"/></h2>
             <h2>Base64 --> MD5 --> <c:out value="${encrypted}"/></h2>
         </div>

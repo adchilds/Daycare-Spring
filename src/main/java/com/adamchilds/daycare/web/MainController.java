@@ -1,8 +1,10 @@
 package com.adamchilds.daycare.web;
 
-import com.adamchilds.daycare.encryption.model.Encryption;
+import com.adamchilds.daycare.util.encryption.model.Encryption;
 import com.adamchilds.daycare.entity.account.model.Account;
 import com.adamchilds.daycare.entity.account.service.AccountService;
+import com.adamchilds.daycare.entity.subscription.model.Subscription;
+import com.adamchilds.daycare.entity.subscription.service.SubscriptionService;
 import com.adamchilds.daycare.entity.user.model.User;
 import com.adamchilds.daycare.entity.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ public class MainController {
     UserService userService;
     @Autowired
     AccountService accountService;
+    @Autowired
+    SubscriptionService subscriptionService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView showIndex(ModelMap modelMap) {
@@ -32,15 +36,19 @@ public class MainController {
             //user = userService.readUserByEmail("adam.childs@vodori.com");
             String base64 = Encryption.base64Encode("hockey");
             String encrypted = Encryption.encodeString("hockey");
+            String sha256 = Encryption.SHA256("hockey");
             modelMap.put("encrypted", encrypted);
             modelMap.put("base64", base64);
+            modelMap.put("sha256", sha256);
 
-            User user = userService.readUserByUsername("adam.childs");
-            Account account = accountService.readAccountById(user.getAccountId());
             ArrayList<User> userList = (ArrayList<User>) userService.readAllUsers();
             Random r = new Random();
-            modelMap.put("user", userList.get(r.nextInt(userList.size())));
+            User user = userList.get(r.nextInt(userList.size()));
+            Account account = accountService.readAccountById(user.getAccountId());
+            Subscription subscription = subscriptionService.readActiveSubscriptionByAccountId(account.getId());
+            modelMap.put("user", user);
             modelMap.put("account", account);
+            modelMap.put("subscription", subscription);
         } catch (NoResultException nre) {
             System.out.println("Query returned no results.");
         }

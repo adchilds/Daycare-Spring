@@ -68,4 +68,5 @@ public interface AccountService {
      * @return The {@link com.adamchilds.daycare.entity.account.model.Account} object that has been updated
      */
     public Object update(Account account);
+
 }

@@ -32,15 +32,19 @@ public class Account {
     @Column(name = "ID")
     private Long id;
 
+    @Basic
     @Column(name = "ACCOUNT_OWNER_ID")
     private Long accountOwnerId; // The unique ID of the User that owns this account
 
+    @Basic
     @Column(name = "CREATED_DATE")
     private Date createdDate;
 
+    @Basic
     @Column(name = "USER_SLOTS")
     private Integer userSlots; // The number of users allowed to be associated with this account
 
+    @Basic
     @Column(name = "INVITE_CODE")
     private String inviteCode; // An invitation code that account owners can send to users to register with
 
