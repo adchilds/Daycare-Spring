@@ -2,11 +2,13 @@
 # --------------- #
 *.class
 *.iml
+atlassian*.xml
 
 # Folders #
 # --------------- #
 target/*
 .idea/*
+out/*
 
 # Package Files #
 # --------------- #
