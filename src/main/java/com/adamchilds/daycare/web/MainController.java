@@ -30,7 +30,7 @@ public class MainController {
     SubscriptionService subscriptionService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView showIndex(ModelMap modelMap) {
+    public ModelAndView getIndex(ModelMap modelMap) {
         //User user;
         try {
             //user = userService.readUserByEmail("adam.childs@vodori.com");
@@ -53,5 +53,31 @@ public class MainController {
             System.out.println("Query returned no results.");
         }
         return new ModelAndView("/index", modelMap);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ModelAndView postIndex(ModelMap modelMap) {
+        //User user;
+        try {
+            //user = userService.readUserByEmail("adam.childs@vodori.com");
+            String base64 = Encryption.base64Encode("hockey");
+            String encrypted = Encryption.encodeString("hockey");
+            String sha256 = Encryption.SHA256("hockey");
+            modelMap.put("encrypted", encrypted);
+            modelMap.put("base64", base64);
+            modelMap.put("sha256", sha256);
+
+            ArrayList<User> userList = (ArrayList<User>) userService.readAllUsers();
+            Random r = new Random();
+            User user = userList.get(r.nextInt(userList.size()));
+            Account account = accountService.readAccountById(user.getAccountId());
+            Subscription subscription = subscriptionService.readActiveSubscriptionByAccountId(account.getId());
+            modelMap.put("user", user);
+            modelMap.put("account", account);
+            modelMap.put("subscription", subscription);
+        } catch (NoResultException nre) {
+            System.out.println("Query returned no results.");
+        }
+        return new ModelAndView("/index");
     }
 }

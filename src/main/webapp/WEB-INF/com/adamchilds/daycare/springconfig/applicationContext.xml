@@ -32,7 +32,7 @@
                 <prop key="/">mainController</prop>
                 <prop key="/index">mainController</prop>
                 <prop key="/login">loginController</prop>
-                <prop key="/signup">signupController</prop>
+                <prop key="/signup">registrationController</prop>
                 <prop key="/admin">administrationController</prop>
             </props>
         </property>
