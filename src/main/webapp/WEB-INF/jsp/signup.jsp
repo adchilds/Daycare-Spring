@@ -39,9 +39,21 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="col-lg-4 control-label"><spring:message code="registration.label.confirmPassword" /></label>
+                        <div class="col-lg-8">
+                            <form:password cssClass="form-control" cssErrorClass="form-control has-error" path="confirmPassword" placeHolder="Confirm Password" />
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-lg-4 control-label"><spring:message code="registration.label.firstName" /></label>
                         <div class="col-lg-8">
                             <form:input cssClass="form-control" cssErrorClass="form-control has-error" path="firstName" placeHolder="First Name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label"><spring:message code="registration.label.lastName" /></label>
+                        <div class="col-lg-8">
+                            <form:input cssClass="form-control" cssErrorClass="form-control has-error" path="lastName" placeHolder="Last Name" />
                         </div>
                     </div>
                     <div class="form-group">

@@ -4,8 +4,10 @@ public class RegistrationForm {
 
     private String username;
     private String password;
+    private String confirmPassword;
     private String emailAddress;
     private String firstName;
+    private String lastName;
 
     public String getUsername() {
         return username;
@@ -23,6 +25,14 @@ public class RegistrationForm {
         this.password = password;
     }
 
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
     public String getEmailAddress() {
         return emailAddress;
     }
@@ -37,6 +47,14 @@ public class RegistrationForm {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
 }
