@@ -6,34 +6,32 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class RegistrationControllerImpl {
+public class RegistrationControllerImpl implements RegistrationController {
 
     /**
-     * Handles setting up the view of the login page when it's first opened
-     *
-     * @return A new ModelAndView instance, pointing to the login.jsp file
+     * {@inheritDoc}
      */
-    @RequestMapping(value = "/signup", method = RequestMethod.GET)
+    @Override
     public ModelAndView getSignupPage(ModelMap modelMap) {
         modelMap.put("registrationForm", new RegistrationForm());
         return new ModelAndView("/signup");
     }
 
-
-    @RequestMapping(value = "/submit-registration")
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public ModelAndView submitRegistration(ModelMap modelMap,
-                                           @ModelAttribute("registrationForm") RegistrationForm form,
-                                           BindingResult result) {
+                           @ModelAttribute("registrationForm") RegistrationForm form,
+                           BindingResult result) {
         new RegistrationValidator().validate(form, result);
 
         if (result.hasErrors()) {
-            return new ModelAndView("/submit-registration", modelMap);
+            return new ModelAndView("/signup", modelMap);
         }
-        return new ModelAndView("/", modelMap);
+        return new ModelAndView("/index", modelMap);
     }
 }

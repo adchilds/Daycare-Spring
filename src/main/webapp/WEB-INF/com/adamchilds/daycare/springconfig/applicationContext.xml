@@ -26,6 +26,7 @@
     <tx:annotation-driven />
 
     <!-- Map URIs to their controllers -->
+    <!--
     <bean id="unAuthenticatedUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
@@ -33,10 +34,12 @@
                 <prop key="/index">mainController</prop>
                 <prop key="/login">loginController</prop>
                 <prop key="/signup">registrationController</prop>
+                <prop key="/submit-registration">registrationController</prop>
                 <prop key="/admin">administrationController</prop>
             </props>
         </property>
     </bean>
+    -->
 
     <!-- Map logical view names to physical views -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

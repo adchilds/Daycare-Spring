@@ -25,7 +25,10 @@
         <div class="centerOnScreen">
             <div class="panel panel-primary">
                 <div class="panel-heading"><img src="/resources/image/daycare_logo/program_icon_medium.png" alt="Daycare Management System logo" />&nbsp;&nbsp;Create an Account</div>
-                <form:form cssClass="form-horizontal" commandName="registrationForm" action="/">
+                <form:form cssClass="form-horizontal" commandName="registrationForm" action="/submit-registration">
+                    <spring:hasBindErrors name="registrationForm">
+                        <jsp:include page="template/pieces/form-errors.jsp" />
+                    </spring:hasBindErrors>
                     <div class="form-group">
                         <label class="col-lg-4 control-label"><spring:message code="registration.label.email" /></label>
                         <div class="col-lg-8">
