@@ -3,6 +3,7 @@
 *.class
 *.iml
 atlassian*.xml
+database.properties
 
 # Folders #
 # --------------- #

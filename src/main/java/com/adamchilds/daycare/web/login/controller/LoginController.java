@@ -66,7 +66,6 @@ class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView getLogin(ModelMap modelMap) {
         modelMap.put("user", new User());
-        modelMap.put("userList", userService.readAllUsers());
         return new ModelAndView("/login", modelMap);
     }
 
