@@ -6,12 +6,11 @@
 <html>
     <head>
         <!-- CSS -->
+        <jsp:include page="template/pieces/styles.jsp" />
         <link href="/resources/style/login.css" rel="stylesheet" type="text/css" media="screen" />
-        <link href="/resources/style/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
 
         <!-- JavaScript -->
-        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-        <script type="text/javascript" src="/resources/js/bootstrap.js"></script>
+        <jsp:include page="template/pieces/scripts.jsp" />
         <script type="text/JavaScript" src="/resources/js/login.js"></script>
 
         <title>Daycare.ms - Login</title>
@@ -56,7 +55,8 @@
                     </div>
                 </form:form>
             </div>
-            <p class="copyright">&#169; Copyright 2013 -- Adam Childs</p>
+            <hr />
+            <p><a href="/tos">Terms of Service</a> | <a href="/privacy">Privacy Policy</a> | &#169; Copyright 2013 &mdash; Adam Childs</p>
         </div>
     </body>
 </html>

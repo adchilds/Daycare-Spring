@@ -5,43 +5,47 @@
 <html>
     <head>
         <!-- CSS -->
-        <link href="/resources/style/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
-        <link href="/resources/style/style.css" rel="stylesheet" type="text/css" media="screen" />
+        <jsp:include page="template/pieces/styles.jsp" />
         <link href="/resources/style/index.css" rel="stylesheet" type="text/css" media="screen" />
 
         <!-- JavaScript -->
-        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-        <script type="text/javascript" src="/resources/js/bootstrap.js"></script>
-        <script type="text/JavaScript" src="/resources/js/index.js"></script>
+        <jsp:include page="template/pieces/scripts.jsp" />
 
         <title>Daycare.ms - Your solution to childcare organization</title>
     </head>
     <body>
-        <div>
+        <div id="wrap">
             <jsp:include page="template/pieces/header.jsp" />
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Daycare.ms</h1>
+                    <h3>Your solution to childcare organization</h3>
+                    <p><spring:message code="index.description"/></p>
+                    <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+                </div>
+            </div>
+            <div class="container ">
+                <!-- Example row of columns -->
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h2>Need an account?</h2>
+                        <p>Signing up for our service is easy. We have many different plans available to fit your needs. Simply select a plan and provide the necessary information and we'll be ready to help your business needs.</p>
+                        <p><a class="btn btn-success">Sign up &raquo;</a></p>
+                    </div>
+                    <div class="col-lg-4">
+                        <h2>Heading</h2>
+                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                        <p><a class="btn btn-default">View details &raquo;</a></p>
+                    </div>
+                    <div class="col-lg-4">
+                        <h2>Pricing</h2>
+                        <p>Take a look at our base pricing model. Unsure if you'll meet one of our pre-determined prices? No problem! With our custom pricing guideline, you're guaranteed to find a package that suits your individual business needs.</p>
+                        <p><a class="btn btn-default">View options &raquo;</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="push"></div>
         </div>
-        <div class="h3 text-center text-primary">
-            <p>Welcome to Daycare.ms - Your solution to childcare organization</p>
-        </div>
-        <div class="text-center">
-            <spring:message code="welcome.language" />:
-            <a href="?lang=en_US"><img src="/resources/image/languages/english/flag-en.png" alt="en" /></a>
-            <a href="?lang=es_ES"><img src="/resources/image/languages/spanish/flag-es.png" alt="es" /></a>
-<%--
-                <a href="?lang=pt_BR"><img src="/resources/image/languages/portuguese/flag-br.png" alt="pt" /></a>
-                <a href="?lang=ko_KO"><img src="/resources/image/languages/korean/flag-kr.png" alt="kr" /></a>
---%>
-            (Current: ${pageContext.response.locale})
-
-            <h2>Username --> <c:out value="${user.username}"/></h2>
-            <h2>Subscription --> <c:out value="${subscription.subscriptionLengthInMonths}"/></h2>
-            <h2>SHA-256 --> <c:out value="${sha256}"/></h2>
-            <h2>Base64 --> <c:out value="${base64}"/></h2>
-            <h2>Base64 --> MD5 --> <c:out value="${encrypted}"/></h2>
-        </div>
-
-        <div class="modal-footer">
-            <jsp:include page="template/pieces/footer.jsp" />
-        </div>
+        <jsp:include page="template/pieces/footer.jsp" />
     </body>
 </html>

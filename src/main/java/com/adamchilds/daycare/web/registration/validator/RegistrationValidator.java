@@ -80,10 +80,12 @@ public class RegistrationValidator implements Validator {
                 errors.rejectValue("confirmPassword", "", "You must confirm your password.");
             }
 
+            // First name
             if (!StringUtils.hasText(form.getFirstName())) {
                 errors.rejectValue("firstName", "", "You must provide your first name.");
             }
 
+            // Last name
             if (!StringUtils.hasText(form.getLastName())) {
                 errors.rejectValue("lastName", "", "You must provide your last name");
             }

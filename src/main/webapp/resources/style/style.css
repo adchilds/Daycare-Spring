@@ -32,3 +32,9 @@ body {
     vertical-align: middle;
     width: 950px;
 }
+.jumbotron {
+    margin-bottom: 0px;
+}
+#wrap > .container > .row {
+    margin-top: -50px;
+}

@@ -7,9 +7,11 @@ import com.adamchilds.daycare.entity.subscription.model.Subscription;
 import com.adamchilds.daycare.entity.subscription.service.SubscriptionService;
 import com.adamchilds.daycare.entity.user.model.User;
 import com.adamchilds.daycare.entity.user.service.UserService;
+import com.adamchilds.daycare.web.login.form.LoginForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -49,6 +51,7 @@ public class MainController {
             modelMap.put("user", user);
             modelMap.put("account", account);
             modelMap.put("subscription", subscription);
+            modelMap.put("loginForm", new LoginForm());
         } catch (NoResultException nre) {
             System.out.println("Query returned no results.");
         }
@@ -56,7 +59,7 @@ public class MainController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView postIndex(ModelMap modelMap) {
+    public ModelAndView postIndex(@ModelAttribute("loginForm") LoginForm loginForm, ModelMap modelMap) {
         //User user;
         try {
             //user = userService.readUserByEmail("adam.childs@vodori.com");
@@ -75,6 +78,7 @@ public class MainController {
             modelMap.put("user", user);
             modelMap.put("account", account);
             modelMap.put("subscription", subscription);
+            modelMap.put("loginForm", new LoginForm());
         } catch (NoResultException nre) {
             System.out.println("Query returned no results.");
         }

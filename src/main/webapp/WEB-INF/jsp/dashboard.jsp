@@ -4,6 +4,12 @@
 
 <html>
     <head>
+        <!-- CSS -->
+        <jsp:include page="template/pieces/styles.jsp" />
+
+        <!-- JavaScript -->
+        <jsp:include page="template/pieces/scripts.jsp" />
+
         <title>Account Dashboard</title>
     </head>
 

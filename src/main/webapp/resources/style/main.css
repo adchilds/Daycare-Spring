@@ -45,3 +45,10 @@ li {
 strong {
     color: #c00;
 }
+
+div.center {
+    width: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
