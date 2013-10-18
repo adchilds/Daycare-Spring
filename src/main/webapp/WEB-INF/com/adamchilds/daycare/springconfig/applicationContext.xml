@@ -26,8 +26,8 @@
     <tx:annotation-driven />
 
     <!-- Map URIs to their controllers -->
-    <!--
     <bean id="unAuthenticatedUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <!--
         <property name="mappings">
             <props>
                 <prop key="/">mainController</prop>
@@ -38,8 +38,8 @@
                 <prop key="/admin">administrationController</prop>
             </props>
         </property>
+        -->
     </bean>
-    -->
 
     <!-- Map logical view names to physical views -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -55,12 +55,14 @@
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
 
-    <!-- Allows changing of site language and maps changes by appending to the URI -->
     <mvc:interceptors>
+        <!-- Allows changing of site language and maps changes by appending to the URI -->
         <bean id="localeChangeInterceptor"
               class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
             <property name="paramName" value="lang" />
         </bean>
+
+        <bean id="globalInterceptor" class="com.adamchilds.daycare.interceptor.GlobalInterceptor"/>
     </mvc:interceptors>
 
     <!-- Finds the user's locale from a predefined session attribute -->

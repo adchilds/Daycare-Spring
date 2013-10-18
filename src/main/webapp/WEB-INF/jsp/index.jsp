@@ -14,8 +14,7 @@
         <title>Daycare.ms - Your solution to childcare organization</title>
     </head>
     <body>
-        <div id="wrap">
-            <jsp:include page="template/pieces/header.jsp" />
+        <jsp:include page="template/pieces/header.jsp" />
             <div class="jumbotron">
                 <div class="container">
                     <h1>Daycare.ms</h1>
@@ -40,12 +39,10 @@
                     <div class="col-lg-4">
                         <h2>Pricing</h2>
                         <p>Take a look at our base pricing model. Unsure if you'll meet one of our pre-determined prices? No problem! With our custom pricing guideline, you're guaranteed to find a package that suits your individual business needs.</p>
-                        <p><a class="btn btn-default">View options &raquo;</a></p>
+                        <p><a href="/pricing" class="btn btn-default">View options &raquo;</a></p>
                     </div>
                 </div>
             </div>
-            <div class="push"></div>
-        </div>
         <jsp:include page="template/pieces/footer.jsp" />
     </body>
 </html>

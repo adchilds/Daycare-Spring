@@ -20,12 +20,16 @@
     box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
 }
 
-h5 {
+.error-header {
     color: #c00;
     font-size: 13px;
     font-weight: bold;
     margin-bottom: 3px;
     line-height: 19px;
+}
+
+.pricing-price {
+    color: #FFBF66;
 }
 
 span {
@@ -51,4 +55,14 @@ div.center {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.panel-heading.pricing {
+    height: 7em;
+}
+
+.panel-text-center {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 7em;
 }
