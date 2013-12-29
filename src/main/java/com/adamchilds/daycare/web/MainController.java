@@ -1,6 +1,6 @@
 package com.adamchilds.daycare.web;
 
-import com.adamchilds.daycare.util.encryption.model.Encryption;
+import com.adamchilds.daycare.util.encryption.EncryptionUtil;
 import com.adamchilds.daycare.entity.account.model.Account;
 import com.adamchilds.daycare.entity.account.service.AccountService;
 import com.adamchilds.daycare.entity.subscription.model.Subscription;
@@ -31,30 +31,14 @@ public class MainController {
     @Autowired
     SubscriptionService subscriptionService;
 
+//    @Value("${subscription.basic.fee.monthly}")
+//    private double fee;
+
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getIndex(ModelMap modelMap) {
-        //User user;
-        try {
-            //user = userService.readUserByEmail("adam.childs@vodori.com");
-            String base64 = Encryption.base64Encode("hockey");
-            String encrypted = Encryption.encodeString("hockey");
-            String sha256 = Encryption.SHA256("hockey");
-            modelMap.put("encrypted", encrypted);
-            modelMap.put("base64", base64);
-            modelMap.put("sha256", sha256);
+        modelMap.put("loginForm", new LoginForm());
+//        modelMap.put("testProperties", fee);
 
-            ArrayList<User> userList = (ArrayList<User>) userService.readAllUsers();
-            Random r = new Random();
-            User user = userList.get(r.nextInt(userList.size()));
-            Account account = accountService.readAccountById(user.getAccountId());
-            Subscription subscription = subscriptionService.readActiveSubscriptionByAccountId(account.getId());
-            modelMap.put("user", user);
-            modelMap.put("account", account);
-            modelMap.put("subscription", subscription);
-            modelMap.put("loginForm", new LoginForm());
-        } catch (NoResultException nre) {
-            System.out.println("Query returned no results.");
-        }
         return new ModelAndView("/index", modelMap);
     }
 
@@ -63,9 +47,9 @@ public class MainController {
         //User user;
         try {
             //user = userService.readUserByEmail("adam.childs@vodori.com");
-            String base64 = Encryption.base64Encode("hockey");
-            String encrypted = Encryption.encodeString("hockey");
-            String sha256 = Encryption.SHA256("hockey");
+            String base64 = EncryptionUtil.base64Encode("hockey");
+            String encrypted = EncryptionUtil.encodeString("hockey");
+            String sha256 = EncryptionUtil.SHA256("hockey");
             modelMap.put("encrypted", encrypted);
             modelMap.put("base64", base64);
             modelMap.put("sha256", sha256);

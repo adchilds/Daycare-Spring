@@ -1,6 +1,6 @@
 package com.adamchilds.daycare.web.registration.validator;
 
-import com.adamchilds.daycare.util.validation.model.Validation;
+import com.adamchilds.daycare.util.validation.ValidationUtil;
 import com.adamchilds.daycare.web.registration.form.RegistrationForm;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -30,18 +30,23 @@ public class RegistrationValidator implements Validator {
             String emailAddress = form.getEmailAddress();
             if (StringUtils.hasText(emailAddress)) {
                 if (emailAddress.length() > 50) {
-                    errors.rejectValue("emailAddress", "", "Email addresses must be less than 50 characters.");
+                    errors.rejectValue("emailAddress", "", "Email address must be less than 50 characters.");
                 } else if (emailAddress.length() < 3) {
-                    errors.rejectValue("emailAddress", "", "Email addresses must be more than 3 characters.");
-                }
-
-/* Maven import not working
-                else if (!Validation.isValidEmail(emailAddress)) {
+                    errors.rejectValue("emailAddress", "", "Email address must be more than 3 characters.");
+                } else if (!ValidationUtil.isValidEmail(emailAddress)) {
                     errors.rejectValue("emailAddress", "", "Email address is in an invalid format.");
                 }
-*/
             } else {
                 errors.rejectValue("emailAddress", "", "You must provide an email address.");
+            }
+
+            String creditCardNumber = form.getCreditCardNumber();
+            if (StringUtils.hasText(creditCardNumber)) {
+                if (!ValidationUtil.isValidCreditCardNumber(creditCardNumber)) {
+                    errors.rejectValue("creditCardNumber", "", "Invalid credit card number.");
+                }
+            } else {
+                errors.rejectValue("creditCardNumber", "", "You must supply a credit card number.");
             }
 
             // Password validation

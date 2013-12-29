@@ -1,7 +1,8 @@
-package com.adamchilds.daycare.entity.account.service;
+package com.adamchilds.daycare.entity.account.service.impl;
 
 import com.adamchilds.daycare.entity.account.dao.AccountDAO;
 import com.adamchilds.daycare.entity.account.model.Account;
+import com.adamchilds.daycare.entity.account.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

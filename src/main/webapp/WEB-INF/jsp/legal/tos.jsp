@@ -14,7 +14,7 @@
         <title>Daycare.ms - Your solution to childcare organization</title>
     </head>
     <body>
-        <jsp:include page="../template/pieces/header.jsp" />
+        <jsp:include page="../template/pieces/navigation.jsp" />
         <div id="wrap">
             <div class="panel header-center">
                 <div class="panel-heading">

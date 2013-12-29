@@ -71,7 +71,7 @@
         <property name="defaultLocale" value="en" />
     </bean>
 
-    <!-- Enable annotation-based validation using Bean Validation Framework -->
+    <!-- Enable annotation-based validation using Bean ValidationUtil Framework -->
     <!-- Using these instead of vld namespace to prevent Eclipse from complaining -->
     <bean id="configurationLoader"
           class="org.springmodules.validation.bean.conf.loader.annotation.AnnotationBeanValidationConfigurationLoader"/>

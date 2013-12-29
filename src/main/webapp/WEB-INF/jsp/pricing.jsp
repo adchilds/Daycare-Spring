@@ -14,40 +14,99 @@
         <title>Daycare.ms - Pricing</title>
     </head>
     <body>
-        <jsp:include page="template/pieces/header.jsp" />
+        <jsp:include page="template/pieces/navigation.jsp" />
 
         <div class="container" style="margin-top: 50px;">
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="panel panel-primary">
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-8">
+                    <div class="panel panel-info">
+                        <div class="panel-heading pricing panel-text-center">
+                            <h3>Free</h3>
+                            <h5 class="pricing-price">$0.00 / month</h5>
+                        </div>
+                        <div class="panel-body text-center">
+                            <p>10 child slots</p>
+                            <hr>
+                            <p>0 document slots per child</p>
+                            <hr>
+                            <p>0 employee slots</p>
+                            <hr>
+                            <p>1 user account</p>
+                            <hr>
+                            <p style="text-decoration: line-through;">Finances/billing</p>
+                            <hr>
+                            <p style="text-decoration: line-through;">Free support</p>
+                            <hr>
+                            <p><button class="btn btn-info">Try it free</button></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-8">
+                    <div class="panel panel-info">
                         <div class="panel-heading pricing panel-text-center">
                             <h3>Basic</h3>
                             <h5 class="pricing-price">$8.95 / month</h5>
                         </div>
-                        <div class="panel-body">
-                            test test test
+                        <div class="panel-body text-center">
+                            <p>25 child slots</p>
+                            <hr>
+                            <p>3 document slots per child</p>
+                            <hr>
+                            <p>3 employee slots</p>
+                            <hr>
+                            <p>1 user account</p>
+                            <hr>
+                            <p style="text-decoration: line-through;">Finances/billing</p>
+                            <hr>
+                            <p>Free support</p>
+                            <hr>
+                            <p><button class="btn btn-info">Purchase</button></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="panel panel-primary">
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-8">
+                    <div class="panel panel-success">
                         <div class="panel-heading pricing panel-text-center">
-                            <h3>Standard</h3>
+                            <h3>Plus</h3>
                             <h5 class="pricing-price">$12.95 / month</h5>
                         </div>
-                        <div class="panel-body">
-                            test test test
+                        <div class="panel-body text-center">
+                            <p>100 child slots</p>
+                            <hr>
+                            <p>5 document slots per child</p>
+                            <hr>
+                            <p>15 employee slots</p>
+                            <hr>
+                            <p>2 user accounts</p>
+                            <hr>
+                            <p style="text-decoration: line-through;">Finances/billing</p>
+                            <hr>
+                            <p>Free support</p>
+                            <hr>
+                            <p><button class="btn btn-success">Purchase</button></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="panel panel-primary">
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-8">
+                    <div class="panel panel-warning">
                         <div class="panel-heading pricing panel-text-center">
                             <h3>Premium</h3>
                             <h5 class="pricing-price">$19.95 / month</h5>
                         </div>
-                        <div class="panel-body">
-                            test test test
+                        <div class="panel-body text-center">
+                            <p>Unlimited child slots</p>
+                            <hr>
+                            <p>Unlimited documents per child</p>
+                            <hr>
+                            <p>30 employee slots</p>
+                            <hr>
+                            <p>5 user accounts</p>
+                            <hr>
+                            <p>Finances/billing</p>
+                            <hr>
+                            <p>Free support</p>
+                            <hr>
+                            <p><button class="btn btn-warning">Purchase</button></p>
                         </div>
                     </div>
                 </div>

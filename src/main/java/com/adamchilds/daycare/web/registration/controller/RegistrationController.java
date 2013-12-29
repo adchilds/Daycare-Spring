@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+@Controller
 public interface RegistrationController {
 
     /**
@@ -17,7 +18,7 @@ public interface RegistrationController {
      * @param modelMap the ModelMap used to store page attributes
      * @return A new ModelAndView instance, pointing to the login.jsp file
      */
-    @RequestMapping(value = "/signup", method = RequestMethod.GET)
+    @RequestMapping(value = "/registration/register", method = RequestMethod.GET)
     public ModelAndView getSignupPage(ModelMap modelMap);
 
     /**
@@ -28,7 +29,7 @@ public interface RegistrationController {
      * @param result the BindingResults of the form
      * @return A new ModelAndView instance, dependent upon if there are form errors or not
      */
-    @RequestMapping(value = "/submit-registration", method = RequestMethod.POST)
+    @RequestMapping(value = "/registration/submit-registration", method = RequestMethod.POST)
     public ModelAndView submitRegistration(ModelMap modelMap, @ModelAttribute("registrationForm") RegistrationForm form, BindingResult result);
 
 }

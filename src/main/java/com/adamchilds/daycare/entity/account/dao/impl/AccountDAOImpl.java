@@ -1,5 +1,6 @@
-package com.adamchilds.daycare.entity.account.dao;
+package com.adamchilds.daycare.entity.account.dao.impl;
 
+import com.adamchilds.daycare.entity.account.dao.AccountDAO;
 import com.adamchilds.daycare.entity.account.model.Account;
 import com.adamchilds.daycare.jpa.AbstractJPADAO;
 import org.springframework.stereotype.Repository;
@@ -9,7 +10,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-public class AccountDAOImpl extends AbstractJPADAO implements AccountDAO  {
+public class AccountDAOImpl extends AbstractJPADAO implements AccountDAO {
 
     /**
      * {@inheritDoc}

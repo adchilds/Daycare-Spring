@@ -1,4 +1,4 @@
-package com.adamchilds.daycare.web.pricing;
+package com.adamchilds.daycare.web.pricing.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

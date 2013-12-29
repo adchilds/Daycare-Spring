@@ -1,4 +1,4 @@
-package com.adamchilds.daycare.util.encryption.model;
+package com.adamchilds.daycare.util.encryption;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
@@ -14,7 +14,7 @@ import java.security.NoSuchAlgorithmException;
  *
  * @author Adam Childs
  */
-public class Encryption {
+public class EncryptionUtil {
 
     private static final String DEFAULT_ENCODING = "UTF-8";
 
@@ -80,15 +80,15 @@ public class Encryption {
     }
 
     /**
-     * Encodes the specified String by first converting it to base 64 and then
-     * converting that to an MD5 hashed String.
+     * <p>Encodes the specified {@link String} by first converting it to base 64 and then
+     * converting that to an MD5 hashed {@link String}.</p>
      *
-     * Note: This String cannot easily be decrypted (brute force). If authenticating a user, it will
-     * be years faster to convert the entered String using this method and then comparing
-     * that String with what is stored in the database.
+     * <p><b>Note:</b> This {@link String} cannot easily be decrypted (brute force). If authenticating a user, it will
+     * be years faster to convert the entered {@link String} using this method and then comparing
+     * that {@link String} with what is stored in the database.</p>
      *
-     * @param text the string to encrypt
-     * @return the encrypted String
+     * @param text the {@link String} object to encrypt
+     * @return the encrypted {@link String} object
      */
     public static String encodeString(String text) {
         return MD5(base64Encode(text));

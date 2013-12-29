@@ -18,7 +18,7 @@
 
     <body>
         <div>
-            <jsp:include page="template/pieces/header.jsp" />
+            <jsp:include page="template/pieces/navigation.jsp" />
         </div>
         <div class="centerOnScreen">
             <div class="panel panel-primary">
