@@ -1,0 +1,74 @@
+/*
+ * Daycare Management System
+ * @author Adam Childs
+ * @version 0.1
+ *
+ * Login screen styling
+ */
+body {
+  background-image: url('/resources/image/gray_background_light.png');
+  background-repeat: repeat;
+}
+.centerOnScreen {
+  width: 450px;
+  height: auto;
+  color: black;
+  /*background-color: white;*/
+
+  text-align: center;
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  margin-top: -110px;
+  margin-left: -225px;
+}
+.margin-right {
+  margin-right: 15px;
+}
+.margin-left {
+  margin-left: 15px;
+}
+.copyright {
+  text-align: center;
+  color: #000000;
+  padding-top: 5px;
+}
+div .loginHeader {
+  background-color: white;
+  height: 30px;
+  text-align: center;
+  vertical-align: middle;
+}
+div .loginInput {
+  width: 60%;
+  margin: 0 auto;
+}
+.pull-right {
+  right: 10px;
+}
+table .data {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+table .data td,
+table .data td.centered {
+  border: 1px solid black;
+  width: 100px;
+  height: 25px;
+}
+table .data th {
+  color: #FFFFFF;
+  background-color: #0070FF;
+  text-align: center;
+  width: 100px;
+  height: 25px;
+}
+td .button_centered {
+  text-align: center;
+}
+label {
+  font-weight: normal;
+}
+p {
+  margin-top: -15px;
+}

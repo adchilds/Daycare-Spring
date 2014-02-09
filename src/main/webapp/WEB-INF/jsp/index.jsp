@@ -6,7 +6,7 @@
     <head>
         <!-- CSS -->
         <jsp:include page="template/pieces/styles.jsp" />
-        <link href="/resources/style/index.css" rel="stylesheet" type="text/css" media="screen" />
+        <link href="/static/style/index.css" rel="stylesheet" type="text/css" media="screen" />
 
         <!-- JavaScript -->
         <jsp:include page="template/pieces/scripts.jsp" />

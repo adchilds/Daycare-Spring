@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="spring-form" uri="http://www.springframework.org/tags/form" %>
 
-<link href="/resources/style/header.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="/static/style/header.css" rel="stylesheet" type="text/css" media="screen" />
 
 <div class="navbar navbar-inverse navbar-static-top nav-height-sm">
     <div class="container">
@@ -14,7 +14,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand">Daycare.ms</a>
+            <div class="navbar-brand">
+                Daycare.ms
+            </div>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">

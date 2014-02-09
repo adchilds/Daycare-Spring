@@ -1,0 +1,15 @@
+.separate {
+  /*margin: 5px;*/
+
+}
+.form-input {
+  float: left;
+  width: 60%;
+}
+.form-label {
+  float: left;
+  clear: both;
+  margin-right: 5px;
+  text-align: right;
+  width: 35%;
+}
