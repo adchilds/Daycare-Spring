@@ -1,0 +1,73 @@
+@import "../base/base.scss";
+
+// common between others for now for backwards compatibility
+@import "accordion/accordion";
+@import "a-sprite-definitions/a-sprite-definitions";
+@import "button/button";
+@import "button/nativebutton";
+@import "colorpicker/colorpicker";
+
+@import "common/common";
+
+@import "datefield/datefield";
+@import "inlinedatefield/inlinedatefield";
+@import "formlayout/formlayout";
+@import "label/label";
+@import "layouts/layouts";
+@import "link/link";
+@import "menubar/menubar";
+@import "notification/notification";
+@import "panel/panel";
+@import "popupview/popupview";
+@import "progressindicator/progressindicator";
+@import "select/select";
+@import "slider/slider";
+@import "splitpanel/splitpanel";
+@import "table/table";
+@import "tabsheet/tabsheet";
+@import "textfield/textfield";
+@import "tree/tree";
+@import "window/window";
+
+.v-generated-body {
+	background: #f5f5f5;
+}
+
+$font-size: 12px;
+$line-height: normal;
+
+@mixin reindeer {
+	@include base;
+	// TODO @each
+
+	@include reindeer-accordion;
+	// TODO @include a-sprite-definitions;
+	@include reindeer-button;
+	@include reindeer-nativebutton;
+	@include reindeer-colorpicker;
+	@include reindeer-common;
+	@include reindeer-datefield;
+	@include reindeer-inlinedatefield;
+	@include reindeer-formlayout;
+	@include reindeer-label;
+	@include reindeer-layouts;
+	@include reindeer-link;
+	@include reindeer-menubar;
+	@include reindeer-notification;
+	@include reindeer-panel;
+	@include reindeer-popupview;
+	@include reindeer-progressindicator(v-progressbar);
+	/* For legacy ProgressIndicator component */
+	@include reindeer-progressindicator(v-progressindicator);
+	
+	@include reindeer-select;
+	@include reindeer-slider;
+	@include reindeer-splitpanel;
+	@include reindeer-table;
+	@include reindeer-tabsheet;
+	@include reindeer-textfield;
+	@include reindeer-tree;
+	@include reindeer-window;
+}
+
+

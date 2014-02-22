@@ -1,0 +1,20 @@
+/* These styles get catenated together on build */
+@import "tabsheet-normal-style";
+@import "tabsheet-scroller";
+@import "tabsheet-borderless-style";
+@import "tabsheet-minimal-style";
+@import "tabsheet-small-style";
+@import "tabsheet-selected-closable-style";
+@import "tabsheet-hover-closable-style";
+
+@mixin reindeer-tabsheet {
+	// TODO use $exclude
+	@include reindeer-tabsheet-normal-style;
+	@include reindeer-tabsheet-scroller;
+	@include reindeer-tabsheet-borderless-style;
+	@include reindeer-tabsheet-minimal-style;
+	@include reindeer-tabsheet-small-style;
+	@include reindeer-tabsheet-selected-closable-style;
+	@include reindeer-tabsheet-hover-closable-style;
+
+}
