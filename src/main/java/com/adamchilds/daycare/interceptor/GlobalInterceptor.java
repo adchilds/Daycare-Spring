@@ -36,8 +36,7 @@ public class GlobalInterceptor implements HandlerInterceptor {
             modelMap = modelAndView.getModelMap();
         }
 
-        modelMap.put("loginForm", new LoginForm());
-        modelMap.put("isAuthenticated", UserUtil.isUserAuthenticated());
+        exposeAttributes(modelMap);
 
     }
 
@@ -45,6 +44,14 @@ public class GlobalInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
             throws Exception {
 
+    }
+
+    /**
+     * Exposes attributes to every request.
+     */
+    private void exposeAttributes(ModelMap modelMap) {
+        modelMap.put("loginForm", new LoginForm());
+        modelMap.put("isAuthenticated", UserUtil.isUserAuthenticated());
     }
 
 }

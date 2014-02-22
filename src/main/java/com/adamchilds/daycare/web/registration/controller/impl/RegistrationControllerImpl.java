@@ -19,7 +19,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@Controller("registrationController")
 public class RegistrationControllerImpl implements RegistrationController {
 
     @Autowired
@@ -37,7 +37,6 @@ public class RegistrationControllerImpl implements RegistrationController {
     /**
      * {@inheritDoc}
      */
-    @Override
     public ModelAndView getSignupPage(ModelMap modelMap) {
 
         modelMap.put("registrationForm", new RegistrationForm());
@@ -49,7 +48,6 @@ public class RegistrationControllerImpl implements RegistrationController {
     /**
      * {@inheritDoc}
      */
-    @Override
     public ModelAndView submitRegistration(ModelMap modelMap,
                            @ModelAttribute("registrationForm") RegistrationForm form,
                            BindingResult result) {

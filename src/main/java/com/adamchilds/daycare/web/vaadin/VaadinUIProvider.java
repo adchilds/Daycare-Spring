@@ -25,7 +25,7 @@ public class VaadinUIProvider extends SpringUIProvider {
             return "daycareUI";
         }
 
-        return "errorUI";
+        return "404";
     }
 
 }

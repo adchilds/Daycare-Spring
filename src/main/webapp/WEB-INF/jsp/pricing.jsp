@@ -6,7 +6,7 @@
     <head>
         <!-- CSS -->
         <jsp:include page="template/pieces/styles.jsp" />
-        <link href="/resources/style/index.css" rel="stylesheet" type="text/css" media="screen" />
+        <link href="/static/style/pricing.css" rel="stylesheet" type="text/css" />
 
         <!-- JavaScript -->
         <jsp:include page="template/pieces/scripts.jsp" />
@@ -18,29 +18,6 @@
 
         <div class="container" style="margin-top: 50px;">
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-8">
-                    <div class="panel panel-info">
-                        <div class="panel-heading pricing panel-text-center">
-                            <h3>Free</h3>
-                            <h5 class="pricing-price">$0.00 / month</h5>
-                        </div>
-                        <div class="panel-body text-center">
-                            <p>10 child slots</p>
-                            <hr>
-                            <p>0 document slots per child</p>
-                            <hr>
-                            <p>0 employee slots</p>
-                            <hr>
-                            <p>1 user account</p>
-                            <hr>
-                            <p style="text-decoration: line-through;">Finances/billing</p>
-                            <hr>
-                            <p style="text-decoration: line-through;">Free support</p>
-                            <hr>
-                            <p><button class="btn btn-info">Try it free</button></p>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-8">
                     <div class="panel panel-info">
                         <div class="panel-heading pricing panel-text-center">
@@ -94,9 +71,9 @@
                             <h5 class="pricing-price">$19.95 / month</h5>
                         </div>
                         <div class="panel-body text-center">
-                            <p>Unlimited child slots</p>
+                            <p><span class="infinite">&infin;</span> child slots</p>
                             <hr>
-                            <p>Unlimited documents per child</p>
+                            <p><span class="infinite">&infin;</span> documents per child</p>
                             <hr>
                             <p>30 employee slots</p>
                             <hr>
