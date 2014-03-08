@@ -1,8 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="spring-form" uri="http://www.springframework.org/tags/form" %>
+<%@ include file="taglibs.jsp" %>
 
 <link href="/static/style/header.css" rel="stylesheet" type="text/css" media="screen" />
 
@@ -20,10 +16,11 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="${fn:contains(pageContext.request.requestURL, 'index') ? 'active' : 'none'}"><a href="/">Home</a></li>
-                <li class="${fn:contains(pageContext.request.requestURL, 'features') ? 'active' : 'none'}"><a href="/features">Features</a></li>
-                <li class="${fn:contains(pageContext.request.requestURL, 'pricing') ? 'active' : 'none'}"><a href="/pricing">Pricing</a></li>
-                <li class="${fn:contains(pageContext.request.requestURL, 'contact') ? 'active' : 'none'}"><a href="/contact">Contact Us</a></li>
+                <c:set var="pageURI" value="${requestScope['javax.servlet.forward.servlet_path']}" />
+                <li class="${fn:contains(pageURI, 'index') ? 'active' : 'none'}"><a href="/index.html">Home</a></li>
+                <li class="${fn:contains(pageURI, 'features') ? 'active' : 'none'}"><a href="/features.html">Features</a></li>
+                <li class="${fn:contains(pageURI, 'pricing') ? 'active' : 'none'}"><a href="/pricing.html">Pricing</a></li>
+                <li class="${fn:contains(pageURI, 'contact') ? 'active' : 'none'}"><a href="/contact.html">Contact Us</a></li>
                 <!-- Elements in the navbar based on if a user is logged in or not -->
             </ul>
             <c:choose>

@@ -1,27 +1,35 @@
 package com.adamchilds.daycare.web.legal.controller.impl;
 
 import com.adamchilds.daycare.web.legal.controller.LegalController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.servlet.ModelAndView;
 
-@Controller("legalController")
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * {@inheritDoc}
+ */
+@Controller
 public class LegalControllerImpl implements LegalController {
+    private static final Logger logger = LoggerFactory.getLogger(LegalControllerImpl.class);
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public ModelAndView getTermsOfService(ModelMap modelMap) {
-        return new ModelAndView("/legal/tos", modelMap);
+    public String getTermsOfService(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+        return "terms_of_service";
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public ModelAndView getPrivacyPolicy(ModelMap modelMap) {
-        return new ModelAndView("/legal/privacy", modelMap);
+    public String getPrivacyPolicy(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+        return "privacy_policy";
     }
 
 }

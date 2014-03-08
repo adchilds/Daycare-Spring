@@ -5,19 +5,25 @@ import com.adamchilds.daycare.entity.account.service.AccountService;
 import com.adamchilds.daycare.entity.user.model.User;
 import com.adamchilds.daycare.entity.user.service.UserService;
 import com.adamchilds.daycare.web.administration.controller.AdministrationController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.InternalResourceView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller("administrationController")
+/**
+ * {@inheritDoc}
+ */
+@Controller
 public class AdministrationControllerImpl implements AdministrationController {
+    private static final Logger logger = LoggerFactory.getLogger(AdministrationControllerImpl.class);
 
     @Autowired
     private UserService userService;
@@ -29,22 +35,23 @@ public class AdministrationControllerImpl implements AdministrationController {
      * {@inheritDoc}
      */
     @Override
-    public ModelAndView getAdmin(ModelMap modelMap) {
-        ArrayList<Account> accounts = new ArrayList<Account>();
+    public String getAdminPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+        ArrayList<Account> accounts = new ArrayList<>();
         ArrayList<User> users = (ArrayList<User>) userService.readAllUsers();
         for (User user : users) {
             accounts.add(accountService.readAccountById(user.getAccountId()));
         }
         modelMap.put("userList", users);
         modelMap.put("accountList", accounts);
-        return new ModelAndView("/administration/index");
+
+        return "administration_index";
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public ModelAndView removeUser(@PathVariable("userId") int userId, ModelMap modelMap) {
+    public String removeUser(@PathVariable("userId") int userId, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
         List<User> userList = (ArrayList<User>) userService.readAllUsers();
 
         User userToDelete;
@@ -63,14 +70,14 @@ public class AdministrationControllerImpl implements AdministrationController {
         modelMap.put("user", new User());
         modelMap.put("userList", userList);
 
-        return new ModelAndView(new InternalResourceView("/login"), modelMap);
+        return "administration_index";
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public ModelAndView updateUser(@PathVariable("userId") int userId, @ModelAttribute("user") User user, ModelMap modelMap) {
+    public String updateUser(@PathVariable("userId") int userId, @ModelAttribute("user") User user, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
         System.out.println("IN UPDATEUSER method");
         List<User> userList = userService.readAllUsers();
         User userToUpdate = userService.read(new Integer(userId).longValue());
@@ -94,7 +101,7 @@ public class AdministrationControllerImpl implements AdministrationController {
         modelMap.put("user", new User());
         modelMap.put("userList", userList);
 
-        return new ModelAndView(new InternalResourceView("/login"), modelMap);
+        return "administration_index";
     }
 
 }

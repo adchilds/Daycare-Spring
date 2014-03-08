@@ -9,7 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Handles requests to any administrator (back-end, not public) pages.
+ *
+ * @author Adam Childs
+ * @since 1.0
+ */
 public interface AdministrationController {
 
     /**
@@ -17,30 +25,36 @@ public interface AdministrationController {
      * with a role of ROLE_ADMINISTRATOR or ROLE_SUPERUSER from {@link com.adamchilds.daycare.entity.user.enumeration.UserRoleEnum}
      * may use some or all of the utilities provided on these pages.
      *
-     * @param modelMap The map that holds information that can be displayed on the page
-     * @return A new ModelAndView instance, pointing to the index page of the administration backend
+     * @param modelMap the {@link ModelMap} associated with the POST request
+     * @param request the request
+     * @param response the response
+     * @return the tiles-def name of the view to render
      */
-    @RequestMapping(value="/administration/index")
-    public ModelAndView getAdmin(ModelMap modelMap);
+    @RequestMapping(value="/administration/index.html")
+    public String getAdminPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
 
     /**
      * Executed when the user attempts to delete an entry in the "User List" table.
      *
      * @param userId The id of the User being deleted
-     * @param modelMap The map that needs to be updated after the User has been deleted
-     * @return A new ModelAndView instance, pointing to the login.jsp file
+     * @param modelMap the {@link ModelMap} associated with the POST request
+     * @param request the request
+     * @param response the response
+     * @return the tiles-def name of the view to render
      */
     @RequestMapping(value = "/delete/{userId}", method = RequestMethod.GET)
-    public ModelAndView removeUser(@PathVariable("userId") int userId, ModelMap modelMap);
+    public String removeUser(@PathVariable("userId") int userId, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
 
     /**
      * Executed when the user attempts to update an entry in the "User List" table.
      *
      * @param userId The id of the User being updated
-     * @param modelMap The map that needs to be updated after the User has been updated
-     * @return A new ModelAndView instance, pointing to the login.jsp file
+     * @param modelMap the {@link ModelMap} associated with the POST request
+     * @param request the request
+     * @param response the response
+     * @return the tiles-def name of the view to render
      */
     @RequestMapping(value = "/update/{userId}", method = RequestMethod.GET)
-    public ModelAndView updateUser(@PathVariable("userId") int userId, @ModelAttribute("user") User user, ModelMap modelMap);
+    public String updateUser(@PathVariable("userId") int userId, @ModelAttribute("user") User user, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
 
 }

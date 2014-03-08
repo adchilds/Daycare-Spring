@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+/**
+ * {@inheritDoc}
+ */
 @Controller
 public class LoginControllerImpl implements LoginController {
 

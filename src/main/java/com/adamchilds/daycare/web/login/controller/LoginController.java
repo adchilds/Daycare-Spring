@@ -5,8 +5,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 /**
- * This class handles the login page's functionality
+ * Handles requests to the login page.
+ *
+ * @author Adam Childs
+ * @since 1.0
  */
 public interface LoginController {
 
@@ -18,7 +22,7 @@ public interface LoginController {
      * @param modelMap A map that will persist data for consecutive page loads
      * @return A new ModelAndView instance
      */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login.html", method = RequestMethod.POST)
     public ModelAndView postLogin(@ModelAttribute("loginForm") LoginForm loginForm, BindingResult result, ModelMap modelMap);
 
     /**
@@ -26,7 +30,7 @@ public interface LoginController {
      *
      * @return A new ModelAndView instance, pointing to the login.jsp file
      */
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login.html", method = RequestMethod.GET)
     public ModelAndView getLogin(ModelMap modelMap);
 
     /**
@@ -35,7 +39,7 @@ public interface LoginController {
      * @return The same page the user was on, but now as a logged in user if their
      * credentials were correct.
      */
-    @RequestMapping(value = "/login-nav", method = RequestMethod.POST)
+    @RequestMapping(value = "/login-nav.html", method = RequestMethod.POST)
     public ModelAndView postLoginNav(@ModelAttribute("loginForm") LoginForm loginForm, BindingResult result, ModelMap modelMap);
 
 }

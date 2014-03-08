@@ -2,6 +2,7 @@ package com.adamchilds.daycare.entity.auditing.service;
 
 import com.adamchilds.daycare.entity.auditing.enumeration.AuditTypeEnum;
 import com.adamchilds.daycare.entity.auditing.model.Audit;
+import org.springframework.scheduling.annotation.Async;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ public interface AuditService {
      *
      * @param audit The {@link Audit} to deliver
      */
+    @Async
     public void create(Audit audit);
 
     /**
@@ -28,6 +30,7 @@ public interface AuditService {
      *
      * @param request the web request being handled
      */
+    @Async
     public void createAuditForRequest(HttpServletRequest request);
 
     /**

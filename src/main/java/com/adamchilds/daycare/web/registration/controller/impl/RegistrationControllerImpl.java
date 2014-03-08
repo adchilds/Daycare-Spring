@@ -12,15 +12,23 @@ import com.adamchilds.daycare.web.registration.controller.RegistrationController
 import com.adamchilds.daycare.web.registration.form.RegistrationForm;
 import com.adamchilds.daycare.web.registration.util.RegistrationUtil;
 import com.adamchilds.daycare.web.registration.validator.RegistrationValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.servlet.ModelAndView;
 
-@Controller("registrationController")
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * {@inheritDoc}
+ */
+@Controller
 public class RegistrationControllerImpl implements RegistrationController {
+    private static final Logger logger = LoggerFactory.getLogger(RegistrationControllerImpl.class);
 
     @Autowired
     private AccountService accountService;
@@ -37,25 +45,24 @@ public class RegistrationControllerImpl implements RegistrationController {
     /**
      * {@inheritDoc}
      */
-    public ModelAndView getSignupPage(ModelMap modelMap) {
-
+    @Override
+    public String getSignupPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
         modelMap.put("registrationForm", new RegistrationForm());
         modelMap.put("selectedPlan", "Premium - $5.00 / month");
 
-        return new ModelAndView("/registration/register");
+        return "registration_index";
     }
 
     /**
      * {@inheritDoc}
      */
-    public ModelAndView submitRegistration(ModelMap modelMap,
-                           @ModelAttribute("registrationForm") RegistrationForm form,
-                           BindingResult result) {
+    @Override
+    public String submitRegistration(ModelMap modelMap, @ModelAttribute("registrationForm") RegistrationForm form, BindingResult result, HttpServletRequest request, HttpServletResponse response) {
         new RegistrationValidator().validate(form, result);
 
         if (result.hasErrors()) {
             modelMap.addAttribute("errors", "Sorry, an error occurred.");
-            return new ModelAndView("/registration/register", modelMap);
+            return "registration_index";
         }
 
         // Create and persist the new User to the database
@@ -79,7 +86,7 @@ public class RegistrationControllerImpl implements RegistrationController {
         Business business = RegistrationUtil.createBusinessFromRegistrationForm(form, user, address);
         businessService.create(business);
 
-        return new ModelAndView("/index", modelMap);
+        return "index";
     }
 
 }

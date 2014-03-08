@@ -9,27 +9,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Handles requests to the registration pages.
+ *
+ * @author Adam Childs
+ * @since 1.0
+ */
 public interface RegistrationController {
 
     /**
      * Handles setting up the view of the login page when it's first opened
      *
-     * @param modelMap the ModelMap used to store page attributes
-     * @return A new ModelAndView instance, pointing to the login.jsp file
+     * @param modelMap the {@link ModelMap} associated with the GET request
+     * @param request the request
+     * @param response the response
+     * @return the tiles-def name of the view to render
      */
-    @RequestMapping(value = "/registration/register", method = RequestMethod.GET)
-    public ModelAndView getSignupPage(ModelMap modelMap);
+    @RequestMapping(value = "/registration/register.html", method = RequestMethod.GET)
+    public String getSignupPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
 
     /**
      * Handles page requests for submitting a registration form
      *
-     * @param modelMap the ModelMap used to store page attributes
+     * @param modelMap the {@link ModelMap} associated with the GET request
      * @param form the form being submitted
      * @param result the BindingResults of the form
-     * @return A new ModelAndView instance, dependent upon if there are form errors or not
+     * @param request the request
+     * @param response the response
+     * @return the tiles-def name of the view to render
      */
-    @RequestMapping(value = "/registration/submit-registration", method = RequestMethod.POST)
-    public ModelAndView submitRegistration(ModelMap modelMap, @ModelAttribute("registrationForm") RegistrationForm form, BindingResult result);
+    @RequestMapping(value = "/registration/submit-registration.html", method = RequestMethod.POST)
+    public String submitRegistration(ModelMap modelMap, @ModelAttribute("registrationForm") RegistrationForm form, BindingResult result, HttpServletRequest request, HttpServletResponse response);
 
 }

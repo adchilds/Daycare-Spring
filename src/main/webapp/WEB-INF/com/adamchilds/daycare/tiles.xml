@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    <definition name="base.definition" template="/WEB-INF/jsp/template/pieces/layouts/mainLayout.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header" value="/WEB-INF/jsp/template/pieces/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/jsp/template/pieces/navigation.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/template/pieces/footer.jsp" />
+    </definition>
+
+    <!-- Index/Home page -->
+    <definition name="index" extends="base.definition">
+        <put-attribute name="title" value="Daycare.ms - Your solution to childcare organization" />
+        <put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
+    </definition>
+
+    <!-- Pricing page -->
+    <definition name="pricing" extends="base.definition">
+        <put-attribute name="title" value="Daycare.ms - Your solution to childcare organization" />
+        <put-attribute name="body" value="/WEB-INF/jsp/pricing.jsp" />
+    </definition>
+
+    <!-- Contact Us page -->
+    <definition name="contact_us" extends="base.definition">
+        <put-attribute name="title" value="Daycare.ms - Your solution to childcare organization" />
+        <put-attribute name="body" value="/WEB-INF/jsp/contact.jsp" />
+    </definition>
+
+    <!-- Registration page (register) -->
+    <definition name="registration_index" extends="base.definition">
+        <put-attribute name="title" value="Daycare.ms - Registration" />
+        <put-attribute name="body" value="/WEB-INF/jsp/registration/register.jsp" />
+    </definition>
+
+    <!-- Legal page (TOS) -->
+    <definition name="terms_of_service" extends="base.definition">
+        <put-attribute name="title" value="Daycare.ms - Your solution to childcare organization" />
+        <put-attribute name="body" value="/WEB-INF/jsp/legal/tos.jsp" />
+    </definition>
+
+    <!-- Legal page (Privacy Policy) -->
+    <definition name="privacy_policy" extends="base.definition">
+        <put-attribute name="title" value="Daycare.ms - Your solution to childcare organization" />
+        <put-attribute name="body" value="/WEB-INF/jsp/legal/privacy.jsp" />
+    </definition>
+
+    <!-- Administration page (index) -->
+    <definition name="administration_index" extends="base.definition">
+        <put-attribute name="title" value="Daycare.ms - Administration" />
+        <put-attribute name="body" value="/WEB-INF/jsp/administration/index.jsp" />
+    </definition>
+
+</tiles-definitions>
