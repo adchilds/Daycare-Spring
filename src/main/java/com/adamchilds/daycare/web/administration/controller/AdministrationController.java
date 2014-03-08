@@ -14,7 +14,7 @@ public interface AdministrationController {
 
     /**
      * Displays the home page for the administration dashboard. Logged in users
-     * with a role of ROLE_ADMINISTRATOR or ROLE_SUPERUSER from {@link com.adamchilds.daycare.entity.user.enumeration.UserRole}
+     * with a role of ROLE_ADMINISTRATOR or ROLE_SUPERUSER from {@link com.adamchilds.daycare.entity.user.enumeration.UserRoleEnum}
      * may use some or all of the utilities provided on these pages.
      *
      * @param modelMap The map that holds information that can be displayed on the page

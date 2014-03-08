@@ -1,5 +1,6 @@
-package com.adamchilds.daycare.entity.child.dao;
+package com.adamchilds.daycare.entity.child.dao.impl;
 
+import com.adamchilds.daycare.entity.child.dao.ChildDAO;
 import com.adamchilds.daycare.entity.child.model.Child;
 import com.adamchilds.daycare.jpa.AbstractJPADAO;
 import org.springframework.stereotype.Repository;

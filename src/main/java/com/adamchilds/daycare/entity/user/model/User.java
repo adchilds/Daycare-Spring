@@ -1,6 +1,6 @@
 package com.adamchilds.daycare.entity.user.model;
 
-import com.adamchilds.daycare.entity.user.enumeration.UserRole;
+import com.adamchilds.daycare.entity.user.enumeration.UserRoleEnum;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -64,7 +64,7 @@ public class User {
     private Date lastLogin;
 
     @Column(name = "USER_ROLE", nullable = false)
-    private UserRole role;
+    private UserRoleEnum role;
 
     @Column(name = "ENABLED", nullable = false)
     private boolean enabled;
@@ -132,11 +132,11 @@ public class User {
         this.lastLogin = lastLogin;
     }
 
-    public UserRole getRole() {
+    public UserRoleEnum getRole() {
         return role;
     }
 
-    public void setRole(UserRole role) {
+    public void setRole(UserRoleEnum role) {
         this.role = role;
     }
 

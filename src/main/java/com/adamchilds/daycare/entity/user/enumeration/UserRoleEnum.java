@@ -1,6 +1,6 @@
 package com.adamchilds.daycare.entity.user.enumeration;
 
-public enum UserRole {
+public enum UserRoleEnum {
     ROLE_USER(0),
     ROLE_ACCOUNT_OWNER(1),
     ROLE_EMPLOYEE(2),
@@ -9,7 +9,7 @@ public enum UserRole {
 
     private int roleId;
 
-    UserRole(int roleId) {
+    UserRoleEnum(int roleId) {
         this.roleId = roleId;
     }
 }

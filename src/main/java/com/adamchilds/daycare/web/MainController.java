@@ -1,5 +1,6 @@
 package com.adamchilds.daycare.web;
 
+import com.adamchilds.daycare.entity.auditing.service.AuditService;
 import com.adamchilds.daycare.util.encryption.EncryptionUtil;
 import com.adamchilds.daycare.entity.account.model.Account;
 import com.adamchilds.daycare.entity.account.service.AccountService;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.persistence.NoResultException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -25,25 +28,27 @@ import java.util.Random;
 public class MainController {
 
     @Autowired
-    UserService userService;
+    private AccountService accountService;
     @Autowired
-    AccountService accountService;
+    private AuditService auditService;
     @Autowired
-    SubscriptionService subscriptionService;
-
-//    @Value("${subscription.basic.fee.monthly}")
-//    private double fee;
+    private SubscriptionService subscriptionService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getIndex(ModelMap modelMap) {
+    public ModelAndView getIndex(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+        auditService.createAuditForRequest(request);
+
         modelMap.put("loginForm", new LoginForm());
-//        modelMap.put("testProperties", fee);
 
         return new ModelAndView("/index", modelMap);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView postIndex(@ModelAttribute("loginForm") LoginForm loginForm, ModelMap modelMap) {
+    public ModelAndView postIndex(@ModelAttribute("loginForm") LoginForm loginForm, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+        auditService.createAuditForRequest(request);
+
         //User user;
         try {
             //user = userService.readUserByEmail("adam.childs@vodori.com");
