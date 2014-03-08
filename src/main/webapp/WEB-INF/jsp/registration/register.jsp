@@ -87,7 +87,7 @@
                 <div class="panel panel-info">
                     <div class="panel-heading pricing panel-text-center">
                         <h3>Payment</h3>
-                        <h5>Tell us a little about your payment information</h5>
+                        <h5>Enter your payment information</h5>
                     </div>
                     <div class="panel-body">
                         <div class="form-group">

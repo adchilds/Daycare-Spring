@@ -15,7 +15,7 @@
             <div class="col-lg-4">
                 <h2>Need an account?</h2>
                 <p>Signing up for our service is easy. We have many different plans available to fit your needs. Simply select a plan and provide the necessary information and we'll be ready to help your business needs.</p>
-                <p><a href="/registration/register.html" class="btn btn-success">Sign up</a></p>
+                <p><a href="/register.html" class="btn btn-success">Sign up</a></p>
             </div>
             <div class="col-lg-4">
                 <h2>Testimonials</h2>

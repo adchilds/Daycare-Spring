@@ -5,7 +5,6 @@ import com.adamchilds.daycare.entity.auditing.enumeration.AuditTypeEnum;
 import com.adamchilds.daycare.entity.auditing.model.Audit;
 import com.adamchilds.daycare.entity.auditing.service.AuditService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -96,6 +95,13 @@ public class AuditServiceImpl implements AuditService {
      */
     public Audit readAuditById(Long id) {
         return auditDAO.readAuditById(id);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public List<Audit> readAllAuditsWithInformation(String info) {
+        return auditDAO.readAllAuditsWithInformation(info);
     }
 
     /**

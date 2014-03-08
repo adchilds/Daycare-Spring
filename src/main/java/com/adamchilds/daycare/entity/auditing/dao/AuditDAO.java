@@ -78,6 +78,13 @@ public interface AuditDAO {
     public Audit readAuditById(Long id);
 
     /**
+     *
+     * @param info
+     * @return
+     */
+    public List<Audit> readAllAuditsWithInformation(String info);
+
+    /**
      * Removes the specified {@link Audit} from the database.
      *
      * @param audit The {@link Audit} to remove

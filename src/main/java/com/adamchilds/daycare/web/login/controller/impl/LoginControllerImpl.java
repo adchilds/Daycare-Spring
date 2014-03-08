@@ -5,19 +5,23 @@ import com.adamchilds.daycare.entity.user.service.UserService;
 import com.adamchilds.daycare.web.login.controller.LoginController;
 import com.adamchilds.daycare.web.login.form.LoginForm;
 import com.adamchilds.daycare.web.login.validator.LoginValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * {@inheritDoc}
  */
 @Controller
 public class LoginControllerImpl implements LoginController {
+    private static final Logger logger = LoggerFactory.getLogger(LoginControllerImpl.class);
 
     // Used if we want to write a custom Validator
     @Autowired
@@ -32,40 +36,40 @@ public class LoginControllerImpl implements LoginController {
      * {@inheritDoc}
      */
     @Override
-    public ModelAndView getLogin(ModelMap modelMap) {
+    public String getLogin(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
         modelMap.put("user", new User());
-        return new ModelAndView("/login", modelMap);
+
+        return "login";
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public ModelAndView postLogin(@ModelAttribute("loginForm") LoginForm loginForm, BindingResult result, ModelMap modelMap) {
+    public String postLogin(@ModelAttribute("loginForm") LoginForm loginForm, BindingResult result, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
         // Check for validation errors
         validator.validate(loginForm, result);
         if (result.hasErrors()) {
             modelMap.put("loginForm", loginForm);
-            return new ModelAndView("/login", modelMap);
+            return "login";
         }
 
-        // "redirect:/dashboard.html" goes to a dashboard.html page but doesn't carry over the data from modelMap
-        return new ModelAndView(new RedirectView("/index"), modelMap);
+        return "index";
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public ModelAndView postLoginNav(@ModelAttribute("loginForm") LoginForm loginForm, BindingResult result, ModelMap modelMap) {
+    public String postLoginNav(@ModelAttribute("loginForm") LoginForm loginForm, BindingResult result, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
         // Check for validation errors
         validator.validate(loginForm, result);
         if (result.hasErrors()) {
             modelMap.put("loginForm", loginForm);
-            return new ModelAndView("/login", modelMap);
+            return "login";
         }
 
-        return new ModelAndView("/index", modelMap);
+        return "index";
     }
 
 }

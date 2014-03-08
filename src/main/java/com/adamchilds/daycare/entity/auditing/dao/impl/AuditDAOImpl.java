@@ -95,6 +95,17 @@ public class AuditDAOImpl extends AbstractJPADAO implements AuditDAO {
      * {@inheritDoc}
      */
     @Override
+    public List<Audit> readAllAuditsWithInformation(String info) {
+        Query query = super.createNamedQuery( "readAllAuditsWithInformation" )
+                .setParameter("info", "%" + info + "%");
+
+        return (List<Audit>) query.getResultList();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void remove(Audit audit) {
         super.remove(audit);
     }

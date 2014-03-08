@@ -1,13 +1,11 @@
 package com.adamchilds.daycare.web.registration.controller;
 
 import com.adamchilds.daycare.web.registration.form.RegistrationForm;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +26,7 @@ public interface RegistrationController {
      * @param response the response
      * @return the tiles-def name of the view to render
      */
-    @RequestMapping(value = "/registration/register.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/register.html", method = RequestMethod.GET)
     public String getSignupPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
 
     /**
@@ -41,7 +39,7 @@ public interface RegistrationController {
      * @param response the response
      * @return the tiles-def name of the view to render
      */
-    @RequestMapping(value = "/registration/submit-registration.html", method = RequestMethod.POST)
+    @RequestMapping(value = "/submit-registration.html", method = RequestMethod.POST)
     public String submitRegistration(ModelMap modelMap, @ModelAttribute("registrationForm") RegistrationForm form, BindingResult result, HttpServletRequest request, HttpServletResponse response);
 
 }

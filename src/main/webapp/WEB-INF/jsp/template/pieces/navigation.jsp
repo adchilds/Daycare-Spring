@@ -30,28 +30,28 @@
 
                         </c:when>
                         <c:otherwise>
-                            <spring-form:form commandName="loginForm" class="navbar-form navbar-right" action="/login-nav">
+                            <form:form commandName="loginForm" class="navbar-form navbar-right" action="/login-nav">
                                 <div class="form-group">
-                                    <spring-form:input path="username" type="text" placeholder="Email" class="form-control" />
+                                    <form:input path="username" type="text" placeholder="Email" class="form-control" />
                                 </div>
                                 <div class="form-group">
-                                    <spring-form:input path="password" type="password" placeholder="Password" class="form-control" />
+                                    <form:input path="password" type="password" placeholder="Password" class="form-control" />
                                 </div>
                                 <button type="submit" class="btn btn-success">Sign in</button>
-                            </spring-form:form>
+                            </form:form>
                         </c:otherwise>
                     </c:choose>
                 </c:when>
                 <c:otherwise>
-                    <spring-form:form commandName="loginForm" class="navbar-form navbar-right" action="/login">
+                    <form:form commandName="loginForm" class="navbar-form navbar-right" action="/login">
                         <div class="form-group">
-                            <spring-form:input path="username" type="text" placeholder="Email" class="form-control" />
+                            <form:input path="username" type="text" placeholder="Email" class="form-control" />
                         </div>
                         <div class="form-group">
-                            <spring-form:input path="password" type="password" placeholder="Password" class="form-control" />
+                            <form:input path="password" type="password" placeholder="Password" class="form-control" />
                         </div>
                         <button type="submit" class="btn btn-success">Sign in</button>
-                    </spring-form:form>
+                    </form:form>
                 </c:otherwise>
             </c:choose>
         </div>

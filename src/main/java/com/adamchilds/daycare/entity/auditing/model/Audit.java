@@ -14,6 +14,8 @@ import java.util.Date;
                     query = "SELECT a FROM Audit a WHERE a.auditType = :auditType"),
         @NamedQuery(name = "readAllAuditsByUserId",
                     query = "SELECT a FROM Audit a WHERE a.userId = :userId"),
+        @NamedQuery(name = "readAllAuditsWithInformation",
+                    query = "SELECT a FROM Audit a WHERE a.extraInformation LIKE :info"),
         @NamedQuery(name = "readAuditById",
                     query = "SELECT a FROM Audit a WHERE a.id = :auditId")
 })
