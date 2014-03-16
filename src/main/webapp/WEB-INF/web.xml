@@ -27,6 +27,7 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!-- Vaadin -->
     <servlet>
         <servlet-name>vaadinServlet</servlet-name>
         <servlet-class>ru.xpoft.vaadin.SpringVaadinServlet</servlet-class>

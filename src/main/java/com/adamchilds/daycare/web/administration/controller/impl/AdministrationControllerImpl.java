@@ -52,7 +52,7 @@ public class AdministrationControllerImpl implements AdministrationController {
      */
     @Override
     public String removeUser(@PathVariable("userId") int userId, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
-        List<User> userList = (ArrayList<User>) userService.readAllUsers();
+        List<User> userList = userService.readAllUsers();
 
         User userToDelete;
         try {
@@ -62,7 +62,7 @@ public class AdministrationControllerImpl implements AdministrationController {
 
             // Remove the User from the List<User>
             userList.remove(userToDelete);
-        } catch (NullPointerException|IllegalArgumentException e) {
+        } catch (NullPointerException | IllegalArgumentException e) {
             // Nothing needs to be done except for a page reload. Reload will handle fixing the table.
             System.out.println( "User cannot be found in database, fixing view..." );
         }

@@ -4,8 +4,7 @@ import com.vaadin.server.VaadinRequest;
 import ru.xpoft.vaadin.SpringUIProvider;
 
 /**
- * This class is the main delegator for sending specified URIs to different
- * Vaadin UI views.
+ * This class delegates sending the specified {@code vaadinRequest}'s and their URIs to different Vaadin UI views.
  *
  * @author Adam Childs
  * @since 1.0
