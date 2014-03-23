@@ -1,3 +1,6 @@
+/*
+ * Generic site-wide styles
+ */
 /*********** Errors for form ***********/
 #errors-box {
   padding: 7px 10px;
@@ -53,4 +56,186 @@ div .center {
   text-align: center;
   vertical-align: middle;
   line-height: 7em;
+}
+/*
+ * Template pieces
+ */
+/*
+ * This CSS file is specific to the footer found on each page
+ */
+.navbar .navbar-default .navbar-fixed-bottom .footer {
+  background-color: blue;
+}
+.footer_padding {
+  padding-bottom: 51px;
+}
+/*
+ * This CSS file is specific to the header found on each page
+ */
+.navbar {
+  margin-bottom: 0;
+}
+.navbar .navbar-header .navbar-brand:hover {
+  color: #999;
+}
+/**
+ * This CSS file contains styling specific to the entire website.
+ */
+body {
+  background-color: white;
+  /*#D1FFFF;*/
+}
+/**
+ * Adds a padding of 15px around every side of the container
+ */
+.padded-border {
+  margin: 15px;
+}
+/**
+ * Dynamically center containers on the user's screen
+ */
+#centerWrapper {
+  height: 100%;
+  text-align: center;
+}
+#centerWrapper:before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.center {
+  display: inline-block;
+  padding: 10px 15px;
+  vertical-align: middle;
+  width: 950px;
+}
+.jumbotron {
+  margin-bottom: 0px;
+}
+#wrap > .container > .row {
+  margin-top: -50px;
+}
+/*
+ * Specific page styling
+ */
+/*
+ * This CSS file contains styling specific to the "index.html" or home page.
+ */
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  padding-bottom: 51px;
+}
+div .header-center {
+  width: 950px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#body_container {
+  min-height: 100%;
+  position: relative;
+}
+#body {
+  padding-bottom: 51px;
+}
+#footer {
+  height: 51px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+/*
+ * Daycare Management System
+ * @author Adam Childs
+ * @version 0.1
+ *
+ * Login screen styling
+ */
+body {
+  background-image: url('/resources/image/gray_background_light.png');
+  background-repeat: repeat;
+}
+.centerOnScreen {
+  width: 450px;
+  height: auto;
+  color: black;
+  /*background-color: white;*/
+  text-align: center;
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  margin-top: -110px;
+  margin-left: -225px;
+}
+.margin-right {
+  margin-right: 15px;
+}
+.margin-left {
+  margin-left: 15px;
+}
+.copyright {
+  text-align: center;
+  color: #000000;
+  padding-top: 5px;
+}
+div .loginHeader {
+  background-color: white;
+  height: 30px;
+  text-align: center;
+  vertical-align: middle;
+}
+div .loginInput {
+  width: 60%;
+  margin: 0 auto;
+}
+.pull-right {
+  right: 10px;
+}
+table .data {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+table .data td,
+table .data td.centered {
+  border: 1px solid black;
+  width: 100px;
+  height: 25px;
+}
+table .data th {
+  color: #FFFFFF;
+  background-color: #0070FF;
+  text-align: center;
+  width: 100px;
+  height: 25px;
+}
+td .button_centered {
+  text-align: center;
+}
+label {
+  font-weight: normal;
+}
+p {
+  margin-top: -15px;
+}
+p span .infinite {
+  font-size: 20px !important;
+}
+.separate {
+  /*margin: 5px;*/
+}
+.form-input {
+  float: left;
+  width: 60%;
+}
+.form-label {
+  float: left;
+  clear: both;
+  margin-right: 5px;
+  text-align: right;
+  width: 35%;
 }
