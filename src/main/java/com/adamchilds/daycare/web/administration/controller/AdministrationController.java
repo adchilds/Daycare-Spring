@@ -1,13 +1,11 @@
 package com.adamchilds.daycare.web.administration.controller;
 
 import com.adamchilds.daycare.entity.user.model.User;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +20,7 @@ public interface AdministrationController {
 
     /**
      * Displays the home page for the administration dashboard. Logged in users
-     * with a role of ROLE_ADMINISTRATOR or ROLE_SUPERUSER from {@link com.adamchilds.daycare.entity.user.enumeration.UserRoleEnum}
+     * with a role of ROLE_ADMINISTRATOR or ROLE_SUPERUSER from {@link com.adamchilds.daycare.entity.roles.enumeration.UserRoleEnum}
      * may use some or all of the utilities provided on these pages.
      *
      * @param modelMap the {@link ModelMap} associated with the POST request

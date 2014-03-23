@@ -4,6 +4,8 @@ import com.adamchilds.daycare.entity.auditing.dao.AuditDAO;
 import com.adamchilds.daycare.entity.auditing.enumeration.AuditTypeEnum;
 import com.adamchilds.daycare.entity.auditing.model.Audit;
 import com.adamchilds.daycare.entity.auditing.service.AuditService;
+import com.adamchilds.daycare.entity.user.model.User;
+import com.adamchilds.daycare.entity.user.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +24,9 @@ public class AuditServiceImpl implements AuditService {
 
     @Autowired
     private AuditDAO auditDAO;
+
+    @Autowired
+    private UserUtil userUtil;
 
     /**
      * {@inheritDoc}
@@ -43,7 +48,17 @@ public class AuditServiceImpl implements AuditService {
                       "IP=[" + request.getRemoteAddr() + "], " +
                       "USER_AGENT=[" + request.getHeader("user-agent") + "]";
         audit.setExtraInformation(info);
-        audit.setUserId(1l);
+
+        if (userUtil.isUserAuthenticated()) {
+            User user = userUtil.getCurrentUser();
+            if (user != null) {
+                audit.setUserId(userUtil.getCurrentUser().getId());
+            } else {
+                audit.setUserId(0l);
+            }
+        } else {
+            audit.setUserId(0l);
+        }
 
         create(audit);
     }

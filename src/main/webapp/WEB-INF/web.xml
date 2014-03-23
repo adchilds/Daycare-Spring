@@ -12,6 +12,10 @@
         <param-value>/WEB-INF/com/adamchilds/daycare/springconfig/applicationContext-parent.xml</param-value>
     </context-param>
 
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
     <servlet>
         <servlet-name>appServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -60,16 +64,38 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    <!-- Favicon mapping (not needed but just in case down the road) -->
+    <!-- ===================================================
+        Favicon mapping (not needed but just in case down the road)
+    ==================================================== -->
     <mime-mapping>
         <extension>ico</extension>
         <mime-type>image/x-icon</mime-type>
     </mime-mapping>
 
-    <!-- Error pages -->
+    <!-- ===================================================
+        Error pages
+    ==================================================== -->
     <error-page>
         <error-code>404</error-code>
         <location>/404.html</location>
     </error-page>
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>/403.html</location>
+    </error-page>
+
+    <!-- ===================================================
+        Security
+    ==================================================== -->
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
 </web-app>

@@ -8,6 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 
+/**
+ * {@inheritDoc}
+ */
 @Repository
 public class UserDAOImpl extends AbstractJPADAO implements UserDAO {
 

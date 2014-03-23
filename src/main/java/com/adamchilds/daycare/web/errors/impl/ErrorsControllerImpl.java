@@ -24,6 +24,18 @@ public class ErrorsControllerImpl implements ErrorsController {
     /**
      * {@inheritDoc}
      */
+    public String get403(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+        /*
+         * Add an audit to the DB
+         */
+        auditService.createAuditForRequest(request);
+
+        return "error_403";
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public String get404(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
         /*
          * Add an audit to the DB

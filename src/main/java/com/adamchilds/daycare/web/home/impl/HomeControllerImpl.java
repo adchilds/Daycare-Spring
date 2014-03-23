@@ -3,6 +3,9 @@ package com.adamchilds.daycare.web.home.impl;
 import com.adamchilds.daycare.entity.account.model.Account;
 import com.adamchilds.daycare.entity.account.service.AccountService;
 import com.adamchilds.daycare.entity.auditing.service.AuditService;
+import com.adamchilds.daycare.entity.roles.enumeration.UserRoleEnum;
+import com.adamchilds.daycare.entity.roles.model.UserRole;
+import com.adamchilds.daycare.entity.roles.service.UserRoleService;
 import com.adamchilds.daycare.entity.subscription.model.Subscription;
 import com.adamchilds.daycare.entity.subscription.service.SubscriptionService;
 import com.adamchilds.daycare.entity.user.model.User;
@@ -43,18 +46,14 @@ public class HomeControllerImpl implements HomeController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserRoleService userRoleService;
+
     /**
      * {@inheritDoc}
      */
     @Override
     public String getIndexPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
-        /*
-         * Add an audit to the DB
-         */
-        auditService.createAuditForRequest(request);
-
-        modelMap.put("loginForm", new LoginForm());
-
         return "index";
     }
 
@@ -63,11 +62,6 @@ public class HomeControllerImpl implements HomeController {
      */
     @Override
     public String postIndexPage(@ModelAttribute("loginForm") LoginForm loginForm, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
-        /*
-         * Add an audit to the DB
-         */
-        auditService.createAuditForRequest(request);
-
         //User user;
         try {
             //user = userService.readUserByEmail("adam.childs@vodori.com");
@@ -86,7 +80,6 @@ public class HomeControllerImpl implements HomeController {
             modelMap.put("user", user);
             modelMap.put("account", account);
             modelMap.put("subscription", subscription);
-            modelMap.put("loginForm", new LoginForm());
         } catch (NoResultException nre) {
             System.out.println("Query returned no results.");
         }

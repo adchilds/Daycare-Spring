@@ -68,6 +68,12 @@
     <!-- ===============================================================
         Error pages
     ================================================================ -->
+    <!-- 403 -->
+    <definition name="error_403" extends="base.definition">
+        <put-attribute name="title" value="Daycare.ms - Page not found" />
+        <put-attribute name="body" value="/WEB-INF/jsp/error/403.jsp" />
+    </definition>
+
     <!-- 404 -->
     <definition name="error_404" extends="base.definition">
         <put-attribute name="title" value="Daycare.ms - Page not found" />

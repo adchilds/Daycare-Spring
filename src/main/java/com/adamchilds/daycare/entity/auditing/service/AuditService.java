@@ -89,9 +89,11 @@ public interface AuditService {
     public Audit readAuditById(Long id);
 
     /**
+     * Reads a List of {@link Audit}s from the database where the {@code info} value matches a substring
+     * in the {@link Audit#extraInformation} field.
      *
-     * @param info
-     * @return
+     * @param info the String value to match on the {@link Audit#extraInformation} field
+     * @return a List of {@link Audit}s where {@code info} matches a substring in the {@link Audit#extraInformation} field
      */
     public List<Audit> readAllAuditsWithInformation(String info);
 

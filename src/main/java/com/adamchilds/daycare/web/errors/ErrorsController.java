@@ -15,6 +15,17 @@ import javax.servlet.http.HttpServletResponse;
 public interface ErrorsController {
 
     /**
+     * Handles serving the 403 page.
+     *
+     * @param modelMap the {@link ModelMap} associated with the GET/POST request
+     * @param request the request
+     * @param response the response
+     * @return the tiles-def name of the view to render
+     */
+    @RequestMapping(value = "/403.html")
+    public String get403(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
+
+    /**
      * Handles serving the 404 page.
      *
      * @param modelMap the {@link ModelMap} associated with the GET/POST request

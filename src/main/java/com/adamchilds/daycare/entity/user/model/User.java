@@ -1,7 +1,5 @@
 package com.adamchilds.daycare.entity.user.model;
 
-import com.adamchilds.daycare.entity.user.enumeration.UserRoleEnum;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,8 +11,6 @@ import java.util.Date;
 @NamedQueries(value = {
         @NamedQuery(name = "readAllUsers",
                     query = "SELECT um FROM User um ORDER BY um.username DESC"),
-        @NamedQuery(name = "readAllUsersByUserRole",
-                    query = "SELECT um FROM User um WHERE um.role = :userRole"),
         @NamedQuery(name = "readAllUsersByAccountId",
                     query = "SELECT um FROM User um WHERE um.accountId = :userAccountId"),
         @NamedQuery(name = "readUserById",
@@ -22,7 +18,9 @@ import java.util.Date;
         @NamedQuery(name = "readUserByUsername",
                     query = "SELECT um FROM User um WHERE um.username = :userName"),
         @NamedQuery(name = "readUserByEmail",
-                    query = "SELECT um FROM User um WHERE um.emailAddress = :userEmail")
+                    query = "SELECT um FROM User um WHERE um.emailAddress = :userEmail"),
+        @NamedQuery(name = "readAllUserByEnabledStatus",
+                    query = "SELECT um FROM User um WHERE um.enabled = :userEnabled")
 })
 @Entity
 @Table(
@@ -62,9 +60,6 @@ public class User {
 
     @Column(name = "LAST_LOGIN_DATE")
     private Date lastLogin;
-
-    @Column(name = "USER_ROLE", nullable = false)
-    private UserRoleEnum role;
 
     @Column(name = "ENABLED", nullable = false)
     private boolean enabled;
@@ -130,14 +125,6 @@ public class User {
 
     public void setLastLogin(Date lastLogin) {
         this.lastLogin = lastLogin;
-    }
-
-    public UserRoleEnum getRole() {
-        return role;
-    }
-
-    public void setRole(UserRoleEnum role) {
-        this.role = role;
     }
 
     public boolean getEnabled() {
