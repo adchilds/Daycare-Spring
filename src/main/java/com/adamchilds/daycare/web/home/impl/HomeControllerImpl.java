@@ -62,16 +62,7 @@ public class HomeControllerImpl implements HomeController {
      */
     @Override
     public String postIndexPage(@ModelAttribute("loginForm") LoginForm loginForm, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
-        //User user;
         try {
-            //user = userService.readUserByEmail("adam.childs@vodori.com");
-            String base64 = EncryptionUtil.base64Encode("hockey");
-            String encrypted = EncryptionUtil.encodeString("hockey");
-            String sha256 = EncryptionUtil.SHA256("hockey");
-            modelMap.put("encrypted", encrypted);
-            modelMap.put("base64", base64);
-            modelMap.put("sha256", sha256);
-
             ArrayList<User> userList = (ArrayList<User>) userService.readAllUsers();
             Random r = new Random();
             User user = userList.get(r.nextInt(userList.size()));
