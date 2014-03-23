@@ -5,13 +5,9 @@
 
 <html>
     <head>
-        <!-- CSS -->
-        <link href="/resources/style/login.css" rel="stylesheet" type="text/css" media="screen" />
-        <link href="/resources/style/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
+        <jsp:include page="template/pieces/header.jsp" />
 
         <!-- JavaScript -->
-        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-        <script type="text/javascript" src="/resources/js/bootstrap.js"></script>
         <script type="text/JavaScript" src="/resources/js/login.js"></script>
 
         <title>Daycare.ms - Registration</title>

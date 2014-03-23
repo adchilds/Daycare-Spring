@@ -1,6 +1,6 @@
 <%@ include file="taglibs.jsp" %>
 
-<link href="/static/style/header.css" rel="stylesheet" type="text/css" media="screen" />
+<jsp:include page="header.jsp" />
 
 <div class="navbar navbar-inverse navbar-static-top nav-height-sm">
     <div class="container">

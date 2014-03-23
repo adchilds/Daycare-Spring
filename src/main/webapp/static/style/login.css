@@ -14,7 +14,6 @@ body {
   height: auto;
   color: black;
   /*background-color: white;*/
-
   text-align: center;
   position: fixed;
   top: 35%;
@@ -68,7 +67,4 @@ td .button_centered {
 }
 label {
   font-weight: normal;
-}
-p {
-  margin-top: -15px;
 }
