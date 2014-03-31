@@ -40,7 +40,7 @@ public interface AdministrationController {
      * @param response the response
      * @return the tiles-def name of the view to render
      */
-    @RequestMapping(value = "/delete/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/administration/delete/{userId}", method = RequestMethod.GET)
     public String removeUser(@PathVariable("userId") int userId, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
 
     /**
@@ -52,7 +52,7 @@ public interface AdministrationController {
      * @param response the response
      * @return the tiles-def name of the view to render
      */
-    @RequestMapping(value = "/update/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/administration/update/{userId}", method = RequestMethod.GET)
     public String updateUser(@PathVariable("userId") int userId, @ModelAttribute("user") User user, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
 
 }

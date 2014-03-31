@@ -2,6 +2,7 @@ package com.adamchilds.daycare.web.login.controller.impl;
 
 import com.adamchilds.daycare.entity.user.model.User;
 import com.adamchilds.daycare.entity.user.service.UserService;
+import com.adamchilds.daycare.web.login.LoginConstants;
 import com.adamchilds.daycare.web.login.controller.LoginController;
 import com.adamchilds.daycare.web.login.form.LoginForm;
 import com.adamchilds.daycare.web.login.validator.LoginValidator;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,40 +38,39 @@ public class LoginControllerImpl implements LoginController {
      * {@inheritDoc}
      */
     @Override
-    public String getLogin(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+    public String getLogin(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response, @RequestParam(value="error", required=false) String error) {
         modelMap.put("user", new User());
 
+        if (error != null) {
+
+            String errorMessage;
+            switch (error) {
+                case LoginConstants.ERROR_BAD_CREDENTIALS:
+                    errorMessage = "Invalid username or password.";
+                    break;
+
+                case LoginConstants.ERROR_EXPIRED_CREDENTIALS:
+                    errorMessage = "This user's credentials have expired.";
+                    break;
+
+                case LoginConstants.ERROR_ACCOUNT_DISABLED:
+                    errorMessage = "This account is disabled";
+                    break;
+
+                case LoginConstants.ERROR_ACCOUNT_LOCKED:
+                    errorMessage = "This account has been locked.";
+                    break;
+
+                default:
+                    errorMessage = "There was an error while attempting to login. Please try again. If the problem persists, please contact customer support.";
+                    logger.warn("Unhandled Spring authentication error on user login. error=[" + error + "]");
+                    break;
+            }
+
+            modelMap.put("error", errorMessage);
+        }
+
         return "login";
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String postLogin(@ModelAttribute("loginForm") LoginForm loginForm, BindingResult result, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
-        // Check for validation errors
-        validator.validate(loginForm, result);
-        if (result.hasErrors()) {
-            modelMap.put("loginForm", loginForm);
-            return "login";
-        }
-
-        return "index";
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String postLoginNav(@ModelAttribute("loginForm") LoginForm loginForm, BindingResult result, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
-        // Check for validation errors
-        validator.validate(loginForm, result);
-        if (result.hasErrors()) {
-            modelMap.put("loginForm", loginForm);
-            return "login";
-        }
-
-        return "index";
     }
 
 }

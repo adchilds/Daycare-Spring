@@ -28,32 +28,25 @@
                     <c:choose>
                         <c:when test="${isAuthenticated}">
                             <div class="navbar-form navbar-right">
-                                <a href="<c:url value="/j_spring_security_logout" />" class="btn btn-danger">Logout</a>
+                                <a href="/dashboard.html" class="btn btn-default" title="Dashboard"><span class="glyphicon glyphicon-home"></span></a>
+                                <a href="/account/edit.html" class="btn btn-default" title="Account"><span class="glyphicon glyphicon-user"></span></a>
+                                <a href="/settings.html" class="btn btn-default" title="Settings"><span class="glyphicon glyphicon-cog"></span></a>
+                                <a href="<c:url value="/j_spring_security_logout" />" class="btn btn-danger" title="Logout"><span class="glyphicon glyphicon-off"></span></a>
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <form class="navbar-form navbar-right" action="<c:url value="/j_spring_security_check" />" method="POST">
-                                <div class="form-group">
-                                    <input name="j_username" type="text" placeholder="Email" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <input name="j_username" type="password" placeholder="Password" class="form-control" />
-                                </div>
-                                <button type="submit" value="submit" class="btn btn-success">Sign in</button>
-                            </form>
+                            <div class="navbar-form navbar-right">
+                                <a href="/login.html" class="btn btn-success normalize">Login</a>
+                                <a href="/register.html" class="btn btn-primary normalize">Register</a>
+                            </div>
                         </c:otherwise>
                     </c:choose>
                 </c:when>
                 <c:otherwise>
-                    <form class="navbar-form navbar-right" action="<c:url value="/j_spring_security_check" />" method="POST">
-                        <div class="form-group">
-                            <input name="j_username" type="text" placeholder="Email" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <input name="j_username" type="password" placeholder="Password" class="form-control" />
-                        </div>
-                        <button type="submit" value="submit" class="btn btn-success">Sign in</button>
-                    </form>
+                    <div class="navbar-form navbar-right">
+                        <a href="/login.html" class="btn btn-success normalize">Login</a>
+                        <a href="/register.html" class="btn btn-primary normalize">Register</a>
+                    </div>
                 </c:otherwise>
             </c:choose>
         </div>
