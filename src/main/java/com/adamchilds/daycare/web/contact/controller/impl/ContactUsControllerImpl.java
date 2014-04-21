@@ -26,11 +26,6 @@ public class ContactUsControllerImpl implements ContactUsController {
      */
     @Override
     public String getContactUsPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
-        /*
-         * Add an audit to the DB
-         */
-        auditService.createAuditForRequest(request);
-
         modelMap.put("audits", auditService.readAllAuditsWithInformation("404"));
 
         return "contact_us";

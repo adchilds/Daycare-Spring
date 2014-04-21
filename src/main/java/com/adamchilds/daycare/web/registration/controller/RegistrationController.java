@@ -39,7 +39,7 @@ public interface RegistrationController {
      * @param response the response
      * @return the tiles-def name of the view to render
      */
-    @RequestMapping(value = "/submit-registration.html", method = RequestMethod.POST)
+    @RequestMapping(value = "/register.html", method = RequestMethod.POST)
     public String submitRegistration(ModelMap modelMap, @ModelAttribute("registrationForm") RegistrationForm form, BindingResult result, HttpServletRequest request, HttpServletResponse response);
 
 }

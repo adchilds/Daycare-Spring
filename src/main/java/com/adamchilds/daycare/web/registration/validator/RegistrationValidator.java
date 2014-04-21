@@ -7,6 +7,12 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+/**
+ * Validation class triggered when a new user submits the registration form.
+ *
+ * @author Adam Childs
+ * @since 1.0
+ */
 @Component
 public class RegistrationValidator implements Validator {
 

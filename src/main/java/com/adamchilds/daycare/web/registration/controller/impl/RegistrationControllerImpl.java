@@ -8,6 +8,7 @@ import com.adamchilds.daycare.entity.business.model.Business;
 import com.adamchilds.daycare.entity.business.service.BusinessService;
 import com.adamchilds.daycare.entity.user.model.User;
 import com.adamchilds.daycare.entity.user.service.UserService;
+import com.adamchilds.daycare.util.encryption.EncryptionUtil;
 import com.adamchilds.daycare.web.registration.controller.RegistrationController;
 import com.adamchilds.daycare.web.registration.form.RegistrationForm;
 import com.adamchilds.daycare.web.registration.util.RegistrationUtil;
@@ -15,6 +16,9 @@ import com.adamchilds.daycare.web.registration.validator.RegistrationValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -50,6 +54,7 @@ public class RegistrationControllerImpl implements RegistrationController {
         modelMap.put("registrationForm", new RegistrationForm());
         modelMap.put("selectedPlan", "Premium - $5.00 / month");
 
+        String encoded = EncryptionUtil.encodePassword("test1234");
         return "registration_index";
     }
 
@@ -69,6 +74,7 @@ public class RegistrationControllerImpl implements RegistrationController {
         User user = RegistrationUtil.createUserFromRegistrationForm(form);
         userService.create(user);
 
+/*
         // Create and persist the new Address to the database
         Address address = RegistrationUtil.createAddressFromRegistrationForm(form);
         addressService.create(address);
@@ -85,6 +91,7 @@ public class RegistrationControllerImpl implements RegistrationController {
         // Create and persist the new Business to the database
         Business business = RegistrationUtil.createBusinessFromRegistrationForm(form, user, address);
         businessService.create(business);
+*/
 
         return "index";
     }

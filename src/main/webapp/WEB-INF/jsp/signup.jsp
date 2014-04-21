@@ -28,31 +28,31 @@
                     <div class="form-group">
                         <label class="col-lg-4 control-label"><spring:message code="registration.label.email" /></label>
                         <div class="col-lg-8">
-                            <form:input cssClass="form-control" cssErrorClass="form-control has-error" path="emailAddress" placeHolder="Email Address" />
+                            <form:input cssClass="form-control" cssErrorClass="form-control has-error" path="emailAddress" placeHolder="Email Address" autocomplete="off" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-4 control-label"><spring:message code="registration.label.password" /></label>
                         <div class="col-lg-8">
-                            <form:password cssClass="form-control" cssErrorClass="form-control has-error" path="password" placeHolder="Password" />
+                            <form:password cssClass="form-control" cssErrorClass="form-control has-error" path="password" placeHolder="Password" autocomplete="off" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-4 control-label"><spring:message code="registration.label.confirmPassword" /></label>
                         <div class="col-lg-8">
-                            <form:password cssClass="form-control" cssErrorClass="form-control has-error" path="confirmPassword" placeHolder="Confirm Password" />
+                            <form:password cssClass="form-control" cssErrorClass="form-control has-error" path="confirmPassword" placeHolder="Confirm Password" autocomplete="off" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-4 control-label"><spring:message code="registration.label.firstName" /></label>
                         <div class="col-lg-8">
-                            <form:input cssClass="form-control" cssErrorClass="form-control has-error" path="firstName" placeHolder="First Name" />
+                            <form:input cssClass="form-control" cssErrorClass="form-control has-error" path="firstName" placeHolder="First Name" autocomplete="off" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-4 control-label"><spring:message code="registration.label.lastName" /></label>
                         <div class="col-lg-8">
-                            <form:input cssClass="form-control" cssErrorClass="form-control has-error" path="lastName" placeHolder="Last Name" />
+                            <form:input cssClass="form-control" cssErrorClass="form-control has-error" path="lastName" placeHolder="Last Name" autocomplete="off" />
                         </div>
                     </div>
                     <div class="form-group">

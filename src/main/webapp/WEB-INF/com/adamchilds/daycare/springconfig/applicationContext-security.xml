@@ -18,6 +18,8 @@
         </beans:property>
     </beans:bean>
 
+    <beans:bean id="authenticationSuccessHandler" class="com.adamchilds.daycare.authentication.DaycareAuthenticationSuccessHandler" />
+
     <http auto-config="true" use-expressions="true">
         <!-- Secure URLs -->
         <intercept-url pattern="/administration/**" access="hasRole('ROLE_ADMINISTRATOR')" />
@@ -26,7 +28,7 @@
         <intercept-url pattern="/**" access="isAnonymous() or isAuthenticated()" />
 
         <!-- Form login -->
-        <form-login login-page="/login.html" default-target-url="/index.html" authentication-failure-handler-ref="authenticationFailureHandler" />
+        <form-login login-page="/login.html" default-target-url="/index.html" authentication-success-handler-ref="authenticationSuccessHandler" authentication-failure-handler-ref="authenticationFailureHandler" />
 
         <!-- Logout -->
         <logout logout-success-url="/index.html" />
@@ -37,7 +39,7 @@
             <password-encoder hash="sha-256" base64="true" />
             <jdbc-user-service data-source-ref="dataSource"
                 users-by-username-query="SELECT username, password, enabled FROM DAYCARE_USER WHERE username=?"
-                authorities-by-username-query="SELECT u.username, ur.user_role FROM DAYCARE_USER u, USER_ROLES ur WHERE u.username=? AND ur.id=u.id"
+                authorities-by-username-query="SELECT u.username, ur.user_role FROM DAYCARE_USER u, USER_ROLES ur WHERE u.username=? AND ur.user_id=u.id"
             />
         </authentication-provider>
     </authentication-manager>

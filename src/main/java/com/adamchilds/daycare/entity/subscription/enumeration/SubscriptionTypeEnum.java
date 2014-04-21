@@ -1,7 +1,5 @@
 package com.adamchilds.daycare.entity.subscription.enumeration;
 
-import org.springframework.beans.factory.annotation.Value;
-
 /**
  * <p>Represents this different subscription types that users are allowed to purchase in the
  * Daycare Management System. Values contained here include the prices and lengths of each unique
@@ -12,7 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 public enum SubscriptionTypeEnum {
     BASIC(0, 5.99, 1),
     STANDARD(1, 7.99, 1),
-    PREMIUM(2, 9.99, 5),
+    PREMIUM(2, 12.99, 5),
     UNLIMITED(3, 0.00, 50);
 
     private int subscriptionTypeId;

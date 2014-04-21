@@ -1,5 +1,8 @@
 package com.adamchilds.daycare.util.encryption;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
@@ -15,6 +18,7 @@ import java.security.NoSuchAlgorithmException;
  * @author Adam Childs
  */
 public class EncryptionUtil {
+    private static final Logger logger = LoggerFactory.getLogger(EncryptionUtil.class);
 
     private static final String DEFAULT_ENCODING = "UTF-8";
 
@@ -28,14 +32,22 @@ public class EncryptionUtil {
         try {
             return new BASE64Encoder().encode(text.getBytes(DEFAULT_ENCODING));
         } catch (UnsupportedEncodingException uee) {
+            logger.warn("Could not encode the given text to base 64. text=[" + text + "]", uee);
             return null;
         }
     }
 
+    /**
+     * Converts the base 64 representation of a String into it's normal form.
+     *
+     * @param text the text to convert to it's normal form
+     * @return the normal form of the given text
+     */
     public static String base64Decode(String text) {
         try {
             return new String(new BASE64Decoder().decodeBuffer(text), DEFAULT_ENCODING);
         } catch (IOException ioe) {
+            logger.warn("Could not decode the given text from base 64. text=[" + text + "]", ioe);
             return null;
         }
     }
@@ -55,13 +67,21 @@ public class EncryptionUtil {
                 sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
             }
             return sb.toString();
-        } catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException nsae) {
+            logger.warn("Could not encode the given text. text=[" + md5 + "]", nsae);
             return null;
-        } catch (UnsupportedEncodingException e) {
+        } catch (UnsupportedEncodingException uee) {
+            logger.warn("Could not encode the given text. text=[" + md5 + "]", uee);
             return null;
         }
     }
 
+    /**
+     * Generates a 256-bit (32 byte) SHA encrypted String from the given {code text}.
+     *
+     * @param text the text to encrypt
+     * @return the encrypted text
+     */
     public static String SHA256(String text) {
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
@@ -72,9 +92,11 @@ public class EncryptionUtil {
                 sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
             }
             return sb.toString();
-        } catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException nsae) {
+            logger.warn("Could not encode the given text. text=[" + text + "]", nsae);
             return null;
-        } catch (UnsupportedEncodingException e) {
+        } catch (UnsupportedEncodingException uee) {
+            logger.warn("Could not encode the given text. text=[" + text + "]", uee);
             return null;
         }
     }
@@ -93,4 +115,19 @@ public class EncryptionUtil {
     public static String encodeString(String text) {
         return MD5(base64Encode(text));
     }
+
+    /**
+     * Encodes the given {@code password} using Springframework's default {@link ShaPasswordEncoder} at a
+     * setting of 256-bits of encryption and also encodes the 256-bit hash as a base64 {@link String}.
+     *
+     * @param password the password to encrypt
+     * @return the encrypted password
+     */
+    public static String encodePassword(String password) {
+        ShaPasswordEncoder encoder = new ShaPasswordEncoder(256);
+        encoder.setEncodeHashAsBase64(true);
+
+        return encoder.encodePassword(password, ""); // TODO: Should we salt this? Probably so...
+    }
+
 }

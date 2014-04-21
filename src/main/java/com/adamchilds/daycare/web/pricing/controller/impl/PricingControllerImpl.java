@@ -26,11 +26,6 @@ public class PricingControllerImpl implements PricingController {
      */
     @Override
     public String getPricingPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
-        /*
-         * Add an audit to the DB
-         */
-        auditService.createAuditForRequest(request);
-
         return "pricing";
     }
 

@@ -21,9 +21,17 @@ public enum AuditTypeEnum {
     /*
      * Daycare Mangement System action audits
      */
-    ACTION_CREATECHILD("Create Child"),
-    ACTION_REMOVECHILD("Remove Child"),
-    ACTION_VIEWCHILD("View Child"),
+    ACTION_CREATE_CHILD("Create Child"),
+    ACTION_REMOVE_CHILD("Remove Child"),
+    ACTION_VIEW_CHILD("View Child"),
+
+    ACTION_CREATE_GUARDIAN("Create Guardian"),
+    ACTION_REMOVE_GUARDIAN("Remove Guardian"),
+    ACTION_VIEW_GUARDIAN("View Guardian"),
+
+    ACTION_CREATE_FAMILY("Create Family"),
+    ACTION_REMOVE_FAMILY("Remove Family"),
+    ACTION_VIEW_FAMILY("View Family"),
 
     /*
      * Request method audits

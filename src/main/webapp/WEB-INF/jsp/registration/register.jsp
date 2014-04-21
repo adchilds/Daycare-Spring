@@ -1,5 +1,85 @@
 <%@ include file="../template/pieces/taglibs.jsp" %>
 
+<div class="container">
+    <div class="row">
+        <form:form commandName="registrationForm" action="/register.html">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="daycare_form">
+                    <div id="daycare_form_header">
+                        Lorem ipsum dolor sit amet
+                        <p>All fields required</p>
+                    </div>
+                    <hr />
+                    <div id="daycare_form_fields">
+                        <div class="daycare_form_field">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>First Name:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <form:input path="firstName" type="text" autocomplete="off" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="daycare_form_field">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Last Name:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <form:input path="lastName" type="text" autocomplete="off" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="daycare_form_field">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Email Address:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <form:input path="emailAddress" type="text" autocomplete="off" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="daycare_form_field">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Password:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <form:password path="password" autocomplete="off" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="daycare_form_field">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>Confirm Password:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <form:password path="confirmPassword" autocomplete="off" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="daycare_form_actions">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <input type="submit" value="Create" class="btn btn-success daycare_form_success" />
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </form:form>
+    </div>
+</div>
+
+<%--
 <form:form commandName="registrationForm" action="/registration/submit-registration">
     <c:if test="${not empty registrationForm}">
         <spring:hasBindErrors name="registrationForm">
@@ -119,3 +199,4 @@
         </div>
     </div>
 </form:form>
+--%>

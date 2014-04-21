@@ -4,10 +4,10 @@ import com.adamchilds.daycare.entity.account.model.Account;
 import com.adamchilds.daycare.entity.address.model.Address;
 import com.adamchilds.daycare.entity.business.model.Business;
 import com.adamchilds.daycare.entity.subscription.enumeration.SubscriptionTypeEnum;
-import com.adamchilds.daycare.entity.roles.enumeration.UserRoleEnum;
 import com.adamchilds.daycare.entity.user.model.User;
 import com.adamchilds.daycare.util.encryption.EncryptionUtil;
 import com.adamchilds.daycare.web.registration.form.RegistrationForm;
+import org.joda.time.DateTime;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -96,8 +96,8 @@ public class RegistrationUtil {
         user.setLastName(form.getLastName());
         user.setEmailAddress(form.getEmailAddress());
         user.setUsername(form.getEmailAddress());
-        user.setPassword(EncryptionUtil.encodeString(form.getPassword()));
-        user.setCreatedDate(new Date());
+        user.setPassword(EncryptionUtil.encodePassword(form.getPassword()));
+        user.setCreatedDate(DateTime.now().toDate());
         user.setEnabled(true);
 
         return user;

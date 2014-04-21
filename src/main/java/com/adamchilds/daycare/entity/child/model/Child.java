@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * <p>Represents a child associated with an account in the Daycare Management System</p>
+ * Represents a child associated with an account in the Daycare Management System
  */
 @NamedQueries(value = {
         @NamedQuery(name = "readAllChildren",
