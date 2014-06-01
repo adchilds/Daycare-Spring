@@ -28,8 +28,21 @@ public interface AdministrationController {
      * @param response the response
      * @return the tiles-def name of the view to render
      */
-    @RequestMapping(value="/administration/index.html")
-    public String getAdminPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
+    @RequestMapping(value = "/administration/index.html")
+    public String getAdminIndexPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
+
+    /**
+     * Displays the user accounts page for the administration dashboard. Logged in users
+     * with a role of ROLE_ADMINISTRATOR or ROLE_SUPERUSER from {@link com.adamchilds.daycare.entity.roles.enumeration.UserRoleEnum}
+     * may use some or all of the utilities provided on these pages.
+     *
+     * @param modelMap the {@link ModelMap} associated with the POST request
+     * @param request the request
+     * @param response the response
+     * @return the tiles-def name of the view to render
+     */
+    @RequestMapping(value = "/administration/accounts.html")
+    public String getAdminUserAccountsPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
 
     /**
      * Executed when the user attempts to delete an entry in the "User List" table.

@@ -2,15 +2,10 @@ package com.adamchilds.daycare.web.home.impl;
 
 import com.adamchilds.daycare.entity.account.model.Account;
 import com.adamchilds.daycare.entity.account.service.AccountService;
-import com.adamchilds.daycare.entity.auditing.service.AuditService;
-import com.adamchilds.daycare.entity.roles.enumeration.UserRoleEnum;
-import com.adamchilds.daycare.entity.roles.model.UserRole;
-import com.adamchilds.daycare.entity.roles.service.UserRoleService;
 import com.adamchilds.daycare.entity.subscription.model.Subscription;
 import com.adamchilds.daycare.entity.subscription.service.SubscriptionService;
 import com.adamchilds.daycare.entity.user.model.User;
 import com.adamchilds.daycare.entity.user.service.UserService;
-import com.adamchilds.daycare.util.encryption.EncryptionUtil;
 import com.adamchilds.daycare.web.home.HomeController;
 import com.adamchilds.daycare.web.login.form.LoginForm;
 import org.slf4j.Logger;
@@ -19,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
@@ -38,16 +32,10 @@ public class HomeControllerImpl implements HomeController {
     private AccountService accountService;
 
     @Autowired
-    private AuditService auditService;
-
-    @Autowired
     private SubscriptionService subscriptionService;
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private UserRoleService userRoleService;
 
     /**
      * {@inheritDoc}

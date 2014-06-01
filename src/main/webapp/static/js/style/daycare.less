@@ -17,7 +17,6 @@
 
                 th {
                     background: @daycare_blue;
-                    border-radius: 5px 5px 0 0;
                     color: #FFF;
                     font-size: 18px;
                     font-family: @daycare_font_family;
@@ -25,6 +24,14 @@
                     height: 50px;
                     padding-left: 20px;
                     text-transform: uppercase;
+
+                    &.first_th {
+                        border-top-left-radius: 5px;
+                    }
+
+                    &.last_th {
+                        border-top-right-radius: 5px;
+                    }
                 }
 
                 td {

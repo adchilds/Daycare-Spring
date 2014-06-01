@@ -17,10 +17,23 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <c:set var="pageURI" value="${requestScope['javax.servlet.forward.servlet_path']}" />
-                <li class="${fn:contains(pageURI, 'index') ? 'active' : 'none'}"><a href="<c:url value="/index.html" />">Home</a></li>
-                <li class="${fn:contains(pageURI, 'features') ? 'active' : 'none'}"><a href="/features.html">Features</a></li>
-                <li class="${fn:contains(pageURI, 'pricing') ? 'active' : 'none'}"><a href="<c:url value="/pricing.html" />">Pricing</a></li>
-                <li class="${fn:contains(pageURI, 'contact') ? 'active' : 'none'}"><a href="<c:url value="/contact.html" />">Contact Us</a></li>
+                <li class="${fn:contains(pageURI, 'index') and not fn:contains(pageURI, 'administration') ? 'active' : 'none'}">
+                    <a href="<c:url value="/index.html" />">Home</a>
+                </li>
+                <li class="${fn:contains(pageURI, 'features') ? 'active' : 'none'}">
+                    <a href="/features.html">Features</a>
+                </li>
+                <li class="${fn:contains(pageURI, 'pricing') ? 'active' : 'none'}">
+                    <a href="<c:url value="/pricing.html" />">Pricing</a>
+                </li>
+                <li class="${fn:contains(pageURI, 'contact') ? 'active' : 'none'}">
+                    <a href="<c:url value="/contact.html" />">Contact Us</a>
+                </li>
+                <c:if test="${isAdministrator}">
+                    <li class="${fn:contains(pageURI, 'administration') ? 'active' : 'none'}">
+                        <a href="<c:url value="/administration/index.html" />">Administration</a>
+                    </li>
+                </c:if>
                 <!-- Elements in the navbar based on if a user is logged in or not -->
             </ul>
             <c:choose>

@@ -13,5 +13,6 @@
     <import resource="applicationContext.xml" />
     <import resource="applicationContext-jpa.xml" />
     <import resource="applicationContext-security.xml" />
+    <import resource="applicationContext-cache.xml" />
 
 </beans>

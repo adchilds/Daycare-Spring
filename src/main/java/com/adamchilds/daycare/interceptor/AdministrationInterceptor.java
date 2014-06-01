@@ -1,6 +1,7 @@
 package com.adamchilds.daycare.interceptor;
 
 import com.adamchilds.daycare.entity.user.util.UserUtil;
+import com.adamchilds.daycare.web.administration.AdministrationNavigationEnum;
 import com.adamchilds.daycare.web.login.form.LoginForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
@@ -11,12 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * <p>This is a utility interceptor that intercepts every page request and does some work
- * before handling the user's request.</p>
+ * This is a utility interceptor that intercepts page requests under the "/administration" URI
+ * and does some work before handling the user's request.
  *
  * @author Adam Childs
  */
-public class GlobalInterceptor implements HandlerInterceptor {
+public class AdministrationInterceptor extends GlobalInterceptor implements HandlerInterceptor {
 
     @Autowired
     private UserUtil userUtil;
@@ -33,7 +34,9 @@ public class GlobalInterceptor implements HandlerInterceptor {
         // We need to check if the modelAndView is null and if it is, this is most likely due to a 404 or some other error page
         modelAndView = getModelAndView(modelAndView);
 
-        exposeAttributes(modelAndView.getModelMap());
+        exposeAdministrationAttributes(modelAndView.getModelMap());
+
+        super.postHandle(request, response, handler, modelAndView);
     }
 
     @Override
@@ -45,25 +48,8 @@ public class GlobalInterceptor implements HandlerInterceptor {
     /**
      * Exposes attributes to every request.
      */
-    private void exposeAttributes(ModelMap modelMap) {
-        modelMap.put("loginForm", new LoginForm());
-        modelMap.put("isAuthenticated", userUtil.isUserAuthenticated());
-        modelMap.put("isAdministrator", userUtil.isUserAdministrator());
-    }
-
-    /**
-     * Checks to see if the web request contains a {@link ModelAndView}. If it does not,
-     * we create it here and return the ModelAndView.
-     *
-     * @param modelAndView the {@link ModelAndView} associated with the web request
-     * @return the {@link ModelAndView} from the web request
-     */
-    protected ModelAndView getModelAndView(ModelAndView modelAndView) {
-        if (modelAndView == null) {
-            return new ModelAndView();
-        }
-
-        return modelAndView;
+    private void exposeAdministrationAttributes(ModelMap modelMap) {
+        modelMap.addAttribute("administrationNavigation", AdministrationNavigationEnum.values());
     }
 
 }

@@ -35,7 +35,7 @@ public class AdministrationControllerImpl implements AdministrationController {
      * {@inheritDoc}
      */
     @Override
-    public String getAdminPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+    public String getAdminIndexPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
         ArrayList<Account> accounts = new ArrayList<>();
         ArrayList<User> users = (ArrayList<User>) userService.readAllUsers();
         for (User user : users) {
@@ -45,6 +45,14 @@ public class AdministrationControllerImpl implements AdministrationController {
         modelMap.put("accountList", accounts);
 
         return "administration_index";
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getAdminUserAccountsPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+        return "administration_accounts";
     }
 
     /**

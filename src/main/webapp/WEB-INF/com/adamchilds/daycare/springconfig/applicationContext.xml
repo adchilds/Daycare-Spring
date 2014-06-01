@@ -25,22 +25,6 @@
     <mvc:resources location="resources/" mapping="/resources/**"/>
     <tx:annotation-driven />
 
-    <!-- Map URIs to their controllers -->
-    <bean id="unAuthenticatedUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-        <!--
-        <property name="mappings">
-            <props>
-                <prop key="/">mainController</prop>
-                <prop key="/index">mainController</prop>
-                <prop key="/login">loginController</prop>
-                <prop key="/signup">registrationController</prop>
-                <prop key="/submit-registration">registrationController</prop>
-                <prop key="/admin">administrationController</prop>
-            </props>
-        </property>
-        -->
-    </bean>
-
     <!-- Map logical view names to physical views -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
@@ -68,7 +52,15 @@
             <property name="paramName" value="lang" />
         </bean>
 
-        <bean id="globalInterceptor" class="com.adamchilds.daycare.interceptor.GlobalInterceptor"/>
+        <mvc:interceptor>
+            <mvc:mapping path="/*"/>
+            <bean id="globalInterceptor" class="com.adamchilds.daycare.interceptor.GlobalInterceptor"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/administration/*"/>
+            <bean id="administrationInterceptor" class="com.adamchilds.daycare.interceptor.AdministrationInterceptor"/>
+        </mvc:interceptor>
     </mvc:interceptors>
 
     <!-- Finds the user's locale from a predefined session attribute -->
@@ -76,12 +68,5 @@
           class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
         <property name="defaultLocale" value="en" />
     </bean>
-
-    <!-- Enable annotation-based validation using Bean ValidationUtil Framework -->
-    <!-- Using these instead of vld namespace to prevent Eclipse from complaining -->
-    <bean id="configurationLoader"
-          class="org.springmodules.validation.bean.conf.loader.annotation.AnnotationBeanValidationConfigurationLoader"/>
-    <bean id="validator" class="org.springmodules.validation.bean.BeanValidator"
-          p:configurationLoader-ref="configurationLoader"/>
 
 </beans>

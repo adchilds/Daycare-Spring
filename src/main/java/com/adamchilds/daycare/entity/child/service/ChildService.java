@@ -1,6 +1,7 @@
 package com.adamchilds.daycare.entity.child.service;
 
 import com.adamchilds.daycare.entity.child.model.Child;
+import org.springframework.cache.annotation.Cacheable;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -41,8 +42,9 @@ public interface ChildService {
      * This method will return a list of all the {@link com.adamchilds.daycare.entity.child.model.Child}'s
      * in the database
      *
-     * @return a list of all Childs
+     * @return a list of all Children
      */
+    @Cacheable(value="readAllChildren")
     public List<Child> readAllChildren();
 
     /**
@@ -51,6 +53,7 @@ public interface ChildService {
      *
      * @return a List of Child(ren) matching to given criteria
      */
+    @Cacheable(value="readAllChildrenByAccountId", key="#accountId")
     public List<Child> readAllChildrenByAccountId(Long accountId);
 
     /**
@@ -60,6 +63,7 @@ public interface ChildService {
      * @param id the unique id of a valid {@link com.adamchilds.daycare.entity.child.model.Child}
      * @return a single Child based on the given unique ID
      */
+    @Cacheable(value="readChildById", key="#id")
     public Child readChildById(Long id);
 
     /**

@@ -10,29 +10,29 @@
                 <div class="daycare_table">
                     <table>
                         <tbody>
-                        <tr>
-                            <th colspan="2">Lorem ipsum dolor sit amet</th>
-                        </tr>
-                        <tr>
-                            <td>Test One</td>
-                            <td>Test Two</td>
-                        </tr>
-                        <tr>
-                            <td>Test One</td>
-                            <td>Test Two</td>
-                        </tr>
-                        <tr>
-                            <td>Test One</td>
-                            <td>Test Two</td>
-                        </tr>
-                        <tr>
-                            <td>Test One</td>
-                            <td>Test Two</td>
-                        </tr>
-                        <tr>
-                            <td>Test One</td>
-                            <td>Test Two</td>
-                        </tr>
+                            <tr>
+                                <th class="first_th last_th" colspan="2">Lorem ipsum dolor sit amet</th>
+                            </tr>
+                            <tr>
+                                <td>Test One</td>
+                                <td>Test Two</td>
+                            </tr>
+                            <tr>
+                                <td>Test One</td>
+                                <td>Test Two</td>
+                            </tr>
+                            <tr>
+                                <td>Test One</td>
+                                <td>Test Two</td>
+                            </tr>
+                            <tr>
+                                <td>Test One</td>
+                                <td>Test Two</td>
+                            </tr>
+                            <tr>
+                                <td>Test One</td>
+                                <td>Test Two</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
