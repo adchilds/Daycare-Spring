@@ -25,7 +25,7 @@
         <intercept-url pattern="/administration/**" access="hasRole('ROLE_ADMINISTRATOR')" />
 
         <!-- All other URLs -->
-        <intercept-url pattern="/**" access="isAnonymous() or isAuthenticated()" />
+        <intercept-url pattern="/com/adamchilds/daycare/entity/roles/service" access="isAnonymous() or isAuthenticated()" />
 
         <!-- Form login -->
         <form-login login-page="/login.html" default-target-url="/index.html" authentication-success-handler-ref="authenticationSuccessHandler" authentication-failure-handler-ref="authenticationFailureHandler" />

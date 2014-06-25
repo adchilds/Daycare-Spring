@@ -14,7 +14,7 @@
 
     <!-- EhCache library setup -->
     <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
-          p:configLocation="/WEB-INF/com/adamchilds/daycare/ehcache.xml"
+          p:configLocation="/WEB-INF/ehcache/ehcache.xml"
           p:shared="true"/>
 
 </beans>
