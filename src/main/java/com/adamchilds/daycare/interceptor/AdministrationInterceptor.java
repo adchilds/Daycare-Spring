@@ -1,9 +1,6 @@
 package com.adamchilds.daycare.interceptor;
 
-import com.adamchilds.daycare.entity.user.util.UserUtil;
 import com.adamchilds.daycare.web.administration.AdministrationNavigationEnum;
-import com.adamchilds.daycare.web.login.form.LoginForm;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,9 +15,6 @@ import javax.servlet.http.HttpServletResponse;
  * @author Adam Childs
  */
 public class AdministrationInterceptor extends GlobalInterceptor implements HandlerInterceptor {
-
-    @Autowired
-    private UserUtil userUtil;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)

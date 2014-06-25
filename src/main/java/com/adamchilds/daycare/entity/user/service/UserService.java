@@ -5,6 +5,11 @@ import com.adamchilds.daycare.entity.user.model.User;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+/**
+ * This service provides functionality for interfacing with users.
+ *
+ * @author Adam Childs
+ */
 public interface UserService {
 
     /**
@@ -96,4 +101,5 @@ public interface UserService {
      * @return The {@link com.adamchilds.daycare.entity.user.model.User} object that has been updated
      */
     public Object update(User user);
+
 }

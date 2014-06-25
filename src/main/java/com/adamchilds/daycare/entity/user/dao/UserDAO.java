@@ -5,6 +5,11 @@ import com.adamchilds.daycare.entity.user.model.User;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+/**
+ * This DAO handles CRUD operations for users.
+ *
+ * @author Adam Childs
+ */
 public interface UserDAO {
 
     /**

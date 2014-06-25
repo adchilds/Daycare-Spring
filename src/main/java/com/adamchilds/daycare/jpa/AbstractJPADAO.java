@@ -87,4 +87,5 @@ public abstract class AbstractJPADAO {
     protected Object update(Object obj) {
         return entityManager.merge(obj);
     }
+
 }

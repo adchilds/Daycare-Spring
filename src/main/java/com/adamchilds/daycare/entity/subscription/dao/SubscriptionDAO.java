@@ -5,6 +5,11 @@ import com.adamchilds.daycare.entity.subscription.model.Subscription;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+/**
+ * This DAO handles CRUD operations for subscriptions.
+ *
+ * @author Adam Childs
+ */
 public interface SubscriptionDAO {
 
     /**

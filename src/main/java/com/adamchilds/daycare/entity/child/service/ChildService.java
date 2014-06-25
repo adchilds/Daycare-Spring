@@ -6,6 +6,11 @@ import org.springframework.cache.annotation.Cacheable;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+/**
+ * This service provides functionality for interfacing with daycare children.
+ *
+ * @author Adam Childs
+ */
 public interface ChildService {
 
     /**

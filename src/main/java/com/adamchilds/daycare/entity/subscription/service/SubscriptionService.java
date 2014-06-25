@@ -5,6 +5,11 @@ import com.adamchilds.daycare.entity.subscription.model.Subscription;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+/**
+ * This service provides functionality for interfacing with subscriptions.
+ *
+ * @author Adam Childs
+ */
 public interface SubscriptionService {
 
     /**

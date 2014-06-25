@@ -40,20 +40,27 @@ public class DaycareAuthenticationSuccessHandler extends SimpleUrlAuthentication
      */
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
+        User user = null;
+        try {
+            // Set the last login date for the user
+            user = userService.readUserByUsername(authentication.getName());
+            user.setLastLogin(DateTime.now().toDate());
+            userService.update(user);
 
-        // Set the last login date for the user
-        User user = userService.readUserByUsername(authentication.getName());
-        user.setLastLogin(DateTime.now().toDate());
-        userService.update(user);
+            // Create an audit for the user login
+            Audit audit = new Audit();
+            audit.setUserId(user.getId());
+            audit.setAuditType(AuditTypeEnum.ACCOUNT_LOGIN.getAuditType());
+            audit.setExtraInformation("USER=[" + user.getUsername() + "], TIME=[" + DateTime.now().toString("mm/dd/yyyy hh:mm:ss") + "]");
+            audit.setAuditDate(DateTime.now().toDate());
+            auditService.create(audit);
 
-        // Create an audit for the user login
-        Audit audit = new Audit();
-        audit.setUserId(user.getId());
-        audit.setAuditType(AuditTypeEnum.ACCOUNT_LOGIN.getAuditType());
-        audit.setExtraInformation("USER=[" + user.getUsername() + "], TIME=[" + DateTime.now().toString("mm/dd/yyyy hh:mm:ss") + "]");
-        audit.setAuditDate(DateTime.now().toDate());
-        auditService.create(audit);
+            if (logger.isDebugEnabled()) {
+                logger.debug("User successfully logged in: USER=[" + user.getUsername() + "]");
+            }
+        } catch(Exception e) {
+            logger.error("An error occurred during authentication success handling... USER=[" + user + "], AUTHENTICATION=[" + authentication.getPrincipal() + "]", e);
+        }
 
         // Continue with normal authentication success behavior
         super.onAuthenticationSuccess(request, response, authentication);

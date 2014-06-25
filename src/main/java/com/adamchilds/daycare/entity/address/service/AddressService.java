@@ -5,6 +5,11 @@ import com.adamchilds.daycare.entity.address.model.Address;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+/**
+ * This service provides functionality for interfacing with addresses.
+ *
+ * @author Adam Childs
+ */
 public interface AddressService {
 
     /**

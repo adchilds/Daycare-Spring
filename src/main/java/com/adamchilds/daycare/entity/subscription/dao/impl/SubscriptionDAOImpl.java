@@ -1,5 +1,6 @@
-package com.adamchilds.daycare.entity.subscription.dao;
+package com.adamchilds.daycare.entity.subscription.dao.impl;
 
+import com.adamchilds.daycare.entity.subscription.dao.SubscriptionDAO;
 import com.adamchilds.daycare.entity.subscription.model.Subscription;
 import com.adamchilds.daycare.jpa.AbstractJPADAO;
 import org.springframework.stereotype.Repository;
@@ -8,6 +9,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 
+/**
+ * {@inheritDoc}
+ */
 @Repository
 public class SubscriptionDAOImpl extends AbstractJPADAO implements SubscriptionDAO {
 

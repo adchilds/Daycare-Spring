@@ -9,6 +9,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 
+/**
+ * {@inheritDoc}
+ */
 @Repository
 public class BusinessDAOImpl extends AbstractJPADAO implements BusinessDAO {
 

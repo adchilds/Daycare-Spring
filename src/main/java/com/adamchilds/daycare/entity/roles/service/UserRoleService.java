@@ -6,6 +6,11 @@ import org.springframework.scheduling.annotation.Async;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+/**
+ * This service provides functionality for interfacing with user roles.
+ *
+ * @author Adam Childs
+ */
 public interface UserRoleService {
 
     /**

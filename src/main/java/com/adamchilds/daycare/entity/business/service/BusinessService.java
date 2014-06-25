@@ -5,6 +5,11 @@ import com.adamchilds.daycare.entity.business.model.Business;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+/**
+ * This service provides functionality for interfacing with daycare businesses.
+ *
+ * @author Adam Childs
+ */
 public interface BusinessService {
 
     /**

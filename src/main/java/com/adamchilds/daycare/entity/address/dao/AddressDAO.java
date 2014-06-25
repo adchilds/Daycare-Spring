@@ -5,6 +5,11 @@ import com.adamchilds.daycare.entity.address.model.Address;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+/**
+ * This DAO handles CRUD operations for addresses.
+ *
+ * @author Adam Childs
+ */
 public interface AddressDAO {
 
     /**

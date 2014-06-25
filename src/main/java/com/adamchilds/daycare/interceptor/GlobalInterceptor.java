@@ -43,7 +43,9 @@ public class GlobalInterceptor implements HandlerInterceptor {
     }
 
     /**
-     * Exposes attributes to every request.
+     * Exposes attributes on the given {@link ModelMap}
+     *
+     * @param modelMap The {@link ModelMap} to add parameters to
      */
     private void exposeAttributes(ModelMap modelMap) {
         modelMap.put("loginForm", new LoginForm());

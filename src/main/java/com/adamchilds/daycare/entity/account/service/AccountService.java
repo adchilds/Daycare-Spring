@@ -5,6 +5,11 @@ import com.adamchilds.daycare.entity.account.model.Account;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+/**
+ * This service provides functionality for interfacing with users accounts.
+ *
+ * @author Adam Childs
+ */
 public interface AccountService {
 
     /**

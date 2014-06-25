@@ -116,10 +116,12 @@ public class UserUtil {
     private UserDetails getCurrentUserDetails() {
         SecurityContext securityContext = SecurityContextHolder.getContext();
         Authentication authentication = securityContext.getAuthentication();
+
         if (authentication != null) {
             Object principal = authentication.getPrincipal();
             return principal instanceof UserDetails ? (UserDetails) principal : null;
         }
+
         return null;
     }
 

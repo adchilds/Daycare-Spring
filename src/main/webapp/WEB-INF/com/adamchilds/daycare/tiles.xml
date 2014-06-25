@@ -70,6 +70,14 @@
         <put-attribute name="body" value="/WEB-INF/jsp/administration/accounts.jsp" />
     </definition>
 
+    <definition name="administration_cache" extends="administration.definition">
+        <put-attribute name="body" value="/WEB-INF/jsp/administration/caching.jsp" />
+    </definition>
+
+    <definition name="administration_finances" extends="administration.definition">
+        <put-attribute name="body" value="/WEB-INF/jsp/administration/finances.jsp" />
+    </definition>
+
     <!-- ===============================================================
         Error pages
     ================================================================ -->

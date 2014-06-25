@@ -8,6 +8,7 @@ import com.adamchilds.daycare.web.administration.controller.AdministrationContro
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -30,6 +32,9 @@ public class AdministrationControllerImpl implements AdministrationController {
 
     @Autowired
     private AccountService accountService;
+
+    @Autowired
+    private CacheManager cacheManager;
 
     /**
      * {@inheritDoc}
@@ -53,6 +58,26 @@ public class AdministrationControllerImpl implements AdministrationController {
     @Override
     public String getAdminUserAccountsPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
         return "administration_accounts";
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getAdminCachingPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+        Collection<String> cacheList = cacheManager.getCacheNames();
+
+        modelMap.addAttribute("cacheList", cacheList);
+
+        return "administration_cache";
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getAdminFinancesPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+        return "administration_finances";
     }
 
     /**

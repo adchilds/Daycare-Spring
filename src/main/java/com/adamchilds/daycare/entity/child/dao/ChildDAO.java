@@ -5,6 +5,11 @@ import com.adamchilds.daycare.entity.child.model.Child;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+/**
+ * This DAO handles CRUD operations for daycare children.
+ *
+ * @author Adam Childs
+ */
 public interface ChildDAO {
 
     /**

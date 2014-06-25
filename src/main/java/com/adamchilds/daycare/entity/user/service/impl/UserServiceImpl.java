@@ -1,7 +1,8 @@
-package com.adamchilds.daycare.entity.user.service;
+package com.adamchilds.daycare.entity.user.service.impl;
 
 import com.adamchilds.daycare.entity.user.dao.UserDAO;
 import com.adamchilds.daycare.entity.user.model.User;
+import com.adamchilds.daycare.entity.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+/**
+ * {@inheritDoc}
+ */
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {

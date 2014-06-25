@@ -23,7 +23,7 @@ public interface AdministrationController {
      * with a role of ROLE_ADMINISTRATOR or ROLE_SUPERUSER from {@link com.adamchilds.daycare.entity.roles.enumeration.UserRoleEnum}
      * may use some or all of the utilities provided on these pages.
      *
-     * @param modelMap the {@link ModelMap} associated with the POST request
+     * @param modelMap the {@link ModelMap} associated with the GET request
      * @param request the request
      * @param response the response
      * @return the tiles-def name of the view to render
@@ -36,13 +36,37 @@ public interface AdministrationController {
      * with a role of ROLE_ADMINISTRATOR or ROLE_SUPERUSER from {@link com.adamchilds.daycare.entity.roles.enumeration.UserRoleEnum}
      * may use some or all of the utilities provided on these pages.
      *
-     * @param modelMap the {@link ModelMap} associated with the POST request
+     * @param modelMap the {@link ModelMap} associated with the GET request
      * @param request the request
      * @param response the response
      * @return the tiles-def name of the view to render
      */
     @RequestMapping(value = "/administration/accounts.html")
     public String getAdminUserAccountsPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
+
+    /**
+     * Displays the site caching page for the administration dashboard. Here, administrators can clear the cache, view
+     * the contents of the cache, and other miscellaneous caching needs.
+     *
+     * @param modelMap the {@link ModelMap} associated with the GET request
+     * @param request the request
+     * @param response the response
+     * @return the tiles-def name of the view to render
+     */
+    @RequestMapping(value = "/administration/cache.html")
+    public String getAdminCachingPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
+
+    /**
+     * Displays the site finances page for the administration dashboard. Administrators can view current finances based
+     * on user subscriptions, future payments, and other financial needs.
+     *
+     * @param modelMap the {@link ModelMap} associated with the GET request
+     * @param request the request
+     * @param response the response
+     * @return the tiles-def name of the view to render
+     */
+    @RequestMapping(value = "/administration/finances.html")
+    public String getAdminFinancesPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
 
     /**
      * Executed when the user attempts to delete an entry in the "User List" table.
