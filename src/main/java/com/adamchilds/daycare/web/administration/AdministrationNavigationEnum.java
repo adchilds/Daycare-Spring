@@ -5,7 +5,8 @@ public enum AdministrationNavigationEnum {
     INDEX("Home", "administration_index", "/administration/index.html"),
     USER_ACCOUNTS("User Accounts", "administration_users", "/administration/accounts.html"),
     FINANCES("Finances", "administration_finances", "/administration/finances.html"),
-    CACHING("Caching", "administration_cache", "/administration/cache.html");
+    CACHING("Caching", "administration_cache", "/administration/cache.html"),
+    REDIRECTS("Redirects", "administration_redirects", "/administration/redirects.html");
 
     private String textRepresentation;
     private String tilesDef;

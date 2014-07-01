@@ -1,6 +1,7 @@
 package com.adamchilds.daycare.web.administration.controller;
 
 import com.adamchilds.daycare.entity.user.model.User;
+import com.adamchilds.daycare.web.administration.form.RedirectForm;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -67,6 +68,30 @@ public interface AdministrationController {
      */
     @RequestMapping(value = "/administration/finances.html")
     public String getAdminFinancesPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
+
+    /**
+     * Displays the site redirects page for the administration dashboard. Administrators can view and update the current
+     * site redirects on this page.
+     *
+     * @param modelMap the {@link ModelMap} associated with the GET request
+     * @param request the request
+     * @param response the response
+     * @return the tiles-def name of the view to render
+     */
+    @RequestMapping(value = "/administration/redirects.html", method = RequestMethod.GET)
+    public String getAdminRedirectsPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response, @ModelAttribute("form") RedirectForm form);
+
+    /**
+     * Displays the site redirects page for the administration dashboard. Administrators can view and update the current
+     * site redirects on this page. Responds to POST requests (form submissions)
+     *
+     * @param modelMap the {@link ModelMap} associated with the GET request
+     * @param request the request
+     * @param response the response
+     * @return the tiles-def name of the view to render
+     */
+    @RequestMapping(value = "/administration/redirects.html", method = RequestMethod.POST)
+    public String postAdminRedirectsPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response, @ModelAttribute("form") RedirectForm form);
 
     /**
      * Executed when the user attempts to delete an entry in the "User List" table.

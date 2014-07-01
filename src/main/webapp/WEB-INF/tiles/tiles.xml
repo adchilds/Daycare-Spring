@@ -78,6 +78,10 @@
         <put-attribute name="body" value="/WEB-INF/jsp/administration/finances.jsp" />
     </definition>
 
+    <definition name="administration_redirects" extends="administration.definition">
+        <put-attribute name="body" value="/WEB-INF/jsp/administration/redirects.jsp" />
+    </definition>
+
     <!-- ===============================================================
         Error pages
     ================================================================ -->

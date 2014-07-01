@@ -2,9 +2,11 @@ package com.adamchilds.daycare.web.administration.controller.impl;
 
 import com.adamchilds.daycare.entity.account.model.Account;
 import com.adamchilds.daycare.entity.account.service.AccountService;
+import com.adamchilds.daycare.entity.redirect.service.RedirectService;
 import com.adamchilds.daycare.entity.user.model.User;
 import com.adamchilds.daycare.entity.user.service.UserService;
 import com.adamchilds.daycare.web.administration.controller.AdministrationController;
+import com.adamchilds.daycare.web.administration.form.RedirectForm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +30,16 @@ public class AdministrationControllerImpl implements AdministrationController {
     private static final Logger logger = LoggerFactory.getLogger(AdministrationControllerImpl.class);
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private AccountService accountService;
 
     @Autowired
     private CacheManager cacheManager;
+
+    @Autowired
+    private RedirectService redirectService;
+
+    @Autowired
+    private UserService userService;
 
     /**
      * {@inheritDoc}
@@ -78,6 +83,40 @@ public class AdministrationControllerImpl implements AdministrationController {
     @Override
     public String getAdminFinancesPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
         return "administration_finances";
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getAdminRedirectsPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response,
+                                        @ModelAttribute("form") RedirectForm form) {
+        if (form != null) {
+            modelMap.addAttribute("form", form);
+        } else {
+            modelMap.addAttribute("form", new RedirectForm());
+        }
+
+        modelMap.addAttribute("allRedirects", redirectService.readAllRedirects());
+
+        return "administration_redirects";
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String postAdminRedirectsPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response,
+                                         @ModelAttribute("form") RedirectForm form) {
+        if (form != null) {
+            modelMap.addAttribute("form", form);
+        } else {
+            modelMap.addAttribute("form", new RedirectForm());
+        }
+
+        modelMap.addAttribute("allRedirects", redirectService.readAllRedirects());
+
+        return "administration_redirects";
     }
 
     /**

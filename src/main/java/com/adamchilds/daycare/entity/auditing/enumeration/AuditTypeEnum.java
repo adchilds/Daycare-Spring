@@ -19,7 +19,7 @@ public enum AuditTypeEnum {
     ACCOUNT_LOGOUT("Account Logout"),
 
     /*
-     * Daycare Mangement System action audits
+     * Daycare Management System action audits
      */
     ACTION_CREATE_CHILD("Create Child"),
     ACTION_REMOVE_CHILD("Remove Child"),
@@ -37,6 +37,13 @@ public enum AuditTypeEnum {
      * Request method audits
      */
     WEB_REQUEST("Web Request"),
+
+    /*
+     * Redirect Service audits
+     */
+    REDIRECT_CREATED("Redirect Created"),
+    REDIRECT_REMOVED("Redirect Removed"),
+    REDIRECT_UPDATED("Redirect Updated"),
 
     /*
      * Payment audits

@@ -31,6 +31,19 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!-- ===================================================
+        Filters
+    ==================================================== -->
+    <filter>
+        <filter-name>redirectFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>redirectFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <!-- Vaadin -->
     <servlet>
         <servlet-name>vaadinServlet</servlet-name>
