@@ -32,13 +32,6 @@ public class AddressDAOImpl extends AbstractJPADAO implements AddressDAO {
     /**
      * {@inheritDoc}
      */
-    public EntityManager getEntityManager() {
-        return super.getEntityManager();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public Address read(Object objectId) {
         return super.read(Address.class, objectId);
     }
@@ -46,8 +39,42 @@ public class AddressDAOImpl extends AbstractJPADAO implements AddressDAO {
     /**
      * {@inheritDoc}
      */
+    @SuppressWarnings("unchecked")
     public List<Address> readAllAddresses() {
         Query query = super.createNamedQuery( "readAllAddresses" );
+
+        return (List<Address>) query.getResultList();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @SuppressWarnings("unchecked")
+    public List<Address> readAllAddressesByCity(String city) {
+        Query query = super.createNamedQuery( "readAllAddressesByCity" )
+                .setParameter("addressCity", city);
+
+        return (List<Address>) query.getResultList();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @SuppressWarnings("unchecked")
+    public List<Address> readAllAddressesByCountry(String country) {
+        Query query = super.createNamedQuery( "readAllAddressesByCountry" )
+                .setParameter("addressCountry", country);
+
+        return (List<Address>) query.getResultList();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @SuppressWarnings("unchecked")
+    public List<Address> readAllAddressesByState(String state) {
+        Query query = super.createNamedQuery( "readAllAddressesByState" )
+                .setParameter("addressState", state);
 
         return (List<Address>) query.getResultList();
     }

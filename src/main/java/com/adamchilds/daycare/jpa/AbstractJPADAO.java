@@ -52,7 +52,7 @@ public abstract class AbstractJPADAO {
      * Returns this User's instance of EntityManager
      * @return an EntityManager tied to this User instance
      */
-    protected EntityManager getEntityManager() {
+    public EntityManager getEntityManager() {
         return this.entityManager;
     }
 

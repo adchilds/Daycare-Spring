@@ -63,7 +63,7 @@ public interface ChildService {
 
     /**
      * Gets a single {@link com.adamchilds.daycare.entity.child.model.Child}
-     * from the DAYCARE_ACCOUNT table by their unique ID
+     * from the DAYCARE_CHILD table by their unique ID
      *
      * @param id the unique id of a valid {@link com.adamchilds.daycare.entity.child.model.Child}
      * @return a single Child based on the given unique ID

@@ -50,7 +50,7 @@ public class DaycareAuthenticationSuccessHandler extends SavedRequestAwareAuthen
             Audit audit = new Audit();
             audit.setUserId(user.getId());
             audit.setAuditType(AuditTypeEnum.ACCOUNT_LOGIN.getAuditType());
-            audit.setExtraInformation("USER=[" + user.getUsername() + "], TIME=[" + DateTime.now().toString("MM/dd/yyyy hh:mm:ss") + "]");
+            audit.setExtraInformation("USER=[" + user.getUsername() + "]");
             audit.setAuditDate(DateTime.now().toDate());
             auditService.create(audit);
 

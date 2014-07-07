@@ -10,6 +10,12 @@ import javax.persistence.*;
 @NamedQueries(value = {
         @NamedQuery(name = "readAllAddresses",
                 query = "SELECT addr FROM Address addr ORDER BY addr.addressId DESC"),
+        @NamedQuery(name = "readAllAddressesByCity",
+                query = "SELECT addr FROM Address addr WHERE addr.city = :addressCity"),
+        @NamedQuery(name = "readAllAddressesByCountry",
+                query = "SELECT addr FROM Address addr WHERE addr.country = :addressCountry"),
+        @NamedQuery(name = "readAllAddressesByState",
+                query = "SELECT addr FROM Address addr WHERE addr.state = :addressState"),
         @NamedQuery(name = "readAddressById",
                 query = "SELECT addr FROM Address addr WHERE addr.addressId = :addressId")
 })

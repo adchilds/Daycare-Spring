@@ -37,13 +37,6 @@ public class AddressServiceImpl implements AddressService {
     /**
      * {@inheritDoc}
      */
-    public EntityManager getEntityManager() {
-        return addressDAO.getEntityManager();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public Address read(Object objectId) {
         return addressDAO.read(objectId);
     }
@@ -53,6 +46,27 @@ public class AddressServiceImpl implements AddressService {
      */
     public List<Address> readAllAddresses() {
         return addressDAO.readAllAddresses();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public List<Address> readAllAddressesByCity(String city) {
+        return addressDAO.readAllAddressesByCity(city);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public List<Address> readAllAddressesByCountry(String country) {
+        return addressDAO.readAllAddressesByCountry(country);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public List<Address> readAllAddressesByState(String state) {
+        return addressDAO.readAllAddressesByState(state);
     }
 
     /**

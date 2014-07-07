@@ -40,4 +40,10 @@
            eternal="true"
            overflowToDisk="false" />
 
+    <!-- Guardians -->
+    <cache name="readGuardianById"
+           maxElementsInMemory="1000"
+           eternal="true"
+           overflowToDisk="false" />
+
 </ehcache>

@@ -15,7 +15,11 @@ import java.util.Date;
  */
 @NamedQueries(value = {
         @NamedQuery(name = "readAllGuardians",
-                query = "SELECT g FROM Guardian g ORDER BY g.lastName ASC")
+                query = "SELECT g FROM Guardian g ORDER BY g.lastName ASC"),
+        @NamedQuery(name = "readAllGuardiansByLastName",
+                query = "SELECT g FROM Guardian g WHERE g.lastName = :guardianLastName"),
+        @NamedQuery(name = "readGuardianById",
+                    query = "SELECT g FROM Guardian g WHERE g.id = :guardianId")
 })
 @Entity
 @Table(name = "DAYCARE_GUARDIAN")

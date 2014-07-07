@@ -28,12 +28,6 @@ public interface AddressDAO {
     public Address find(Address address);
 
     /**
-     * Returns this {@link com.adamchilds.daycare.entity.address.model.Address}'s instance of EntityManager
-     * @return an EntityManager tied to this Address instance
-     */
-    public EntityManager getEntityManager();
-
-    /**
      * Return a specific {@link com.adamchilds.daycare.entity.address.model.Address} from the database.
      *
      * @param objectId The id of the {@link com.adamchilds.daycare.entity.address.model.Address}
@@ -49,6 +43,30 @@ public interface AddressDAO {
      * @return a list of all Addresses
      */
     public List<Address> readAllAddresses();
+
+    /**
+     * Reads all {@link Address} objects by the given {@code city}.
+     *
+     * @param city the city in which the returned {@link Address}es must belong
+     * @return a new list of {@link Address}es that belong to the given {@code city}
+     */
+    public List<Address> readAllAddressesByCity(String city);
+
+    /**
+     * Reads all {@link Address} objects by the given {@code country}.
+     *
+     * @param country the country in which the returned {@link Address}es must belong
+     * @return a new list of {@link Address}es that belong to the given {@code country}
+     */
+    public List<Address> readAllAddressesByCountry(String country);
+
+    /**
+     * Reads all {@link Address} objects by the given {@code state}.
+     *
+     * @param state the state in which the returned {@link Address}es must belong
+     * @return a new list of {@link Address}es that belong to the given {@code state}
+     */
+    public List<Address> readAllAddressesByState(String state);
 
     /**
      * Gets a single {@link com.adamchilds.daycare.entity.address.model.Address}
