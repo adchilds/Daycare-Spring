@@ -42,6 +42,8 @@ public enum AuditTypeEnum {
      * Redirect Service audits
      */
     REDIRECT_CREATED("Redirect Created"),
+    REDIRECT_DISABLED("Redirect Disabled"),
+    REDIRECT_ENABLED("Redirect Enabled"),
     REDIRECT_REMOVED("Redirect Removed"),
     REDIRECT_UPDATED("Redirect Updated"),
 

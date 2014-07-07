@@ -1,12 +1,13 @@
 package com.adamchilds.daycare.entity.redirect.service.impl;
 
+import com.adamchilds.daycare.entity.redirect.RedirectUtil;
 import com.adamchilds.daycare.entity.redirect.dao.RedirectDAO;
 import com.adamchilds.daycare.entity.redirect.model.Redirect;
 import com.adamchilds.daycare.entity.redirect.service.RedirectService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,11 +24,18 @@ public class RedirectServiceImpl implements RedirectService {
     @Autowired
     private RedirectDAO redirectDAO;
 
+    @Autowired
+    private CacheManager cacheManager;
+
     /**
      * {@inheritDoc}
      */
-    public void create(Redirect redirect) {
-        redirectDAO.create(redirect);
+    public Redirect create(Redirect redirect) {
+        redirect = redirectDAO.create(redirect);
+
+        clearRedirectCache();
+
+        return redirect;
     }
 
     /**
@@ -54,13 +62,15 @@ public class RedirectServiceImpl implements RedirectService {
     /**
      * {@inheritDoc}
      */
-    public Redirect getRedirect(String uri) {
-        try {
-            return redirectDAO.readRedirectByURI(uri);
-        } catch (DataIntegrityViolationException e) {
-            logger.error("Error looking up redirect for URI=[" + uri + "]", e);
-            return null;
-        }
+    public List<Redirect> readAllRedirectsByDestinationURI(String destinationURI) {
+        return redirectDAO.readAllRedirectsByDestinationURI(destinationURI);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public Redirect readRedirectByURI(String uri) {
+        return redirectDAO.readRedirectByURI(uri);
     }
 
     /**
@@ -68,6 +78,8 @@ public class RedirectServiceImpl implements RedirectService {
      */
     public void remove(Redirect redirect) {
         redirectDAO.remove(redirect);
+
+        clearRedirectCache();
     }
 
     /**
@@ -75,6 +87,21 @@ public class RedirectServiceImpl implements RedirectService {
      */
     public void update(Redirect redirect) {
         redirectDAO.update(redirect);
+
+        clearRedirectCache();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void clearRedirectCache() {
+        if (logger.isDebugEnabled()) {
+            logger.debug("Clearing the Redirect cache...");
+        }
+
+        cacheManager.getCache(RedirectUtil.CACHE_READ_ALL_REDIRECTS).clear();
+        cacheManager.getCache(RedirectUtil.CACHE_READ_REDIRECT_BY_URI).clear();
+        cacheManager.getCache(RedirectUtil.CACHE_READ_ALL_REDIRECTS_BY_DESTINATION).clear();
     }
 
 }

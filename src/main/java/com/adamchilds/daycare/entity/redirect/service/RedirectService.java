@@ -1,6 +1,8 @@
 package com.adamchilds.daycare.entity.redirect.service;
 
+import com.adamchilds.daycare.entity.redirect.RedirectUtil;
 import com.adamchilds.daycare.entity.redirect.model.Redirect;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
 
@@ -25,7 +27,7 @@ public interface RedirectService {
      *
      * @param redirect The {@link Redirect} to persist
      */
-    public void create(Redirect redirect);
+    public Redirect create(Redirect redirect);
 
     /**
      * Finds the given {@link Redirect} in the database.
@@ -48,15 +50,26 @@ public interface RedirectService {
      *
      * @return a list of all {@link Redirect}s
      */
+    @Cacheable(value = RedirectUtil.CACHE_READ_ALL_REDIRECTS)
     public List<Redirect> readAllRedirects();
 
     /**
-     * This method will return an active redirect of one exists for the given URI.
+     * This method will return a list of all {@link Redirect}s that have a destination URI of the value specified.
+     *
+     * @param destinationURI the destination URI that the redirect must contain in order to be returned
+     * @return a list of all {@link Redirect}s with the given destination URI
+     */
+    @Cacheable(value = RedirectUtil.CACHE_READ_ALL_REDIRECTS_BY_DESTINATION, key="#destinationURI")
+    public List<Redirect> readAllRedirectsByDestinationURI(String destinationURI);
+
+    /**
+     * This method will return an active redirect if one exists for the given URI.
      *
      * @param uri The URI we are looking up.
      * @return The {@link Redirect} if there is one match, NULL if there are no matches.
      */
-    public Redirect getRedirect(String uri);
+    @Cacheable(value = RedirectUtil.CACHE_READ_REDIRECT_BY_URI, key = "#uri")
+    public Redirect readRedirectByURI(String uri);
 
     /**
      * Removes the specified {@link Redirect} from the database.
@@ -71,5 +84,10 @@ public interface RedirectService {
      * @param redirect The {@link Redirect} to update
      */
     public void update(Redirect redirect);
+
+    /**
+     * Clears all entries from the internal redirect cache.
+     */
+    public void clearRedirectCache();
 
 }

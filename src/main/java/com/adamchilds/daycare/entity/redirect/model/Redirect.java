@@ -15,8 +15,17 @@ import java.util.Calendar;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "SITE_REDIRECT")
 @NamedQueries(value = {
-        @NamedQuery(name = "readAllRedirects",
-                query = "SELECT r FROM Redirect r"
+        @NamedQuery(
+                name = "readAllRedirects",
+                query = "SELECT r FROM Redirect r ORDER BY r.id DESC"
+        ),
+        @NamedQuery(
+                name = "readRedirectByURI",
+                query = "SELECT r FROM Redirect r WHERE r.sourceURL = :sourceURL"
+        ),
+        @NamedQuery(
+                name = "readAllRedirectsByDestinationURI",
+                query = "SELECT r FROM Redirect r WHERE r.destinationURL = :destinationURL"
         )
 })
 public class Redirect {
@@ -26,7 +35,7 @@ public class Redirect {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "SOURCE_URL")
+    @Column(name = "SOURCE_URL", unique = true)
     private String sourceURL;
 
     @Column(name = "DESTINATION_URL")

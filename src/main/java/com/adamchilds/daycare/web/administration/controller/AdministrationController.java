@@ -3,10 +3,8 @@ package com.adamchilds.daycare.web.administration.controller;
 import com.adamchilds.daycare.entity.user.model.User;
 import com.adamchilds.daycare.web.administration.form.RedirectForm;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -79,7 +77,11 @@ public interface AdministrationController {
      * @return the tiles-def name of the view to render
      */
     @RequestMapping(value = "/administration/redirects.html", method = RequestMethod.GET)
-    public String getAdminRedirectsPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response, @ModelAttribute("form") RedirectForm form);
+    public String getAdminRedirectsPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response,
+                                        @ModelAttribute("form") RedirectForm form,
+                                        @RequestParam(value = "enableId", required = false) Long enableId,
+                                        @RequestParam(value = "disableId", required = false) Long disableId,
+                                        @RequestParam(value = "removeId", required = false) Long removeId);
 
     /**
      * Displays the site redirects page for the administration dashboard. Administrators can view and update the current
@@ -91,7 +93,9 @@ public interface AdministrationController {
      * @return the tiles-def name of the view to render
      */
     @RequestMapping(value = "/administration/redirects.html", method = RequestMethod.POST)
-    public String postAdminRedirectsPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response, @ModelAttribute("form") RedirectForm form);
+    public String postAdminRedirectsPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response,
+                                         @ModelAttribute("form") RedirectForm form,
+                                         BindingResult result);
 
     /**
      * Executed when the user attempts to delete an entry in the "User List" table.

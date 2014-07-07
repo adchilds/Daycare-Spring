@@ -4,7 +4,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
 /**
@@ -14,7 +13,7 @@ import javax.persistence.Query;
 @Transactional(value = "transactionManager")
 public abstract class AbstractJPADAO {
 
-    @PersistenceContext(unitName = "daycare", type = PersistenceContextType.EXTENDED)
+    @PersistenceContext(unitName = "daycare")
     protected EntityManager entityManager;
 
     /**
@@ -22,8 +21,8 @@ public abstract class AbstractJPADAO {
      *
      * @param obj The object to save
      */
-    protected void create(Object obj) {
-        entityManager.persist(obj);
+    protected Object create(Object obj) {
+        return entityManager.merge(obj);
     }
 
     /**
@@ -75,6 +74,9 @@ public abstract class AbstractJPADAO {
      * @param obj The object to remove
      */
     public void remove(Object obj) {
+        // Make this entity managed by the current transaction
+        obj = entityManager.merge(obj);
+
         entityManager.remove(obj);
     }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+         xsi:noNamespaceSchemaLocation="ehcache.xsd">
 
     <!-- Daycare.ms default cache -->
     <defaultCache
@@ -8,6 +8,7 @@
         maxElementsInMemory="100"
         overflowToDisk="false" />
 
+    <!-- Children -->
     <cache name="readAllChildren"
         maxElementsInMemory="10000"
         eternal="true"
@@ -20,6 +21,22 @@
 
     <cache name="readChildById"
            maxElementsInMemory="10000"
+           eternal="true"
+           overflowToDisk="false" />
+
+    <!-- Site Redirects -->
+    <cache name="readAllRedirects"
+           maxElementsInMemory="100"
+           eternal="true"
+           overflowToDisk="false" />
+
+    <cache name="readAllRedirectsByDestinationURI"
+           maxElementsInMemory="100"
+           eternal="true"
+           overflowToDisk="false" />
+
+    <cache name="readRedirectByURI"
+           maxElementsInMemory="100"
            eternal="true"
            overflowToDisk="false" />
 

@@ -26,7 +26,7 @@ public interface RedirectDAO {
      *
      * @param redirect The {@link Redirect} to persist
      */
-    public void create(Redirect redirect);
+    public Redirect create(Redirect redirect);
 
     /**
      * Finds the given {@link Redirect} in the database.
@@ -45,19 +45,27 @@ public interface RedirectDAO {
     public Redirect read(Object objectId);
 
     /**
+     * This method will return a list of all the {@link Redirect}s in the database
+     *
+     * @return a list of all {@link Redirect}s
+     */
+    public List<Redirect> readAllRedirects();
+
+    /**
+     * This method will return a list of all {@link Redirect}s that have a destination URI of the value specified.
+     *
+     * @param destinationURI the destination URI that the redirect must contain in order to be returned
+     * @return a list of all {@link Redirect}s with the given destination URI
+     */
+    public List<Redirect> readAllRedirectsByDestinationURI(String destinationURI);
+
+    /**
      * Finds an active, enabled {@link Redirect} object for a given request URI.
      *
      * @param requestURI The URI to match
      * @throws DataIntegrityViolationException if more than one valid redirect matches the query
      */
     public Redirect readRedirectByURI(String requestURI) throws DataIntegrityViolationException;
-
-    /**
-     * This method will return a list of all the {@link Redirect}s in the database
-     *
-     * @return a list of all {@link Redirect}s
-     */
-    public List<Redirect> readAllRedirects();
 
     /**
      * Removes the specified {@link Redirect} from the database.

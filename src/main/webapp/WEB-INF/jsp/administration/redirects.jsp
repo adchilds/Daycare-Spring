@@ -3,7 +3,7 @@
 <div class="redirect_form">
     <h3>Add new redirect:</h3>
 
-    <form:form action="/pulse/administration/redirect.html" commandName="form" method="POST">
+    <form:form action="/administration/redirects.html" commandName="form" method="POST">
         <c:if test="${hasErrors}">
             <div class="form_errors">
                 <form:errors path="*" cssClass="errors"/>
@@ -62,10 +62,10 @@
                                 <c:choose>
                                     <c:when test="${redirect.enabled}">
                                         <span class="enabled">ON</span> -- <a
-                                            href="/administration/redirects.html?disable=${redirect.id}">OFF</a>
+                                            href="/administration/redirects.html?disableId=${redirect.id}">OFF</a>
                                     </c:when>
                                     <c:otherwise>
-                                        <a href="/administration/redirects.html?enable=${redirect.id}">
+                                        <a href="/administration/redirects.html?enableId=${redirect.id}">
                                             ON</a> -- <span class="disabled">OFF</span>
                                     </c:otherwise>
                                 </c:choose>
@@ -80,7 +80,7 @@
                             <td><fmt:formatDate pattern="MM/dd/yyyy HH:mm:ss"
                                                 value="${redirect.lastUpdatedDate.time}"/></td>
                             <td>${redirect.lastUpdatedBy}</td>
-                            <td><a href="/administration/redirects.html?remove=${redirect.id}">Remove</a></td>
+                            <td><a href="/administration/redirects.html?removeId=${redirect.id}">Remove</a></td>
                         </tr>
                     </c:forEach>
                 </c:when>

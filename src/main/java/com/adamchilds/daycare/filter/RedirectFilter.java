@@ -2,6 +2,7 @@ package com.adamchilds.daycare.filter;
 
 import com.adamchilds.daycare.entity.redirect.model.Redirect;
 import com.adamchilds.daycare.entity.redirect.service.RedirectService;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -14,6 +15,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Calendar;
 
 /**
  * Filter to redirect requests before hitting the application when a custom redirect is in place. To include, update
@@ -39,29 +41,63 @@ public class RedirectFilter extends GenericFilterBean {
      * {@inheritDoc}
      */
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 
         String uri = httpServletRequest.getRequestURI();
 
         // Check to see if the specified URI requires a redirect
-        Redirect redirect = redirectService.getRedirect(uri);
+        Redirect redirect = redirectService.readRedirectByURI(uri);
 
         if (redirect != null) {
-            if (redirect.isEnabled()) {
-                // Get the destinationURI of the current request URI if one exists
-                String destinationURI = redirect.getDestinationURL();
+            Calendar startDate = redirect.getStartDate();
+            Calendar endDate = redirect.getEndDate();
 
-                // If a destination URI exists for the current request URI, redirect the user
-                if (StringUtils.hasText(destinationURI)) {
-                    httpServletResponse.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
-                    httpServletResponse.sendRedirect(destinationURI);
+            boolean shouldRedirect = true;
+
+            // If the redirect has a start date
+            if (startDate != null) {
+
+                // If the current date is after the start date, redirect
+                shouldRedirect = DateTime.now().isAfter(startDate.getTimeInMillis());
+            }
+
+            // Only check the endDate if the startDate hasn't already failed
+            if (shouldRedirect) {
+
+                // If the redirect has an end date
+                if (endDate != null) {
+
+                    // If the current date is before the end date, redirect
+                    shouldRedirect = DateTime.now().isBefore(endDate.getTimeInMillis());
+                }
+            }
+
+            if (shouldRedirect) {
+                if (redirect.isEnabled()) {
+                    // Get the destinationURI of the current request URI if one exists
+                    String destinationURI = redirect.getDestinationURL();
+
+                    // If a destination URI exists for the current request URI, redirect the user
+                    if (StringUtils.hasText(destinationURI)) {
+                        httpServletResponse.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
+                        httpServletResponse.sendRedirect(destinationURI);
+                    }
+                } else {
+                    if (logger.isDebugEnabled()) {
+                        logger.debug("Redirect is disabled for URI=[" + uri + "]");
+                    }
+
+                    chain.doFilter(request, response);
                 }
             } else {
                 if (logger.isDebugEnabled()) {
-                    logger.debug("Redirect disabled, proceeding with URI=[" + uri + "]");
+                    logger.debug("Redirect is not active. startDate=[" + startDate + "], endDate=[" + endDate + "]");
                 }
+
+                chain.doFilter(request, response);
             }
         } else {
             if (logger.isDebugEnabled()) {

@@ -38,8 +38,6 @@ public class RedirectFormValidator implements Validator {
             } catch(Exception e) {
                 errors.rejectValue("startDate", "pulse.administration.redirect.form.startDate.invalid");
             }
-        } else {
-            errors.rejectValue("startDate", "pulse.administration.redirect.form.startDate.empty");
         }
 
         if (StringUtils.hasText(form.getEndDate())) {
@@ -49,8 +47,6 @@ public class RedirectFormValidator implements Validator {
             } catch(Exception e) {
                 errors.rejectValue("endDate", "pulse.administration.redirect.form.endDate.invalid");
             }
-        } else {
-            errors.rejectValue("endDate", "pulse.administration.redirect.form.endDate.empty");
         }
     }
 

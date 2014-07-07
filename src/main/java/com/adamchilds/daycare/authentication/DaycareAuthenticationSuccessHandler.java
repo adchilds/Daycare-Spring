@@ -9,6 +9,7 @@ import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +26,7 @@ import java.io.IOException;
  * @since 1.0
  */
 @Component
-public class DaycareAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+public class DaycareAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     @Autowired
     private UserService userService;
@@ -49,7 +50,7 @@ public class DaycareAuthenticationSuccessHandler extends SimpleUrlAuthentication
             Audit audit = new Audit();
             audit.setUserId(user.getId());
             audit.setAuditType(AuditTypeEnum.ACCOUNT_LOGIN.getAuditType());
-            audit.setExtraInformation("USER=[" + user.getUsername() + "], TIME=[" + DateTime.now().toString("mm/dd/yyyy hh:mm:ss") + "]");
+            audit.setExtraInformation("USER=[" + user.getUsername() + "], TIME=[" + DateTime.now().toString("MM/dd/yyyy hh:mm:ss") + "]");
             audit.setAuditDate(DateTime.now().toDate());
             auditService.create(audit);
 

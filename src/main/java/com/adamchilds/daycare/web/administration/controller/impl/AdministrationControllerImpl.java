@@ -2,19 +2,29 @@ package com.adamchilds.daycare.web.administration.controller.impl;
 
 import com.adamchilds.daycare.entity.account.model.Account;
 import com.adamchilds.daycare.entity.account.service.AccountService;
+import com.adamchilds.daycare.entity.auditing.enumeration.AuditTypeEnum;
+import com.adamchilds.daycare.entity.auditing.model.Audit;
+import com.adamchilds.daycare.entity.auditing.service.AuditService;
+import com.adamchilds.daycare.entity.redirect.model.Redirect;
 import com.adamchilds.daycare.entity.redirect.service.RedirectService;
 import com.adamchilds.daycare.entity.user.model.User;
 import com.adamchilds.daycare.entity.user.service.UserService;
+import com.adamchilds.daycare.entity.user.util.UserUtil;
 import com.adamchilds.daycare.web.administration.controller.AdministrationController;
 import com.adamchilds.daycare.web.administration.form.RedirectForm;
+import com.adamchilds.daycare.web.administration.validator.RedirectFormValidator;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,6 +43,9 @@ public class AdministrationControllerImpl implements AdministrationController {
     private AccountService accountService;
 
     @Autowired
+    private AuditService auditService;
+
+    @Autowired
     private CacheManager cacheManager;
 
     @Autowired
@@ -40,6 +53,9 @@ public class AdministrationControllerImpl implements AdministrationController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserUtil userUtil;
 
     /**
      * {@inheritDoc}
@@ -90,11 +106,51 @@ public class AdministrationControllerImpl implements AdministrationController {
      */
     @Override
     public String getAdminRedirectsPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response,
-                                        @ModelAttribute("form") RedirectForm form) {
+                                        @ModelAttribute("form") RedirectForm form,
+                                        @RequestParam(value = "enableId", required = false) Long enableId,
+                                        @RequestParam(value = "disableId", required = false) Long disableId,
+                                        @RequestParam(value = "removeId", required = false) Long removeId) {
         if (form != null) {
             modelMap.addAttribute("form", form);
         } else {
             modelMap.addAttribute("form", new RedirectForm());
+        }
+
+        if (enableId != null) {
+            Redirect redirect = redirectService.read(enableId);
+            redirect.setEnabled(true);
+            redirectService.update(redirect);
+
+            Audit audit = new Audit();
+            audit.setAuditDate(DateTime.now().toDate());
+            audit.setAuditType(AuditTypeEnum.REDIRECT_ENABLED.getAuditType());
+            audit.setExtraInformation("[" + redirect.getSourceURL() + "] --> [" + redirect.getDestinationURL() + "]");
+            audit.setUserId(userUtil.getCurrentUser().getId());
+            audit.setExtraInformation("USER=[" + userUtil.getCurrentUser().getEmailAddress() + "]");
+            auditService.create(audit);
+        } else if (disableId != null) {
+            Redirect redirect = redirectService.read(disableId);
+            redirect.setEnabled(false);
+            redirectService.update(redirect);
+
+            Audit audit = new Audit();
+            audit.setAuditDate(DateTime.now().toDate());
+            audit.setAuditType(AuditTypeEnum.REDIRECT_DISABLED.getAuditType());
+            audit.setExtraInformation("[" + redirect.getSourceURL() + "] --> [" + redirect.getDestinationURL() + "]");
+            audit.setUserId(userUtil.getCurrentUser().getId());
+            audit.setExtraInformation("USER=[" + userUtil.getCurrentUser().getEmailAddress() + "]");
+            auditService.create(audit);
+        } else if (removeId != null) {
+            Redirect redirect = redirectService.read(removeId);
+            redirectService.remove(redirect);
+
+            Audit audit = new Audit();
+            audit.setAuditDate(DateTime.now().toDate());
+            audit.setAuditType(AuditTypeEnum.REDIRECT_REMOVED.getAuditType());
+            audit.setExtraInformation("[" + redirect.getSourceURL() + "] --> [" + redirect.getDestinationURL() + "]");
+            audit.setUserId(userUtil.getCurrentUser().getId());
+            audit.setExtraInformation("USER=[" + userUtil.getCurrentUser().getEmailAddress() + "]");
+            auditService.create(audit);
         }
 
         modelMap.addAttribute("allRedirects", redirectService.readAllRedirects());
@@ -107,9 +163,43 @@ public class AdministrationControllerImpl implements AdministrationController {
      */
     @Override
     public String postAdminRedirectsPage(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response,
-                                         @ModelAttribute("form") RedirectForm form) {
+                                         @ModelAttribute("form") RedirectForm form, BindingResult result) {
         if (form != null) {
             modelMap.addAttribute("form", form);
+
+            // Validate the form
+            new RedirectFormValidator().validate(form, result);
+
+            if (result.hasErrors()) {
+                modelMap.addAttribute("hasErrors", true);
+                modelMap.addAttribute("errors", result.getAllErrors());
+            } else {
+                // Persist the new redirect
+                Redirect redirect = new Redirect();
+                redirect.setCreatedBy(userUtil.getCurrentUser().getEmailAddress());
+                redirect.setCreatedDate(DateTime.now().toGregorianCalendar());
+                redirect.setEnabled(true);
+                redirect.setSourceURL(form.getSourceURL());
+                redirect.setDestinationURL(form.getDestinationURL());
+
+                if (StringUtils.hasText(form.getStartDate())) {
+                    redirect.setStartDate(DateTime.parse(form.getStartDate()).toGregorianCalendar());
+                }
+
+                if (StringUtils.hasText(form.getEndDate())) {
+                    redirect.setEndDate(DateTime.parse(form.getEndDate()).toGregorianCalendar());
+                }
+
+                redirect = redirectService.create(redirect);
+
+                Audit audit = new Audit();
+                audit.setAuditDate(DateTime.now().toDate());
+                audit.setAuditType(AuditTypeEnum.REDIRECT_CREATED.getAuditType());
+                audit.setExtraInformation("id=[" + redirect.getId() + "], sourceURL=[" + redirect.getSourceURL() + "] --> destinationURL=[" + redirect.getDestinationURL() + "]");
+                audit.setUserId(userUtil.getCurrentUser().getId());
+
+                auditService.create(audit);
+            }
         } else {
             modelMap.addAttribute("form", new RedirectForm());
         }
