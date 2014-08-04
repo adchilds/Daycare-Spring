@@ -11,6 +11,9 @@ import static org.junit.Assert.*;
 
 /**
  * Utility class for unit tests. Includes commonly used code throughout unit tests.
+ *
+ * @author Adam Childs
+ * @since 1.0
  */
 public class UnitTestUtil {
 
