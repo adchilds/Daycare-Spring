@@ -37,13 +37,6 @@ public class ChildServiceImpl implements ChildService {
     /**
      * {@inheritDoc}
      */
-    public EntityManager getEntityManager() {
-        return childDAO.getEntityManager();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public Child read(Object objectId) {
         return childDAO.read(objectId);
     }

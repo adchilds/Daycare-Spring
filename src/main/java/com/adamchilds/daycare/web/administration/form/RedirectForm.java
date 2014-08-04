@@ -1,7 +1,7 @@
 package com.adamchilds.daycare.web.administration.form;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Holds data that will be submitted from the pulse administration redirect form.

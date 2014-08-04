@@ -111,4 +111,5 @@ public class RedirectDAOImpl extends AbstractJPADAO implements RedirectDAO {
     public void update(Redirect redirect) {
         super.update(redirect);
     }
+
 }

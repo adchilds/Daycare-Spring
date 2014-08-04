@@ -2,6 +2,7 @@ package com.adamchilds.daycare.entity.auditing.service;
 
 import com.adamchilds.daycare.entity.auditing.enumeration.AuditTypeEnum;
 import com.adamchilds.daycare.entity.auditing.model.Audit;
+import com.adamchilds.daycare.entity.user.model.User;
 import org.springframework.scheduling.annotation.Async;
 
 import javax.persistence.EntityManager;
@@ -32,6 +33,15 @@ public interface AuditService {
      */
     @Async
     public void createAuditForRequest(HttpServletRequest request);
+
+    /**
+     * Creates a new {@link Audit} and persists it to the database for a user login.
+     *
+     * @param user the user that is attempting to login
+     * @param success true if the user successfully logged in; false otherwise
+     */
+    @Async
+    public void createAuditForLogin(User user, boolean success);
 
     /**
      * Finds the given {@link Audit} in the database.

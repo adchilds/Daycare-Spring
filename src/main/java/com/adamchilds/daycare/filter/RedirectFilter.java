@@ -23,7 +23,7 @@ import java.util.Calendar;
  *
  * <filter>
  *     <filter-name>redirectFilter</filter-name>
- *     <filter-class>com.adamchilds.daycare.filter.RedirectFilter</filter-class>
+ *     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
  * </filter>
  *
  * <filter-mapping>

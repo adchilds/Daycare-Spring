@@ -36,7 +36,6 @@ public class RegistrationUtil {
         account.setAccountOwnerId(user.getId());
         account.setCreatedDate(new Date());
         account.setInviteCode(generateUserInviteCode(10));
-        account.setUserSlots(SubscriptionTypeEnum.valueOf(form.getSubscriptionType()).getUserSlots());
 
         return account;
     }

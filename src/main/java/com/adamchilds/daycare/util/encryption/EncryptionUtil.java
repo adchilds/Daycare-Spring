@@ -3,6 +3,7 @@ package com.adamchilds.daycare.util.encryption;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+import org.springframework.util.StringUtils;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
@@ -26,13 +27,17 @@ public class EncryptionUtil {
      * Converts the specified String to it's base 64 representation.
      *
      * @param text the text to convert to base 64
-     * @return the base 64 representation
+     * @return the base 64 representation; null if the given string is null or empty
      */
     public static String base64Encode(String text) {
+        if (!StringUtils.hasText(text)) {
+            return null;
+        }
+
         try {
             return new BASE64Encoder().encode(text.getBytes(DEFAULT_ENCODING));
         } catch (UnsupportedEncodingException uee) {
-            logger.warn("Could not encode the given text to base 64. text=[" + text + "]", uee);
+            logger.error("Could not encode the given text to base 64. text=[" + text + "]", uee);
             return null;
         }
     }
@@ -41,13 +46,17 @@ public class EncryptionUtil {
      * Converts the base 64 representation of a String into it's normal form.
      *
      * @param text the text to convert to it's normal form
-     * @return the normal form of the given text
+     * @return the normal form of the given text; null if the given string is null or empty
      */
     public static String base64Decode(String text) {
+        if (!StringUtils.hasText(text)) {
+            return null;
+        }
+
         try {
             return new String(new BASE64Decoder().decodeBuffer(text), DEFAULT_ENCODING);
         } catch (IOException ioe) {
-            logger.warn("Could not decode the given text from base 64. text=[" + text + "]", ioe);
+            logger.error("Could not decode the given text from base 64. text=[" + text + "]", ioe);
             return null;
         }
     }
@@ -56,9 +65,13 @@ public class EncryptionUtil {
      * Generates a 128-bit (16 byte) MD5 hash for the specified String.
      *
      * @param md5 the String to encrypt
-     * @return the encrypted String
+     * @return the encrypted String; null if the given string is null or empty
      */
     public static String MD5(String md5) {
+        if (!StringUtils.hasText(md5)) {
+            return null;
+        }
+
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] array = md.digest(md5.getBytes(DEFAULT_ENCODING));
@@ -68,10 +81,10 @@ public class EncryptionUtil {
             }
             return sb.toString();
         } catch (NoSuchAlgorithmException nsae) {
-            logger.warn("Could not encode the given text. text=[" + md5 + "]", nsae);
+            logger.error("Could not encode the given text. text=[" + md5 + "]", nsae);
             return null;
         } catch (UnsupportedEncodingException uee) {
-            logger.warn("Could not encode the given text. text=[" + md5 + "]", uee);
+            logger.error("Could not encode the given text. text=[" + md5 + "]", uee);
             return null;
         }
     }
@@ -80,9 +93,13 @@ public class EncryptionUtil {
      * Generates a 256-bit (32 byte) SHA encrypted String from the given {code text}.
      *
      * @param text the text to encrypt
-     * @return the encrypted text
+     * @return the encrypted text; null if the given string is null or empty
      */
     public static String SHA256(String text) {
+        if (!StringUtils.hasText(text)) {
+            return null;
+        }
+
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
             messageDigest.update(text.getBytes(DEFAULT_ENCODING));
@@ -93,10 +110,10 @@ public class EncryptionUtil {
             }
             return sb.toString();
         } catch (NoSuchAlgorithmException nsae) {
-            logger.warn("Could not encode the given text. text=[" + text + "]", nsae);
+            logger.error("Could not encode the given text. text=[" + text + "]", nsae);
             return null;
         } catch (UnsupportedEncodingException uee) {
-            logger.warn("Could not encode the given text. text=[" + text + "]", uee);
+            logger.error("Could not encode the given text. text=[" + text + "]", uee);
             return null;
         }
     }
@@ -110,9 +127,13 @@ public class EncryptionUtil {
      * that {@link String} with what is stored in the database.</p>
      *
      * @param text the {@link String} object to encrypt
-     * @return the encrypted {@link String} object
+     * @return the encrypted {@link String} object; null if the given string is null or empty
      */
     public static String encodeString(String text) {
+        if (!StringUtils.hasText(text)) {
+            return null;
+        }
+
         return MD5(base64Encode(text));
     }
 
@@ -121,13 +142,17 @@ public class EncryptionUtil {
      * setting of 256-bits of encryption and also encodes the 256-bit hash as a base64 {@link String}.
      *
      * @param password the password to encrypt
-     * @return the encrypted password
+     * @return the encrypted password; null if the given string is null or empty
      */
     public static String encodePassword(String password) {
+        if (!StringUtils.hasText(password)) {
+            return null;
+        }
+
         ShaPasswordEncoder encoder = new ShaPasswordEncoder(256);
         encoder.setEncodeHashAsBase64(true);
 
-        return encoder.encodePassword(password, ""); // TODO: Should we salt this? Probably so...
+        return encoder.encodePassword(password, "7H15 I5 S4Lt N07 P3PB3R");
     }
 
 }

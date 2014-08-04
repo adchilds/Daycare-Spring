@@ -1,7 +1,7 @@
 package com.adamchilds.daycare.entity.guardian.model;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,9 +15,9 @@ import java.util.Date;
  */
 @NamedQueries(value = {
         @NamedQuery(name = "readAllGuardians",
-                query = "SELECT g FROM Guardian g ORDER BY g.lastName ASC"),
+                    query = "SELECT g FROM Guardian g ORDER BY g.lastName ASC"),
         @NamedQuery(name = "readAllGuardiansByLastName",
-                query = "SELECT g FROM Guardian g WHERE g.lastName = :guardianLastName"),
+                    query = "SELECT g FROM Guardian g WHERE g.lastName = :guardianLastName"),
         @NamedQuery(name = "readGuardianById",
                     query = "SELECT g FROM Guardian g WHERE g.id = :guardianId")
 })

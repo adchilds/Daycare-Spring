@@ -2,7 +2,6 @@ package com.adamchilds.daycare.entity.child.dao;
 
 import com.adamchilds.daycare.entity.child.model.Child;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 /**
@@ -26,12 +25,6 @@ public interface ChildDAO {
      * @return The Child from the database
      */
     public Child find(Child child);
-
-    /**
-     * Returns this {@link com.adamchilds.daycare.entity.child.model.Child}'s instance of EntityManager
-     * @return an EntityManager tied to this Child instance
-     */
-    public EntityManager getEntityManager();
 
     /**
      * Return a specific {@link com.adamchilds.daycare.entity.child.model.Child} from the database.

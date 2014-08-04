@@ -1,7 +1,5 @@
 package com.adamchilds.daycare.authentication;
 
-import com.adamchilds.daycare.entity.auditing.enumeration.AuditTypeEnum;
-import com.adamchilds.daycare.entity.auditing.model.Audit;
 import com.adamchilds.daycare.entity.auditing.service.AuditService;
 import com.adamchilds.daycare.entity.user.model.User;
 import com.adamchilds.daycare.entity.user.service.UserService;
@@ -10,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
@@ -47,12 +44,7 @@ public class DaycareAuthenticationSuccessHandler extends SavedRequestAwareAuthen
             userService.update(user);
 
             // Create an audit for the user login
-            Audit audit = new Audit();
-            audit.setUserId(user.getId());
-            audit.setAuditType(AuditTypeEnum.ACCOUNT_LOGIN.getAuditType());
-            audit.setExtraInformation("USER=[" + user.getUsername() + "]");
-            audit.setAuditDate(DateTime.now().toDate());
-            auditService.create(audit);
+            auditService.createAuditForLogin(user, true);
 
             if (logger.isDebugEnabled()) {
                 logger.debug("User successfully logged in: USER=[" + user.getUsername() + "]");

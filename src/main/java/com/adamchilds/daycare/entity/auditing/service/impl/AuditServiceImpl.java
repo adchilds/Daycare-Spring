@@ -6,6 +6,7 @@ import com.adamchilds.daycare.entity.auditing.model.Audit;
 import com.adamchilds.daycare.entity.auditing.service.AuditService;
 import com.adamchilds.daycare.entity.user.model.User;
 import com.adamchilds.daycare.entity.user.util.UserUtil;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,6 +60,19 @@ public class AuditServiceImpl implements AuditService {
         } else {
             audit.setUserId(0l);
         }
+
+        create(audit);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void createAuditForLogin(User user, boolean success) {
+        Audit audit = new Audit();
+        audit.setUserId(user.getId());
+        audit.setAuditType(AuditTypeEnum.ACCOUNT_LOGIN.getAuditType());
+        audit.setExtraInformation("SUCCESS=[" + Boolean.toString(success) + "]");
+        audit.setAuditDate(DateTime.now().toDate());
 
         create(audit);
     }

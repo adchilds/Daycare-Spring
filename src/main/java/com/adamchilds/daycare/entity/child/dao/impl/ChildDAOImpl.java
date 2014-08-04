@@ -32,13 +32,6 @@ public class ChildDAOImpl extends AbstractJPADAO implements ChildDAO {
     /**
      * {@inheritDoc}
      */
-    public EntityManager getEntityManager() {
-        return super.getEntityManager();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public Child read(Object objectId) {
         return super.read(Child.class, objectId);
     }
