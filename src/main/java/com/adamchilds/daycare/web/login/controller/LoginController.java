@@ -23,6 +23,7 @@ public interface LoginController {
      * @return the tiles-def name of the view to render
      */
     @RequestMapping(value = "/login.html", method = RequestMethod.GET)
-    public String getLogin(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response, @RequestParam(value="error", required=false) String error);
+    public String getLogin(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response,
+                           @RequestParam(value="error", required=false) String error);
 
 }
