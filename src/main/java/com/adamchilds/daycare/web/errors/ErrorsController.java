@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public interface ErrorsController {
 
     /**
-     * Handles serving the 403 page.
+     * Handles serving the 403 error page.
      *
      * @param modelMap the {@link ModelMap} associated with the GET/POST request
      * @param request the request
@@ -26,7 +26,7 @@ public interface ErrorsController {
     public String get403(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
 
     /**
-     * Handles serving the 404 page.
+     * Handles serving the 404 error page.
      *
      * @param modelMap the {@link ModelMap} associated with the GET/POST request
      * @param request the request
@@ -35,5 +35,16 @@ public interface ErrorsController {
      */
     @RequestMapping(value = "/404.html")
     public String get404(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
+
+    /**
+     * Handles serving the 500 error page.
+     *
+     * @param modelMap the {@link ModelMap} associated with the GET/POST request
+     * @param request the request
+     * @param response the response
+     * @return the tiles-def name of the view to render
+     */
+    @RequestMapping(value = "/500.html")
+    public String get500(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
 
 }

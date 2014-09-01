@@ -31,19 +31,19 @@ public class MessageServiceImpl implements MessageService {
      * {@inheritDoc}
      */
     public String get(String code, Object[] args) {
-        String message = "";
-
         if (StringUtils.hasText(code)) {
             try {
-                message = messageSource.getMessage(code, args, LocaleContextHolder.getLocale());
+                return messageSource.getMessage(code, args, LocaleContextHolder.getLocale());
             } catch (NoSuchMessageException nsme) {
-                logger.warn("No message found for " + code, nsme);
+                logger.error("No message found for code=[" + code + "]", nsme);
+            } catch (Exception e) {
+                logger.error("Could not find message for code=[" + code + "]", e);
             }
         } else {
-            logger.error("No message code supplied to MessageServiceImpl#get(code, args)...");
+            logger.warn("No message code supplied to MessageServiceImpl#get(code, args)...");
         }
 
-        return message;
+        return "";
     }
 
 }

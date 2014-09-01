@@ -1,5 +1,8 @@
 package com.adamchilds.daycare.web.administration;
 
+/**
+ *
+ */
 public enum AdministrationNavigationEnum {
 
     INDEX("Home", "administration_index", "/administration/index.html"),

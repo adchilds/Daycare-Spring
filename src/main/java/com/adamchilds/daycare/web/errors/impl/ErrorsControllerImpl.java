@@ -45,4 +45,16 @@ public class ErrorsControllerImpl implements ErrorsController {
         return "error_404";
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public String get500(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+        /*
+         * Add an audit to the DB
+         */
+        auditService.createAuditForRequest(request);
+
+        return "error_500";
+    }
+
 }
