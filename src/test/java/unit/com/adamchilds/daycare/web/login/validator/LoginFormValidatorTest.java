@@ -1,14 +1,15 @@
-package com.adamchilds.daycare.web.login.validator;
+package unit.com.adamchilds.daycare.web.login.validator;
 
-import com.adamchilds.daycare.test.util.UnitTestUtil;
+import unit.UnitTestUtil;
 import com.adamchilds.daycare.web.login.form.LoginForm;
+import com.adamchilds.daycare.web.login.validator.LoginFormValidator;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 /**
- * Tests for the {@link LoginFormValidator}
+ * Tests for the {@link com.adamchilds.daycare.web.login.validator.LoginFormValidator}
  */
 public class LoginFormValidatorTest {
 

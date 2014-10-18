@@ -1,5 +1,6 @@
-package com.adamchilds.daycare.util.jython;
+package unit.com.adamchilds.daycare.util.jython;
 
+import com.adamchilds.daycare.util.jython.JythonScriptUtil;
 import com.google.common.io.Resources;
 import org.junit.Test;
 import java.io.File;
@@ -10,7 +11,7 @@ import java.io.InputStream;
 import static org.junit.Assert.*;
 
 /**
- * Tests for the {@link JythonScriptUtil} utility class.
+ * Tests for the {@link com.adamchilds.daycare.util.jython.JythonScriptUtil} utility class.
  *
  * @author Adam Childs
  * @since 1.0
@@ -33,7 +34,7 @@ public class JythonScriptUtilTest {
     }
 
     @Test
-    public void testExecuteScrip2tByInputStream() {
+    public void testExecuteScriptByInputStream() {
         String filePath = JythonScriptUtil.JYTHON_SCRIPT_BASE_PATH + TEST_JYTHON_SCRIPT;
         File file = new File(Resources.getResource(filePath).getPath());
 

@@ -1,4 +1,4 @@
-package com.adamchilds.daycare.web.home.impl;
+package com.adamchilds.daycare.web.home.controller.impl;
 
 import com.adamchilds.daycare.entity.account.model.Account;
 import com.adamchilds.daycare.entity.account.service.AccountService;
@@ -6,10 +6,8 @@ import com.adamchilds.daycare.entity.subscription.model.Subscription;
 import com.adamchilds.daycare.entity.subscription.service.SubscriptionService;
 import com.adamchilds.daycare.entity.user.model.User;
 import com.adamchilds.daycare.entity.user.service.UserService;
-import com.adamchilds.daycare.web.home.HomeController;
+import com.adamchilds.daycare.web.home.controller.HomeController;
 import com.adamchilds.daycare.web.login.form.LoginForm;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,7 +24,6 @@ import java.util.Random;
  */
 @Controller
 public class HomeControllerImpl implements HomeController {
-    private static final Logger logger = LoggerFactory.getLogger(HomeControllerImpl.class);
 
     @Autowired
     private AccountService accountService;

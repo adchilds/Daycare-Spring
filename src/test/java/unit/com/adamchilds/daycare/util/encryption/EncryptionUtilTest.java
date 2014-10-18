@@ -1,11 +1,12 @@
-package com.adamchilds.daycare.util.encryption;
+package unit.com.adamchilds.daycare.util.encryption;
 
+import com.adamchilds.daycare.util.encryption.EncryptionUtil;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 /**
- * Tests for the {@link EncryptionUtil} class
+ * Tests for the {@link com.adamchilds.daycare.util.encryption.EncryptionUtil} class
  */
 public class EncryptionUtilTest {
 

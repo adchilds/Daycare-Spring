@@ -1,4 +1,4 @@
-package com.adamchilds.daycare.web.home;
+package com.adamchilds.daycare.web.home.controller;
 
 import com.adamchilds.daycare.web.login.form.LoginForm;
 import org.springframework.ui.ModelMap;

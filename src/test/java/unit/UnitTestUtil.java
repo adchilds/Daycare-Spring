@@ -1,4 +1,4 @@
-package com.adamchilds.daycare.test.util;
+package unit;
 
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;

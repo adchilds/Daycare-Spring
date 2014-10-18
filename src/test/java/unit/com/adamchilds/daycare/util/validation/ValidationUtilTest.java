@@ -1,22 +1,22 @@
-package com.adamchilds.daycare.util.validation;
+package unit.com.adamchilds.daycare.util.validation;
 
+import com.adamchilds.daycare.util.validation.ValidationUtil;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 /**
- * Tests for the {@link ValidationUtil} class
+ * Tests for the {@link com.adamchilds.daycare.util.validation.ValidationUtil} class
  */
 public class ValidationUtilTest {
 
     @Test
     public void testIsValidCreditCardNumber() {
         // Null
-        String creditCardNumber = null;
-        assertFalse(ValidationUtil.isValidCreditCardNumber(creditCardNumber));
+        assertFalse(ValidationUtil.isValidCreditCardNumber(null));
 
         // Empty
-        creditCardNumber = "";
+        String creditCardNumber = "";
         assertFalse(ValidationUtil.isValidCreditCardNumber(creditCardNumber));
 
         // Whitespace
@@ -59,11 +59,10 @@ public class ValidationUtilTest {
     @Test
     public void testIsValidEmail() {
         // Null
-        String email = null;
-        assertFalse(ValidationUtil.isValidEmail(email));
+        assertFalse(ValidationUtil.isValidEmail(null));
 
         // Empty
-        email = "";
+        String email = "";
         assertFalse(ValidationUtil.isValidEmail(email));
 
         // Whitespace
