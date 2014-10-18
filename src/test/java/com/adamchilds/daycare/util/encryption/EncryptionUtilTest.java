@@ -171,15 +171,15 @@ public class EncryptionUtilTest {
          * Valid examples
          */
         stringToEncode = "Daycare Management System";
-        String expected = "KguI4Md610iFbMQpNoNzvEvjq0jKuCj59I55VlDTwzs=";
+        String expected = "YvG/Qus2zRwV19ABAL/HxDBLedO44uj78iNa+vU/O7o=";
         assertEquals(EncryptionUtil.encodePassword(stringToEncode), expected);
 
         stringToEncode = "h";
-        expected = "noDmAlUvttDTI8rwRvCjLuhAqAgSem7prhNruelgCm4=";
+        expected = "P0+1k5oWQU5UZ/wc/7vu6txBTax4DGt/4Lg0ge+r1Dc=";
         assertEquals(EncryptionUtil.encodePassword(stringToEncode), expected);
 
         stringToEncode = "34712098410";
-        expected = "SkelbQCCVgAAColi0c+fDp4YXUwgNWJNljDSQCBJ9m4=";
+        expected = "W9MsFDjC/L65PAGSnE3+TEo2Zd28voPSU+vj/iIQZnw=";
         assertEquals(EncryptionUtil.encodePassword(stringToEncode), expected);
     }
 

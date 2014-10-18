@@ -22,6 +22,7 @@ public class EncryptionUtil {
     private static final Logger logger = LoggerFactory.getLogger(EncryptionUtil.class);
 
     private static final String DEFAULT_ENCODING = "UTF-8";
+    private static final String SALT = "7H1S I5 4 D4YC4RE APP1IC47I0N";
 
     /**
      * Converts the specified String to it's base 64 representation.
@@ -152,7 +153,7 @@ public class EncryptionUtil {
         ShaPasswordEncoder encoder = new ShaPasswordEncoder(256);
         encoder.setEncodeHashAsBase64(true);
 
-        return encoder.encodePassword(password, "7H15 I5 S4Lt N07 P3PB3R");
+        return encoder.encodePassword(password, SALT);
     }
 
 }

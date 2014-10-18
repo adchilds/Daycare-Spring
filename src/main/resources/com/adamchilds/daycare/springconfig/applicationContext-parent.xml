@@ -14,5 +14,6 @@
     <import resource="applicationContext-jpa.xml" />
     <import resource="applicationContext-security.xml" />
     <import resource="applicationContext-cache.xml" />
+    <import resource="applicationContext-wro4j.xml" />
 
 </beans>

@@ -1,6 +1,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ include file="../taglibs.jsp" %>
 
+<!DOCTYPE html>
 <html>
     <head>
         <tiles:insertAttribute name="header" />

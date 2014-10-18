@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="wroFilter" class="com.adamchilds.daycare.filter.DaycareWroFilter">
+        <property name="properties" ref="wroProperties"/>
+    </bean>
+
+    <bean id="wroProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:/wro4j/wro.properties" />
+    </bean>
+
+</beans>

@@ -38,7 +38,7 @@
                 </executions>
                 <configuration>
                     <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
-                    <wroFile>${basedir}/src/main/resources/wro4j/wro.xml</wroFile>
+                    <wroFile>src/main/resources/wro4j/wro2.txt</wroFile>
                     <extraConfigFile>${basedir}/src/main/resources/wro4j/wro.properties</extraConfigFile>
                     <targetGroups>main</targetGroups>
                     <cssDestinationFolder>${basedir}/src/main/webapp/static/style/</cssDestinationFolder>
@@ -187,6 +187,20 @@
                     <groupId>org.springframework</groupId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <!-- Jython -->
+        <dependency>
+            <groupId>org.python</groupId>
+            <artifactId>jython</artifactId>
+            <version>2.5.3</version>
+        </dependency>
+
+        <!-- Google Guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
         </dependency>
 
         <!-- Tiles -->

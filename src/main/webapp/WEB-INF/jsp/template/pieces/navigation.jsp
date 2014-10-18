@@ -1,8 +1,8 @@
 <%@ include file="taglibs.jsp" %>
 
-<jsp:include page="header.jsp" />
-
-<div class="navbar navbar-inverse navbar-static-top nav-height-sm">
+Test Nav outer
+<div class="navbar navbar-static-top nav-height-sm">
+    Test nav inner
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
