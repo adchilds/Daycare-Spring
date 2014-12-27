@@ -5,7 +5,7 @@
 
 <html>
     <head>
-        <jsp:include page="template/pieces/header.jsp" />
+        <jsp:include page="template/pieces/head.jsp" />
 
         <!-- JavaScript -->
         <script type="text/JavaScript" src="/resources/js/login.js"></script>

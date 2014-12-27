@@ -4,7 +4,7 @@
 <tiles-definitions>
     <definition name="base.definition" template="/WEB-INF/jsp/template/pieces/layouts/mainLayout.jsp">
         <put-attribute name="title" value="Daycare.ms - Your solution to childcare organization" />
-        <put-attribute name="header" value="/WEB-INF/jsp/template/pieces/header.jsp" />
+        <put-attribute name="header" value="/WEB-INF/jsp/template/pieces/head.jsp" />
         <put-attribute name="menu" value="/WEB-INF/jsp/template/pieces/navigation.jsp" />
         <put-attribute name="body" value="" />
         <put-attribute name="footer" value="/WEB-INF/jsp/template/pieces/footer.jsp" />
@@ -12,7 +12,7 @@
 
     <definition name="administration.definition" template="/WEB-INF/jsp/template/pieces/layouts/administrationLayout.jsp">
         <put-attribute name="title" value="Daycare.ms - Administration" />
-        <put-attribute name="header" value="/WEB-INF/jsp/template/pieces/header.jsp" />
+        <put-attribute name="header" value="/WEB-INF/jsp/template/pieces/head.jsp" />
         <put-attribute name="menu" value="/WEB-INF/jsp/template/pieces/navigation.jsp" />
         <put-attribute name="body" value="" />
         <put-attribute name="footer" value="/WEB-INF/jsp/template/pieces/footer.jsp" />

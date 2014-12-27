@@ -10,7 +10,7 @@
     </head>
     <body>
         <div id="body_container">
-            <div id="header">
+            <div id="navigation">
                 <tiles:insertAttribute name="menu" />
             </div>
             <div id="body">

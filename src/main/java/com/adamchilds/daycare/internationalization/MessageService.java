@@ -15,7 +15,7 @@ public interface MessageService {
      * @param code the message code
      * @return the internationalized message for the given code
      */
-    String get(String code);
+    public String get(String code);
 
     /**
      * Get a message using the current locale and add the specified arguments to the message's dynamic
