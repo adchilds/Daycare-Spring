@@ -13,6 +13,8 @@ import javax.persistence.Query;
 @Transactional(value = "transactionManager")
 public abstract class AbstractJPADAO {
 
+    boolean databaseEnabled = false;
+
     @PersistenceContext(unitName = "daycare")
     protected EntityManager entityManager;
 
@@ -22,6 +24,10 @@ public abstract class AbstractJPADAO {
      * @param obj The object to save
      */
     protected Object create(Object obj) {
+        if (!databaseEnabled) {
+            return null;
+        }
+
         return entityManager.merge(obj);
     }
 
@@ -33,6 +39,10 @@ public abstract class AbstractJPADAO {
      * @return The query
      */
     protected Query createNamedQuery(String name) {
+        if (!databaseEnabled) {
+            return null;
+        }
+
         return entityManager.createNamedQuery(name);
     }
 
@@ -45,6 +55,10 @@ public abstract class AbstractJPADAO {
      * @return The object that has been found in the database
      */
     protected <T> T find(Class<T> clazz, Long objectId) {
+        if (!databaseEnabled) {
+            return null;
+        }
+
         return entityManager.find(clazz, objectId);
     }
 
@@ -53,6 +67,10 @@ public abstract class AbstractJPADAO {
      * @return an EntityManager tied to this User instance
      */
     public EntityManager getEntityManager() {
+        if (!databaseEnabled) {
+            return null;
+        }
+
         return this.entityManager;
     }
 
@@ -65,6 +83,10 @@ public abstract class AbstractJPADAO {
      * @return The object found in the database
      */
     protected <T> T read(Class<T> clazz, Object objectId) {
+        if (!databaseEnabled) {
+            return null;
+        }
+
         return entityManager.find(clazz, objectId);
     }
 
@@ -74,6 +96,10 @@ public abstract class AbstractJPADAO {
      * @param obj The object to remove
      */
     public void remove(Object obj) {
+        if (!databaseEnabled) {
+            return;
+        }
+
         // Make this entity managed by the current transaction
         obj = entityManager.merge(obj);
 
@@ -87,6 +113,10 @@ public abstract class AbstractJPADAO {
      * @param obj The object to update
      */
     protected Object update(Object obj) {
+        if (!databaseEnabled) {
+            return null;
+        }
+
         return entityManager.merge(obj);
     }
 
