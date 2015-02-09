@@ -13,7 +13,6 @@ requirejs.config({
      */
     paths: {
         // Third-party scripts
-        domReady: 'third-party/domReady',
         jquery: 'third-party/jquery-2.1.3.min',
         'jquery-ui': 'third-party/jquery-ui.min',
         lodash: 'third-party/lodash.min'
@@ -21,7 +20,12 @@ requirejs.config({
 
 });
 
-define([
+require([
+    /*
+     * Util scripts
+     */
+    'WidgetUtil',
+
     /*
      * DOM Parsers
      */
@@ -31,14 +35,15 @@ define([
      * Third-party libraries
      */
     'jquery', 'jquery-ui', 'jquery-ui',
-    'lodash', 'domReady!',
+    'lodash',
 
     /*
      * App scripts
      */
-    'WidgetUtil',
     'example'
 
-], function (jqueryParser) {
-    jqueryParser.parse();
+], function (widgetUtil, jqueryParser) {
+    $(document).ready(function () {
+        jqueryParser.parse();
+    });
 });
