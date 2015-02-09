@@ -29,7 +29,7 @@ require([
     /*
      * DOM Parsers
      */
-    'jqueryParser',
+    'parser/jqueryParser',
 
     /*
      * Third-party libraries
