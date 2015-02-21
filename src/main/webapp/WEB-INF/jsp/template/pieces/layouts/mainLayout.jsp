@@ -10,15 +10,13 @@
     </head>
     <body>
         <div id="body_container">
-            <div id="navigation">
-                <tiles:insertAttribute name="menu" />
-            </div>
+            <tiles:insertAttribute name="menu" />
+
             <div id="body">
                 <tiles:insertAttribute name="body" />
             </div>
-            <div id="footer">
-                <tiles:insertAttribute name="footer" />
-            </div>
+
+            <tiles:insertAttribute name="footer" />
         </div>
     </body>
 </html>

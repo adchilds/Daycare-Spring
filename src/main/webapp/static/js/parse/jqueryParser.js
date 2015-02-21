@@ -27,6 +27,7 @@ define([
     var DATA_JQ_TYPE = 'data-jq-type';
     var DATA_JQ_PROPS = 'data-jq-props';
     var DATA_JQ_ID = 'data-jq-id';
+
     return {
 
         /**

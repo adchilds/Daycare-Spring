@@ -1,10 +1,24 @@
 <%@ include file="template/pieces/taglibs.jsp" %>
 
-Homepage
+<div id="page_container">
+    <div id="top_section">
+        Top Section
 
-<div id="start-date">
-    <div id="test-index" data-jq-type="example" data-jq-props='"test": "This is a test", "test2": "This is a second test."'>
-        Click here to select a start date...
+        <div id="start-date">
+            <button id="calendar-button" data-jq-type="example" data-jq-props=''>Choose date</button>
+            <div id="calendar"></div>
+        </div>
     </div>
-    <div id="date-picker"></div>
+
+    <div id="top_middle_section">
+        Top Middle Section
+    </div>
+
+    <div id="top_bottom_section">
+        Top Bottom Section
+    </div>
+
+    <div id="bottom_section">
+        Bottom Section
+    </div>
 </div>

@@ -1,3 +1,8 @@
+@import 'mixins.less';
+
+@image-height: 200px;
+@image-width: 165px;
+
 /*
  * Contains styles relating to the DMS Dashboard
  */
@@ -7,27 +12,88 @@
      * Child or Employee search results
      */
     .result {
-        border: 1px solid #000;
-        height: 172px;
+        .box-shadow(0px 0px 5px #CCC);
+        height: 200px;
+        margin: 15px 0;
         position: relative;
         width: 650px;
 
-        #result_image {
-            height: inherit;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 145px;
+        #left_container {
+            float: left;
+            height: 200px;
+            width: 500px;
 
-            img {
-                height: 170px;
+            #result_image {
+                background: url('/static/image/placeholder/165x200.png') no-repeat;
+                background-size: @image-width @image-height;
+                float: left;
+                height: @image-height;
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: @image-width;
+
+                @media @retina {
+                    background: url('/static/image/placeholder/165x200@2x.png') no-repeat;
+                    background-size: @image-width @image-height;
+                }
+            }
+
+            #content {
+                height: 100%;
+                left: 165px;
+                padding: 20px 15px 15px 20px;
+                position: absolute;
+                top: 0;
+                width: 335px;
+
+                .left {
+                    float: left;
+                    font-family: 'Open Sans', helvetica, arial, sans-serif;
+
+                    .name {
+                        font-size: 20px;
+                        font-weight: 500;
+                    }
+                }
+
+                .right {
+
+                }
             }
         }
 
-        #content {
-            position: absolute;
-            top: 0;
-            left: 165px;
+        #controls {
+            float: right;
+
+            .button {
+                border-bottom: 1px solid #DED;
+                font-family: 'Open Sans', helvetica, arial, sans-serif;
+                text-align: center;
+                text-transform: uppercase;
+                width: 150px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+
+            #edit {
+                height: 67px;
+                line-height: 30px;
+            }
+
+            #save {
+                height: 66px;
+            }
+
+            #test {
+                height: 67px;
+            }
         }
     }
 }

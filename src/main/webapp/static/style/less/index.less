@@ -1,15 +1,31 @@
 /*
  * This CSS file contains styling specific to the "index.html" or home page.
  */
-@footer-height: 51px;
-
 html {
     height: 100%;
-}
 
-body {
-    height: 100%;
-    padding-bottom: @footer-height;
+    body {
+        height: 100%;
+
+        #page_container {
+            background: #ecf0f1;
+
+            #top_section {
+                background: #ecf0f1;
+                height: 450px;
+            }
+
+            #top_middle_section {
+                background: #3498db;
+                height: 450px;
+            }
+
+            #top_bottom_section {
+                background: #D2D7D3;
+                height: 650px;
+            }
+        }
+    }
 }
 
 div {
@@ -24,18 +40,6 @@ div {
 #body_container {
     min-height: 100%;
     position: relative;
-}
-
-#body {
-    padding-bottom: @footer-height;
-}
-
-#footer {
-    height: @footer-height;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
 }
 
 .normalize {
