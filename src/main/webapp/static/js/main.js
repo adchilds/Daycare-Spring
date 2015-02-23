@@ -16,7 +16,14 @@ requirejs.config({
         jquery: 'third-party/jquery-2.1.3.min',
         'jquery-ui': 'third-party/jquery-ui.min',
         lodash: 'third-party/lodash.min'
-    }
+    },
+
+    "packages": [
+        {
+            name: "svg",
+            location: "/com/adamchilds/daycare"
+        }
+    ]
 
 });
 
@@ -30,6 +37,7 @@ require([
      * DOM Parsers
      */
     'parse/jqueryParser',
+    'parse/SVGDecoder',
 
     /*
      * Third-party libraries
@@ -40,10 +48,15 @@ require([
     /*
      * App scripts
      */
-    'example'
+    'example',
+    'SearchBox'
 
-], function (widgetUtil, jqueryParser) {
+], function (widgetUtil, jqueryParser, svgDecoder) {
     $(document).ready(function () {
+        // Convert all SVG images to svg tags
+        svgDecoder.decodeAll();
+
+        // Parse the DOM for widgets
         jqueryParser.parse();
     });
 });

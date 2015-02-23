@@ -8,92 +8,205 @@
  */
 .dashboard {
 
-    /*
-     * Child or Employee search results
-     */
-    .result {
-        .box-shadow(0px 0px 5px #CCC);
-        height: 200px;
-        margin: 15px 0;
-        position: relative;
-        width: 650px;
+    #active_filters {
+        .active_filter {
+            display: inline-block;
+        }
+    }
 
-        #left_container {
-            float: left;
+    #result_container {
+        /*
+         * Child or Employee search results
+         */
+        .result {
+            .box-shadow(0px 0px 5px #CCC);
             height: 200px;
-            width: 500px;
+            margin: 15px 0;
+            position: relative;
+            width: 650px;
 
-            #result_image {
-                background: url('/static/image/placeholder/165x200.png') no-repeat;
-                background-size: @image-width @image-height;
+            #left_container {
                 float: left;
-                height: @image-height;
-                left: 0;
-                position: absolute;
-                top: 0;
-                width: @image-width;
+                height: 200px;
+                width: 500px;
 
-                @media @retina {
-                    background: url('/static/image/placeholder/165x200@2x.png') no-repeat;
+                #result_image {
+                    background: url('/static/image/placeholder/165x200.png') no-repeat;
                     background-size: @image-width @image-height;
-                }
-            }
-
-            #content {
-                height: 100%;
-                left: 165px;
-                padding: 20px 15px 15px 20px;
-                position: absolute;
-                top: 0;
-                width: 335px;
-
-                .left {
                     float: left;
-                    font-family: 'Open Sans', helvetica, arial, sans-serif;
+                    height: @image-height;
+                    left: 0;
+                    position: absolute;
+                    top: 0;
+                    width: @image-width;
 
-                    .name {
-                        font-size: 20px;
-                        font-weight: 500;
+                    @media @retina {
+                        background: url('/static/image/placeholder/165x200@2x.png') no-repeat;
+                        background-size: @image-width @image-height;
                     }
                 }
 
-                .right {
+                #content {
+                    font-family: 'Open Sans', helvetica, arial, sans-serif;
+                    height: 100%;
+                    left: 165px;
+                    padding: 5px 15px 15px 20px;
+                    position: absolute;
+                    top: 0;
+                    width: 335px;
 
+                    p {
+                        font-weight: 100;
+
+                        &.name {
+                            font-size: 20px;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+
+            #right_container {
+                float: right;
+
+                .side_content {
+                    border-bottom: 1px solid #DED;
+                    font-family: 'Open Sans', helvetica, arial, sans-serif;
+                    text-align: center;
+                    width: 150px;
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+
+                    .content {
+                        font-weight: 100;
+                    }
+
+                    .top_header {
+                        font-weight: 500;
+                        text-transform: uppercase;
+                    }
+
+                }
+
+                #primary_guardian {
+                    height: 67px;
+                    line-height: 30px;
+                }
+
+                #start_date {
+                    height: 67px;
+                    line-height: 30px;
+                }
+
+                #termination_date {
+                    height: 66px;
+                    line-height: 30px;
+                }
+            }
+        }
+    }
+
+    #search_options {
+        height: 50px;
+
+        #search_box {
+            width: 450px;
+
+            input {
+                border: 1px solid #CCC;
+                font-family: 'Open Sans', helvetica, arial, sans-serif;
+                font-size: 20px;
+                font-weight: 300;
+                height: 46px;
+                padding-left: 10px;
+                width: inherit;
+            }
+
+            &.has_content {
+                input {
+                    padding: 0 45px 0 10px;
+                }
+
+                svg {
+                    display: block;
+                }
+            }
+
+            svg {
+                display: none;
+
+                &#clear_button {
+                    border-left: 1px solid #CCC;
+                    height: 45px;
+                    left: 495px;
+                    position: absolute;
+                    top: 1px;
+                    width: 45px;
+
+                    &:hover {
+                        cursor: pointer;
+
+                        path {
+                            fill: #AAA;
+                        }
+                    }
                 }
             }
         }
 
-        #controls {
-            float: right;
+        #sort_and_filter {
+            height: 45px;
+            left: 540px;
+            padding: 0 0 0 20px;
+            position: absolute;
+            top: 0;
 
-            .button {
-                border-bottom: 1px solid #DED;
-                font-family: 'Open Sans', helvetica, arial, sans-serif;
-                text-align: center;
-                text-transform: uppercase;
-                width: 150px;
+            #filter {
+                border: 1px solid #CCC;
+                display: inline-block;
+                height: inherit;
+                width: 45px;
 
                 &:hover {
                     cursor: pointer;
                 }
 
-                &:last-child {
-                    border-bottom: none;
+                svg {
+                    height: 45px;
+                    width: 45px;
+
+                    &:hover {
+                        path {
+                            fill: #AAA;
+                        }
+                    }
                 }
             }
 
-            #edit {
-                height: 67px;
-                line-height: 30px;
-            }
+            #sort {
+                border: 1px solid #CCC;
+                display: inline-block;
+                height: inherit;
+                width: 45px;
 
-            #save {
-                height: 66px;
-            }
+                &:hover {
+                    cursor: pointer;
+                }
 
-            #test {
-                height: 67px;
+                svg {
+                    height: 45px;
+                    width: 45px;
+
+                    &:hover {
+                        path {
+                            fill: #AAA;
+                        }
+                    }
+                }
             }
         }
     }
+
 }

@@ -1,5 +1,8 @@
 package com.adamchilds.daycare.entity.child.model;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -24,37 +27,35 @@ public class Child {
     @Column(name = "ID")
     private Long id;
 
-    @Basic
     @Column(name = "ACCOUNT_ID", nullable = false)
     private Long accountId;
 
-    @Basic
     @Column(name = "GUARDIAN_ONE_ID")
     private Long guardianOneId;
 
-    @Basic
     @Column(name = "GUARDIAN_TWO_ID")
     private Long guardianTwoId;
 
-    @Basic
     @Column(name = "FIRST_NAME", nullable = false)
     private String firstName;
 
-    @Basic
     @Column(name = "MIDDLE_INITIAL")
     private Character middleInitial;
 
-    @Basic
     @Column(name = "LAST_NAME", nullable = false)
     private String lastName;
 
-    @Basic
     @Column(name = "BIRTHDATE", nullable = false)
     private Date birthDate;
 
-    @Basic
     @Column(name = "IS_CURRENT", nullable = false)
     private boolean isCurrent; // Does the Child currently attend the daycare?
+
+    @Column(name = "START_DATE")
+    private Date startDate;
+
+    @Column(name = "TERMINATION_DATE")
+    private Date terminationDate;
 
     public Long getId() {
         return id;
@@ -112,7 +113,37 @@ public class Child {
         return isCurrent;
     }
 
-    public void setIsCurrent(boolean isCurrent) {
+    public void setCurrent(boolean isCurrent) {
         this.isCurrent = isCurrent;
     }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getTerminationDate() {
+        return terminationDate;
+    }
+
+    public void setTerminationDate(Date terminationDate) {
+        this.terminationDate = terminationDate;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+    }
+
 }

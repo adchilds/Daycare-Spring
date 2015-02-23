@@ -4,26 +4,38 @@
     <div id="left_container">
         <div id="result_image"></div>
         <div id="content">
-            <div class="left">
-                <p class="name">Childs, Adam D.</p>
-                <p class="birthdate">July 14, 1991 (23)</p>
-                <p class="place_of_residence">
-                    4018 N. Albany Ave. APT #3B<br/>
-                    Chicago, IL 60618
-                </p>
-            </div>
+            <p class="name">Childs, Adam D.</p>
+            <p>July 14, 1991 (23)</p>
+            <p>
+                4018 N. Albany Ave. APT #3B<br/>
+                Chicago, IL 60618
+            </p>
         </div>
     </div>
-    <div id="controls">
-        <div id="edit" class="button">
+    <div id="right_container">
+        <div id="start_date" class="side_content">
             <div class="top_header">
-                Test
+                Start Date
             </div>
-            <div class="side_content">
-                Test2
+            <div class="content">
+                March 3, 2007
             </div>
         </div>
-        <div id="save" class="button">save</div>
-        <div id="test" class="button">test</div>
+        <div id="termination_date" class="side_content">
+            <div class="top_header">
+                Termination Date
+            </div>
+            <div class="content">
+                July 12, 2015
+            </div>
+        </div>
+        <div id="primary_guardian" class="side_content">
+            <div class="top_header">
+                Primary Guardian
+            </div>
+            <div class="content">
+                John Smith
+            </div>
+        </div>
     </div>
 </div>

@@ -37,8 +37,8 @@ define([
 
             var allWidgets = $('[' + DATA_JQ_TYPE + ']');
 
-            $.each(allWidgets, function(index, node) {
-                node = $('#' + node.id);
+            allWidgets.each(function(index, node) {
+                node = $(node);
 
                 var jqType = node.attr(DATA_JQ_TYPE),
                     jqProps = node.attr(DATA_JQ_PROPS),
@@ -72,6 +72,11 @@ define([
 
                     // Create the widget and save it into the widget registry
                     widgetRegistry[widgetId] = WidgetUtil.construct(widgetObj, jqProps);
+
+                    // If the object supplied a 'domNode' property, set it
+                    if (widgetObj.hasOwnProperty('domNode')) {
+                        widgetObj.domNode = node;
+                    }
 
                     // If the object supplies a 'postCreate' method, call it to set up the object
                     if (widgetObj.hasOwnProperty('postCreate')) {
