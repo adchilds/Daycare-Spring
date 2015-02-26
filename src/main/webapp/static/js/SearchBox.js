@@ -1,39 +1,41 @@
-define([
+define('SearchBox', [
     'jquery'
 ], function (
     $
 ) {
 
     /**
-     * The SVGDecoder Replace all SVG images with inline SVG
+     * Provides extra functionality for an HTML input component to make it react more like a search text box.
+     *
+     * @author Adam Childs
      */
     return {
         domNode: null,
 
         /**
-         *
+         * Initializes the widget via the jqueryParser widget.
          */
         postCreate: function() {
             $('input', this.domNode).keyup(this.domNode, this.onKeyStroke);
-            $('svg', this.domNode).click(this.domNode, this.onClick);
+            $('div#clear_button', this.domNode).click(this.domNode, this.clearContent);
         },
 
         /**
-         *
+         * Removes the textual content from the HTML input element and also hides the clear button.
          */
-        onClick: function(event) {
+        clearContent: function(event) {
             var node = event.data;
             var input = $('input', node);
 
-            // Remove the close button
-            node.removeClass('has_content');
-
             // Remove all text from the input
             input.val('');
+
+            // Remove the close button
+            node.removeClass('has_content');
         },
 
         /**
-         *
+         * Handles key stroke events (when a user is typing in the HTML input element)
          */
         onKeyStroke: function(event) {
             var node = event.data;

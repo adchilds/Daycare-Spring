@@ -7,20 +7,24 @@
                 <div id="search_options">
                     <div id="search_box" data-jq-type="SearchBox">
                         <input class="search_box" placeholder="Search..." />
-                        <img id="clear_button" class="svg" src="/static/image/icon/appbar.close.svg" />
+                        <div id="clear_button">
+                            <%@ include file="/WEB-INF/jsp/icon/appbar.close.jsp" %>
+                        </div>
                     </div>
                     <div id="sort_and_filter">
                         <div id="sort">
-                            <img class="svg" src="/static/image/icon/appbar.scale.svg" />
-                        </div>
-                        <div id="filter">
-                            <img class="svg" src="/static/image/icon/appbar.filter.svg" />
+                            <%@ include file="/WEB-INF/jsp/icon/appbar.filter.alphabetical.jsp" %>
                         </div>
                     </div>
                 </div>
                 <div id="active_filters">
-                    <%@ include file="template/pieces/search/active_filter.jsp" %>
-                    <%@ include file="template/pieces/search/active_filter.jsp" %>
+                    <div id="content_block">
+                        <p>Active Filters:</p>
+                    </div>
+                    <div id="filters">
+                        <%@ include file="template/pieces/search/active_filter.jsp" %>
+                        <%@ include file="template/pieces/search/active_filter.jsp" %>
+                    </div>
                 </div>
                 <div id="result_container">
                     <%@ include file="template/pieces/search/result.jsp" %>

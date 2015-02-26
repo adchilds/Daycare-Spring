@@ -9,8 +9,45 @@
 .dashboard {
 
     #active_filters {
-        .active_filter {
-            display: inline-block;
+        #content_block {
+
+        }
+
+        #filters {
+            .active_filter {
+                border: 1px solid #CCC;
+                display: inline-block;
+                height: 30px;
+                line-height: 30px;
+                padding: 0 30px 0 10px;
+                position: relative;
+                width: auto;
+
+                &:hover {
+                    cursor: pointer;
+
+                    .clear_button {
+                        svg {
+                            path {
+                                fill: #AAA;
+                            }
+                        }
+                    }
+                }
+
+                .clear_button {
+                    height: 25px;
+                    left: 42px;
+                    position: absolute;
+                    top: 2px;
+                    width: 25px;
+
+                    svg {
+                        height: 25px;
+                        width: 25px;
+                    }
+                }
+            }
         }
     }
 
@@ -112,7 +149,8 @@
         height: 50px;
 
         #search_box {
-            width: 450px;
+            position: relative;
+            width: 585px;
 
             input {
                 border: 1px solid #CCC;
@@ -120,6 +158,7 @@
                 font-size: 20px;
                 font-weight: 300;
                 height: 46px;
+                outline-width: 0;
                 padding-left: 10px;
                 width: inherit;
             }
@@ -129,36 +168,38 @@
                     padding: 0 45px 0 10px;
                 }
 
-                svg {
+                #clear_button {
                     display: block;
                 }
             }
 
-            svg {
+            #clear_button {
                 display: none;
+                border-left: 1px solid #CCC;
+                height: 45px;
+                left: 540px;
+                position: absolute;
+                top: 1px;
+                width: 45px;
 
-                &#clear_button {
-                    border-left: 1px solid #CCC;
-                    height: 45px;
-                    left: 495px;
-                    position: absolute;
-                    top: 1px;
-                    width: 45px;
+                &:hover {
+                    cursor: pointer;
 
-                    &:hover {
-                        cursor: pointer;
-
-                        path {
-                            fill: #AAA;
-                        }
+                    path {
+                        fill: #AAA;
                     }
+                }
+
+                svg {
+                    height: 45px;
+                    width: 45px;
                 }
             }
         }
 
         #sort_and_filter {
             height: 45px;
-            left: 540px;
+            left: 675px;
             padding: 0 0 0 20px;
             position: absolute;
             top: 0;

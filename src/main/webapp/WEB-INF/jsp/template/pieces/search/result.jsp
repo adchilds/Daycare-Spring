@@ -10,6 +10,9 @@
                 4018 N. Albany Ave. APT #3B<br/>
                 Chicago, IL 60618
             </p>
+            <p>
+                Monday - Friday (9:00am - 5:00pm)
+            </p>
         </div>
     </div>
     <div id="right_container">
