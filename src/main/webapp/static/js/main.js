@@ -49,7 +49,8 @@ require([
      * App scripts
      */
     'example',
-    'SearchBox'
+    'SearchBox',
+    'SortSelector'
 
 ], function (widgetUtil, jqueryParser, svgDecoder) {
     $(document).ready(function () {

@@ -3,6 +3,27 @@
 @image-height: 200px;
 @image-width: 165px;
 
+#daycare_logo {
+    &:hover {
+        cursor: pointer;
+    }
+
+    .image {
+        svg {
+            &:hover {
+                path {
+                    fill: #5C97BF;
+                }
+            }
+        }
+    }
+
+    .text {
+        display: inline-block;
+        font-family: 'Open Sans', helvetica, arial, sans-serif;
+        font-size: 16px;
+    }
+}
 /*
  * Contains styles relating to the DMS Dashboard
  */
@@ -227,6 +248,7 @@
             }
 
             #sort {
+                .noselect;
                 border: 1px solid #CCC;
                 display: inline-block;
                 height: inherit;
@@ -243,6 +265,26 @@
                     &:hover {
                         path {
                             fill: #AAA;
+                        }
+                    }
+                }
+
+                #icon {
+                    height: inherit;
+                }
+
+                #options {
+                    min-width: 100px;
+                    max-width: 250px;
+
+                    .option {
+                        border: 1px solid #CCC;
+                        border-top: none;
+                        display: block;
+                        height: 30px;
+
+                        &:first-child {
+                            border-top: 1px solid #CCC;
                         }
                     }
                 }
